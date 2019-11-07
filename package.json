@@ -1,0 +1,44 @@
+{
+  "name": "trains-forms",
+  "version": "0.0.1",
+  "description": "A train to the Town of Forms",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack --config webpack.config.js --watch",
+    "lint": "eslint ./src --ext .jsx,.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/byn9826/trains-forms.git"
+  },
+  "author": "byn9826",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/byn9826/trains-forms/issues"
+  },
+  "homepage": "https://github.com/byn9826/trains-forms#readme",
+  "dependencies": {
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.7.0",
+    "@babel/core": "^7.7.2",
+    "@babel/preset-env": "^7.7.1",
+    "@babel/preset-react": "^7.7.0",
+    "babel-loader": "^8.0.6",
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.16.0",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "pre-commit": "^1.2.2"
+  },
+  "pre-commit": [
+    "lint"
+  ]
+}
