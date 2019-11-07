@@ -21,5 +21,6 @@ module.exports = {
     'react',
   ],
   rules: {
+    'jsx-a11y/label-has-associated-control': 0
   },
 };
