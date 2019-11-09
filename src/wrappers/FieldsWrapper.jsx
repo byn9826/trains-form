@@ -36,6 +36,7 @@ export default function FieldsWrapper() {
               paddingLeft: configs.innerSpacing,
               paddingRight: configs.innerSpacing,
             }}
+            required={field.required}
           >
             {
               field.label && (

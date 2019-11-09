@@ -9,6 +9,7 @@ export const fieldTypes = PropTypes.shape({
   name: PropTypes.string.isRequired,
   label: PropTypes.string,
   width: PropTypes.number,
+  required: PropTypes.bool,
 });
 
 export const fieldsDefault = [];

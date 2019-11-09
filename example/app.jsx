@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import TrainsForms from '../src/trains-forms';
+import TrainsForms from '../src/TrainsForms';
 
 const fields = [
   {
@@ -17,6 +17,7 @@ const fields = [
     name: 'user_name_2',
     label: 'User Name 2',
     width: 50,
+    required: true,
   },
   {
     type: 'TEXT',
