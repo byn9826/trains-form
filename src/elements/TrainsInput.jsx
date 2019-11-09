@@ -5,7 +5,7 @@ import { defaultProps, propTypes } from '../helpers/types';
 const TrainsInput = ({ data, field, configs }) => {
   const inputStyle = {
     display: 'block',
-    marginTop: field.label ? '5px' : 'auto',
+    marginTop: field.label ? configs.innerSpacing / 2 : 'auto',
   };
   switch (configs.theme) {
     case 'Semantic':

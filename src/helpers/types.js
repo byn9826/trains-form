@@ -15,6 +15,7 @@ export const propTypes = {
       type: PropTypes.oneOf(['TEXT']).isRequired,
       name: PropTypes.string.isRequired,
       label: PropTypes.string,
+      width: PropTypes.number,
     }),
   ),
   configs: PropTypes.shape({

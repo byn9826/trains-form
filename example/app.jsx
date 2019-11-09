@@ -10,7 +10,19 @@ const fields = [
   },
   {
     type: 'TEXT',
-    name: 'user_name',
+    name: 'user_name_1',
+  },
+  {
+    type: 'TEXT',
+    name: 'user_name_2',
+    label: 'User Name 2',
+    width: 50,
+  },
+  {
+    type: 'TEXT',
+    name: 'user_name_3',
+    label: 'User Name 3',
+    width: 50,
   },
 ];
 
