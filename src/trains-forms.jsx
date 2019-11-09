@@ -1,7 +1,7 @@
 import React from 'react';
-import { defaultProps, propTypes } from './helpers/types';
-import FieldWrapper from './blocks/FieldWrapper';
-import TrainsInput from './elements/TrainsInput';
+import TrainsContext from './helpers/context';
+import * as Props from './helpers/props';
+import FormWrapper from './wrappers/FormWrapper';
 
 const TrainsForms = ({
   data, fields, configs,
@@ -10,38 +10,39 @@ const TrainsForms = ({
     ...configs,
     innerSpacing: configs.innerSpacing || configs.spacing / 2,
   };
-  const fieldsElements = fields.map((field) => {
-    let element = null;
-    switch (field.type) {
-      case 'TEXT':
-        element = (
-          <TrainsInput data={data} field={field} configs={refinedConfigs} />
-        );
-        break;
-      default:
-        return null;
-    }
-    return (
-      <FieldWrapper key={field.name} field={field} configs={refinedConfigs}>
-        {element}
-      </FieldWrapper>
-    );
-  });
+
+  const context = {
+    data,
+    fields,
+    configs: refinedConfigs,
+  };
+
   return (
-    <form
-      style={{
-        paddingLeft: configs.spacing,
-        paddingRight: configs.spacing,
-        paddingTop: configs.innerSpacing,
-        paddingBottom: configs.innerSpacing,
-      }}
-    >
-      {fieldsElements}
-    </form>
+    <TrainsContext.Provider value={context}>
+      <div
+        style={{
+          paddingLeft: configs.innerSpacing,
+          paddingRight: configs.innerSpacing,
+          paddingTop: configs.innerSpacing,
+          paddingBottom: configs.innerSpacing,
+        }}
+      >
+        <FormWrapper />
+      </div>
+    </TrainsContext.Provider>
   );
 };
 
-TrainsForms.defaultProps = defaultProps;
-TrainsForms.propTypes = propTypes;
-
 export default TrainsForms;
+
+TrainsForms.defaultProps = {
+  data: Props.dataDefault,
+  fields: Props.fieldsDefault,
+  configs: Props.configsDefault,
+};
+
+TrainsForms.propTypes = {
+  data: Props.dataTypes,
+  fields: Props.fieldsTypes,
+  configs: Props.configsTypes,
+};
