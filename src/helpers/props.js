@@ -10,6 +10,7 @@ export const fieldTypes = PropTypes.shape({
   label: PropTypes.string,
   width: PropTypes.number,
   required: PropTypes.bool,
+  placeholder: PropTypes.string,
 });
 
 export const fieldsDefault = [];

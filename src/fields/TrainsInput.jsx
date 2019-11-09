@@ -20,6 +20,7 @@ const TrainsInput = ({ field }) => {
           key={field.name}
           name={field.name}
           value={data[field.name]}
+          placeholder={field.placeholder}
         />
       );
   }
