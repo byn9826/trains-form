@@ -15,6 +15,7 @@ const TrainsInput = ({ field }) => {
     default:
       return (
         <input
+          type="text"
           style={inputStyle}
           key={field.name}
           name={field.name}

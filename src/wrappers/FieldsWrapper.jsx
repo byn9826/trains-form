@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Form } from 'semantic-ui-react';
+import classNames from 'classnames';
 import TrainsContext from '../helpers/context';
 import TrainsInput from '../fields/TrainsInput';
 
@@ -27,7 +27,13 @@ export default function FieldsWrapper() {
       case 'Semantic':
       default:
         return (
-          <Form.Field
+          <div
+            className={classNames(
+              'field',
+              {
+                required: field.required,
+              },
+            )}
             key={field.name}
             style={{
               ...containerStyle,
@@ -36,7 +42,6 @@ export default function FieldsWrapper() {
               paddingLeft: configs.innerSpacing,
               paddingRight: configs.innerSpacing,
             }}
-            required={field.required}
           >
             {
               field.label && (
@@ -44,7 +49,7 @@ export default function FieldsWrapper() {
               )
             }
             {element}
-          </Form.Field>
+          </div>
         );
     }
   });
