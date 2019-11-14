@@ -27,7 +27,7 @@ const TrainsInput = ({ field }) => {
             if (field.max && e.target.value.length > field.max) {
               actions.onChangeError(field.name, field.maxErrorMessage || `${field.max} characters Maximum`);
             } else {
-              if (field.min && e.target.value.length < field.min) {
+              if (field.min && e.target.value.length !== 0 && e.target.value.length < field.min) {
                 actions.onChangeError(field.name, field.minErrorMessage || `${field.min} characters Minimum`);
               } else {
                 actions.onChangeError(field.name, null);

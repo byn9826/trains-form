@@ -17,6 +17,8 @@ export const fieldTypes = PropTypes.shape({
   default: PropTypes.string,
   max: PropTypes.number,
   maxErrorMessage: PropTypes.string,
+  min: PropTypes.number,
+  minErrorMessage: PropTypes.string,
 });
 
 export const fieldsDefault = [];
