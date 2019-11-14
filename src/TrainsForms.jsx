@@ -28,19 +28,27 @@ const TrainsForms = ({ mode, fields, configs }) => {
   }
 
   const [data, setDate] = useState(initDate);
+  const [errors, setErrors] = useState({});
 
-  const onChange = (name, value) => {
+  const onChangeValue = (name, value) => {
     const newData = { ...data };
     newData[name] = value;
     setDate(newData);
   };
 
+  const onChangeError = (name, value) => {
+    const newErrors = { ...errors };
+    newErrors[name] = value;
+    setErrors(newErrors);
+  };
+
   const context = {
     data,
+    errors,
     fields,
     configs: refinedConfigs,
     actions: {
-      onChange,
+      onChangeValue, onChangeError,
     },
   };
 

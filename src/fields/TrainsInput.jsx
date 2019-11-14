@@ -24,7 +24,16 @@ const TrainsInput = ({ field }) => {
           value={data[field.name]}
           placeholder={field.placeholder}
           onChange={(e) => {
-            actions.onChange(e.target.name, e.target.value);
+            if (field.max && e.target.value.length > field.max) {
+              actions.onChangeError(field.name, field.maxErrorMessage || `${field.max} characters Maximum`);
+            } else {
+              if (field.min && e.target.value.length < field.min) {
+                actions.onChangeError(field.name, field.minErrorMessage || `${field.min} characters Minimum`);
+              } else {
+                actions.onChangeError(field.name, null);
+              }
+              actions.onChangeValue(field.name, e.target.value);
+            }
           }}
         />
       );

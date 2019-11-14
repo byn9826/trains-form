@@ -5,7 +5,7 @@ import TrainsInput from '../fields/TrainsInput';
 
 export default function FieldsWrapper() {
   const trainsContext = useContext(TrainsContext);
-  const { fields, configs } = trainsContext;
+  const { fields, configs, errors } = trainsContext;
 
   return fields.map((field) => {
     let element = null;
@@ -19,6 +19,7 @@ export default function FieldsWrapper() {
     const containerStyle = field.width && field.width < 100 ? {
       display: 'inline-block',
       width: `${field.width}%`,
+      verticalAlign: 'top',
     } : {
       display: 'block',
       width: '100%',
@@ -49,6 +50,13 @@ export default function FieldsWrapper() {
               )
             }
             {element}
+            {
+              errors[field.name] && (
+                <div className="ui pointing red basic label">
+                  {errors[field.name]}
+                </div>
+              )
+            }
           </div>
         );
     }

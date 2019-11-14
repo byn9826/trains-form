@@ -14,6 +14,9 @@ export const fieldTypes = PropTypes.shape({
   width: PropTypes.number,
   required: PropTypes.bool,
   placeholder: PropTypes.string,
+  default: PropTypes.string,
+  max: PropTypes.number,
+  maxErrorMessage: PropTypes.string,
 });
 
 export const fieldsDefault = [];
