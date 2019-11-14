@@ -10,7 +10,7 @@ export default function FieldsWrapper() {
   return fields.map((field) => {
     let element = null;
     switch (field.type) {
-      case 'TEXT':
+      case 'Text':
         element = <TrainsInput field={field} />;
         break;
       default:

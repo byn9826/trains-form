@@ -4,7 +4,9 @@ import * as Props from '../helpers/props';
 
 const TrainsInput = ({ field }) => {
   const trainsContext = useContext(TrainsContext);
-  const { fields, data, configs } = trainsContext;
+  const {
+    fields, data, configs, actions,
+  } = trainsContext;
 
   const inputStyle = {
     display: 'block',
@@ -21,6 +23,9 @@ const TrainsInput = ({ field }) => {
           name={field.name}
           value={data[field.name]}
           placeholder={field.placeholder}
+          onChange={(e) => {
+            actions.onChange(e.target.name, e.target.value);
+          }}
         />
       );
   }

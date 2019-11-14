@@ -3,9 +3,12 @@ import PropTypes from 'prop-types';
 export const dataDefault = {};
 export const dataTypes = PropTypes.objectOf(PropTypes.any);
 
+export const modeDefault = 'View';
+export const modeTypes = PropTypes.oneOf(['View', 'Creation', 'Updation', 'Deletion']);
+
 export const fieldDefault = {};
 export const fieldTypes = PropTypes.shape({
-  type: PropTypes.oneOf(['TEXT']).isRequired,
+  type: PropTypes.oneOf(['Text']).isRequired,
   name: PropTypes.string.isRequired,
   label: PropTypes.string,
   width: PropTypes.number,

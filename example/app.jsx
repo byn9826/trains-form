@@ -4,48 +4,55 @@ import TrainsForms from '../src/TrainsForms';
 
 const fields = [
   {
-    type: 'TEXT',
+    type: 'Text',
     name: 'user_name_1',
   },
   {
-    type: 'TEXT',
+    type: 'Text',
     name: 'user_name_2',
     label: 'User Name with label',
   },
   {
-    type: 'TEXT',
+    type: 'Text',
     name: 'user_name_3',
     label: 'User Name with width',
     width: 50,
   },
   {
-    type: 'TEXT',
+    type: 'Text',
     name: 'user_name_4',
     label: 'User Name with required',
     width: 50,
     required: true,
   },
   {
-    type: 'TEXT',
+    type: 'Text',
     name: 'user_name_5',
     label: 'User Name with placeholder',
     placeholder: 'User Name with placeholder',
   },
+  {
+    type: 'Text',
+    name: 'user_name_6',
+    label: 'User Name with tip',
+  },
+  {
+    type: 'Text',
+    name: 'user_name_7',
+    label: 'User Name with default value',
+    default: 'Default User Name',
+  },
 ];
 
-const App = () => {
-  const existingData = {
-    user_name_1: 'User Name without label',
-  };
-  return (
-    <TrainsForms
-      fields={fields}
-      data={existingData}
-      configs={{
-        theme: 'Semantic',
-        spacing: 30,
-      }}
-    />
-  );
-};
+const App = () => (
+  <TrainsForms
+    fields={fields}
+    mode="Creation"
+    configs={{
+      theme: 'Semantic',
+      spacing: 30,
+    }}
+  />
+);
+
 render(<App />, document.getElementById('app'));
