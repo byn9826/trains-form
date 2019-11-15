@@ -55,6 +55,7 @@ const TrainsForms = ({
 
   const context = {
     data: formData,
+    mode,
     errors,
     fields,
     configs: refinedConfigs,

@@ -19,6 +19,7 @@ export const fieldTypes = PropTypes.shape({
   maxErrorMessage: PropTypes.string,
   min: PropTypes.number,
   minErrorMessage: PropTypes.string,
+  disabled: PropTypes.bool,
 });
 
 export const fieldsDefault = [];
@@ -37,7 +38,7 @@ export const configsTypes = PropTypes.shape({
   spacing: PropTypes.number,
   innerSpacing: PropTypes.number,
   theme: PropTypes.oneOf(['Semantic']),
-  mode: PropTypes.oneOf(['View', 'Creation', 'Updation', 'Deletion']),
+  mode: PropTypes.oneOf(['View', 'Creation', 'Updation']),
   data: PropTypes.objectOf(PropTypes.any),
 });
 

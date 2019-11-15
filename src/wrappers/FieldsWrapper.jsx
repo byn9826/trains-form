@@ -6,16 +6,27 @@ import TrainsLabel from '../fields/TrainsLabel';
 
 export default function FieldsWrapper() {
   const trainsContext = useContext(TrainsContext);
-  const { fields, configs, errors } = trainsContext;
+  const {
+    fields, configs, mode, errors,
+  } = trainsContext;
 
   return fields.map((field) => {
     let element = null;
     const elementStyle = {
       marginTop: fields.label ? configs.innerSpacing / 2 : 'auto',
     };
+    const disabled = mode === 'View' || field.disabled;
     switch (field.type) {
       case 'Text':
-        element = <TrainsInput field={field} elementStyle={elementStyle} />;
+        element = (
+          <div
+            className={classNames('field', {
+              disabled,
+            })}
+          >
+            <TrainsInput field={field} elementStyle={elementStyle} />
+          </div>
+        );
         break;
       case 'Label':
         element = <TrainsLabel field={field} elementStyle={elementStyle} />;
@@ -36,12 +47,9 @@ export default function FieldsWrapper() {
       default:
         return (
           <div
-            className={classNames(
-              'field',
-              {
-                required: field.required,
-              },
-            )}
+            className={classNames('field', {
+              required: field.required,
+            })}
             key={field.name}
             style={{
               ...containerStyle,

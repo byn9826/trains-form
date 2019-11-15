@@ -67,6 +67,20 @@ const fields = [
     min: 5,
     minErrorMessage: 'Less than 5 characters!',
   },
+  {
+    type: 'Text',
+    name: 'user_name_11',
+    label: 'Disabled User Name',
+    width: 50,
+    disabled: true,
+  },
+  {
+    type: 'Label',
+    name: 'user_name_12',
+    label: 'User name in a label',
+    default: 'A label in Creation Mode',
+    width: 50,
+  },
 ];
 
 const fields1 = [
@@ -88,11 +102,18 @@ const fields1 = [
     width: 50,
     default: 'Value from default',
   },
+  {
+    type: 'Text',
+    name: 'text_1',
+    label: 'Text in view mode',
+    width: 50,
+  },
 ];
 
 const initData1 = {
   label_1: 'Label Type Element',
   label_2: 'Label with value',
+  text_1: 'Data for text_1',
 };
 
 const App = () => (
