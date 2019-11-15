@@ -8,7 +8,7 @@ export const modeTypes = PropTypes.oneOf(['View', 'Creation', 'Updation', 'Delet
 
 export const fieldDefault = {};
 export const fieldTypes = PropTypes.shape({
-  type: PropTypes.oneOf(['Text']).isRequired,
+  type: PropTypes.oneOf(['Text', 'Label']).isRequired,
   name: PropTypes.string.isRequired,
   label: PropTypes.string,
   width: PropTypes.number,
@@ -30,9 +30,16 @@ export const configsDefault = {
   spacing: 20,
   innerSpacing: 10,
   theme: 'Semantic',
+  mode: 'View',
+  data: {},
 };
 export const configsTypes = PropTypes.shape({
   spacing: PropTypes.number,
   innerSpacing: PropTypes.number,
   theme: PropTypes.oneOf(['Semantic']),
+  mode: PropTypes.oneOf(['View', 'Creation', 'Updation', 'Deletion']),
+  data: PropTypes.objectOf(PropTypes.any),
 });
+
+export const styleDefault = {};
+export const styleTypes = PropTypes.objectOf(PropTypes.any);

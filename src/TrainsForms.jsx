@@ -3,14 +3,25 @@ import TrainsContext from './helpers/context';
 import * as Props from './helpers/props';
 import FormWrapper from './wrappers/FormWrapper';
 
-const TrainsForms = ({ mode, fields, configs }) => {
+const TrainsForms = ({
+  mode, fields, configs, data,
+}) => {
   const refinedConfigs = {
     ...configs,
     innerSpacing: configs.innerSpacing || configs.spacing / 2,
   };
 
-  const initData = {};
+  let initData = {};
   switch (mode) {
+    case 'View': {
+      fields.forEach((field) => {
+        initData = data;
+        if (field.default && !initData[field.name]) {
+          initData[field.name] = field.default;
+        }
+      });
+      break;
+    }
     case 'Creation': {
       fields.forEach((field) => {
         let defaultValue = null;
@@ -27,11 +38,11 @@ const TrainsForms = ({ mode, fields, configs }) => {
       break;
   }
 
-  const [data, setData] = useState(initData);
+  const [formData, setData] = useState(initData);
   const [errors, setErrors] = useState({});
 
   const onChangeValue = (name, value) => {
-    const newData = { ...data };
+    const newData = { ...formData };
     newData[name] = value;
     setData(newData);
   };
@@ -43,7 +54,7 @@ const TrainsForms = ({ mode, fields, configs }) => {
   };
 
   const context = {
-    data,
+    data: formData,
     errors,
     fields,
     configs: refinedConfigs,
@@ -74,10 +85,12 @@ TrainsForms.defaultProps = {
   mode: Props.modeDefault,
   fields: Props.fieldsDefault,
   configs: Props.configsDefault,
+  data: Props.dataDefault,
 };
 
 TrainsForms.propTypes = {
   mode: Props.modeTypes,
   fields: Props.fieldsTypes,
   configs: Props.configsTypes,
+  data: Props.dataTypes,
 };

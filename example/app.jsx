@@ -69,15 +69,48 @@ const fields = [
   },
 ];
 
+const fields1 = [
+  {
+    type: 'Label',
+    name: 'label_1',
+    label: 'Label 1',
+  },
+  {
+    type: 'Label',
+    name: 'label_2',
+    label: 'Label 2',
+    width: 50,
+  },
+  {
+    type: 'Label',
+    name: 'label_3',
+    label: 'Label 3',
+    width: 50,
+    default: 'Value from default',
+  },
+];
+
+const initData1 = {
+  label_1: 'Label Type Element',
+  label_2: 'Label with value',
+};
+
 const App = () => (
-  <TrainsForms
-    fields={fields}
-    mode="Creation"
-    configs={{
-      theme: 'Semantic',
-      spacing: 30,
-    }}
-  />
+  <>
+    <TrainsForms
+      fields={fields}
+      mode="Creation"
+      configs={{
+        theme: 'Semantic',
+        spacing: 30,
+      }}
+    />
+    <TrainsForms
+      fields={fields1}
+      data={initData1}
+      mode="View"
+    />
+  </>
 );
 
 render(<App />, document.getElementById('app'));

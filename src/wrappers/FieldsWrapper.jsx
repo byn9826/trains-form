@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import classNames from 'classnames';
 import TrainsContext from '../helpers/context';
 import TrainsInput from '../fields/TrainsInput';
+import TrainsLabel from '../fields/TrainsLabel';
 
 export default function FieldsWrapper() {
   const trainsContext = useContext(TrainsContext);
@@ -9,9 +10,15 @@ export default function FieldsWrapper() {
 
   return fields.map((field) => {
     let element = null;
+    const elementStyle = {
+      marginTop: fields.label ? configs.innerSpacing / 2 : 'auto',
+    };
     switch (field.type) {
       case 'Text':
-        element = <TrainsInput field={field} />;
+        element = <TrainsInput field={field} elementStyle={elementStyle} />;
+        break;
+      case 'Label':
+        element = <TrainsLabel field={field} elementStyle={elementStyle} />;
         break;
       default:
         return null;
