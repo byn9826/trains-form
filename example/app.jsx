@@ -78,10 +78,20 @@ const fields = [
     type: 'Label',
     name: 'user_name_12',
     label: 'User name in a label',
-    default: 'A label in Creation Mode',
+    default: 'A label in Edit Mode',
     width: 50,
   },
+  {
+    type: 'Text',
+    name: 'user_name_13',
+    label: 'User Name with init and default value',
+    default: 'default value will be override',
+  },
 ];
+
+const initData = {
+  user_name_13: 'This is init value',
+};
 
 const fields1 = [
   {
@@ -119,8 +129,9 @@ const initData1 = {
 const App = () => (
   <>
     <TrainsForms
+      data={initData}
       fields={fields}
-      mode="Creation"
+      mode="Edit"
       configs={{
         theme: 'Semantic',
         spacing: 30,

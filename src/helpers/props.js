@@ -4,7 +4,7 @@ export const dataDefault = {};
 export const dataTypes = PropTypes.objectOf(PropTypes.any);
 
 export const modeDefault = 'View';
-export const modeTypes = PropTypes.oneOf(['View', 'Creation', 'Updation', 'Deletion']);
+export const modeTypes = PropTypes.oneOf(['View', 'Edit']);
 
 export const fieldDefault = {};
 export const fieldTypes = PropTypes.shape({
@@ -38,8 +38,6 @@ export const configsTypes = PropTypes.shape({
   spacing: PropTypes.number,
   innerSpacing: PropTypes.number,
   theme: PropTypes.oneOf(['Semantic']),
-  mode: PropTypes.oneOf(['View', 'Creation', 'Updation']),
-  data: PropTypes.objectOf(PropTypes.any),
 });
 
 export const styleDefault = {};

@@ -11,32 +11,20 @@ const TrainsForms = ({
     innerSpacing: configs.innerSpacing || configs.spacing / 2,
   };
 
-  let initData = {};
-  switch (mode) {
-    case 'View': {
-      fields.forEach((field) => {
-        initData = data;
-        if (field.default && !initData[field.name]) {
-          initData[field.name] = field.default;
-        }
-      });
-      break;
+  const initData = data;
+
+  fields.forEach((field) => {
+    if (typeof initData[field.name] !== 'undefined') {
+      return;
     }
-    case 'Creation': {
-      fields.forEach((field) => {
-        let defaultValue = null;
-        if (field.default) {
-          defaultValue = field.default;
-        } else if (field.type === 'Text') {
-          defaultValue = '';
-        }
-        initData[field.name] = defaultValue;
-      });
-      break;
+    if (typeof field.default !== 'undefined') {
+      initData[field.name] = field.default;
+      return;
     }
-    default:
-      break;
-  }
+    if (field.type === 'Text') {
+      initData[field.name] = '';
+    }
+  });
 
   const [formData, setData] = useState(initData);
   const [errors, setErrors] = useState({});
