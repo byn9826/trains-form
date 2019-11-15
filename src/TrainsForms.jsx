@@ -9,7 +9,7 @@ const TrainsForms = ({ mode, fields, configs }) => {
     innerSpacing: configs.innerSpacing || configs.spacing / 2,
   };
 
-  const initDate = {};
+  const initData = {};
   switch (mode) {
     case 'Creation': {
       fields.forEach((field) => {
@@ -19,7 +19,7 @@ const TrainsForms = ({ mode, fields, configs }) => {
         } else if (field.type === 'Text') {
           defaultValue = '';
         }
-        initDate[field.name] = defaultValue;
+        initData[field.name] = defaultValue;
       });
       break;
     }
@@ -27,13 +27,13 @@ const TrainsForms = ({ mode, fields, configs }) => {
       break;
   }
 
-  const [data, setDate] = useState(initDate);
+  const [data, setData] = useState(initData);
   const [errors, setErrors] = useState({});
 
   const onChangeValue = (name, value) => {
     const newData = { ...data };
     newData[name] = value;
-    setDate(newData);
+    setData(newData);
   };
 
   const onChangeError = (name, value) => {
