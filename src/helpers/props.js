@@ -10,7 +10,7 @@ export const fieldDefault = {};
 export const fieldTypes = PropTypes.shape({
   type: PropTypes.oneOf(['Text', 'Label']).isRequired,
   name: PropTypes.string.isRequired,
-  label: PropTypes.string,
+  title: PropTypes.string,
   width: PropTypes.number,
   required: PropTypes.bool,
   placeholder: PropTypes.string,

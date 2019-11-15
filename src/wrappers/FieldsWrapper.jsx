@@ -60,8 +60,8 @@ export default function FieldsWrapper() {
             }}
           >
             {
-              field.label && (
-                <label>{field.label}</label>
+              field.title && (
+                <label>{field.title}</label>
               )
             }
             {element}
