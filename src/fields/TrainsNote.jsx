@@ -2,16 +2,15 @@ import React, { useContext } from 'react';
 import TrainsContext from '../helpers/context';
 import * as Props from '../helpers/props';
 
-const TrainsInput = ({ field, disabled, elementStyle }) => {
+const TrainsNote = ({ field, disabled, elementStyle }) => {
   const trainsContext = useContext(TrainsContext);
   const { data, configs, actions } = trainsContext;
-
   switch (configs.theme) {
     case 'Semantic':
     default:
       return (
-        <input
-          type="text"
+        <textarea
+          rows="5"
           style={elementStyle}
           key={field.name}
           disabled={disabled}
@@ -24,8 +23,8 @@ const TrainsInput = ({ field, disabled, elementStyle }) => {
   }
 };
 
-export default TrainsInput;
+export default TrainsNote;
 
-TrainsInput.defaultProps = Props.elementDefault;
+TrainsNote.defaultProps = Props.elementDefault;
 
-TrainsInput.propTypes = Props.elementTypes;
+TrainsNote.propTypes = Props.elementTypes;

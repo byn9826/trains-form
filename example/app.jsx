@@ -138,6 +138,16 @@ const App = () => (
       }}
     />
     <TrainsForms
+      data={initData}
+      fields={fields.map((field) => {
+        return {
+          ...field,
+          type: 'Note',
+        };
+      })}
+      mode="Edit"
+    />
+    <TrainsForms
       fields={fields1}
       data={initData1}
       mode="View"

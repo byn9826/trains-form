@@ -8,7 +8,7 @@ export const modeTypes = PropTypes.oneOf(['View', 'Edit']);
 
 export const fieldDefault = {};
 export const fieldTypes = PropTypes.shape({
-  type: PropTypes.oneOf(['Text', 'Label']).isRequired,
+  type: PropTypes.oneOf(['Text', 'Note', 'Label']).isRequired,
   name: PropTypes.string.isRequired,
   title: PropTypes.string,
   width: PropTypes.number,
@@ -42,3 +42,14 @@ export const configsTypes = PropTypes.shape({
 
 export const styleDefault = {};
 export const styleTypes = PropTypes.objectOf(PropTypes.any);
+
+export const elementDefault = {
+  field: fieldDefault,
+  elementStyle: styleDefault,
+  disabled: false,
+};
+export const elementTypes = {
+  field: fieldTypes,
+  elementStyle: styleTypes,
+  disabled: PropTypes.bool,
+};

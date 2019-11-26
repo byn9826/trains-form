@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import classNames from 'classnames';
 import TrainsContext from '../helpers/context';
 import TrainsInput from '../fields/TrainsInput';
+import TrainsNote from '../fields/TrainsNote';
 import TrainsLabel from '../fields/TrainsLabel';
 
 export default function FieldsWrapper() {
@@ -9,7 +10,6 @@ export default function FieldsWrapper() {
   const {
     fields, configs, mode, errors,
   } = trainsContext;
-
   return fields.map((field) => {
     let element = null;
     const elementStyle = {
@@ -18,21 +18,23 @@ export default function FieldsWrapper() {
     const disabled = mode === 'View' || field.disabled;
     switch (field.type) {
       case 'Text':
-        element = (
-          <div
-            className={classNames('field', {
-              disabled,
-            })}
-          >
-            <TrainsInput field={field} elementStyle={elementStyle} />
-          </div>
-        );
+        element = <TrainsInput field={field} disabled={disabled} elementStyle={elementStyle} />;
+        break;
+      case 'Note':
+        element = <TrainsNote field={field} disabled={disabled} elementStyle={elementStyle} />;
         break;
       case 'Label':
         element = <TrainsLabel field={field} elementStyle={elementStyle} />;
         break;
       default:
         return null;
+    }
+    if (fields.type !== 'Label') {
+      element = (
+        <div className={classNames('field', { disabled })}>
+          {element}
+        </div>
+      );
     }
     const containerStyle = field.width && field.width < 100 ? {
       display: 'inline-block',

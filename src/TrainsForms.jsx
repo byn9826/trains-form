@@ -41,6 +41,19 @@ const TrainsForms = ({
     setErrors(newErrors);
   };
 
+  const onChange = (field, value) => {
+    if (field.max && value.length > field.max) {
+      onChangeError(field.name, field.maxErrorMessage || `${field.max} characters Maximum`);
+      return;
+    }
+    if (field.min && value.length !== 0 && value.length < field.min) {
+      onChangeError(field.name, field.minErrorMessage || `${field.min} characters Minimum`);
+    } else {
+      onChangeError(field.name, null);
+    }
+    onChangeValue(field.name, value);
+  };
+
   const context = {
     data: formData,
     mode,
@@ -48,7 +61,7 @@ const TrainsForms = ({
     fields,
     configs: refinedConfigs,
     actions: {
-      onChangeValue, onChangeError,
+      onChange,
     },
   };
 
