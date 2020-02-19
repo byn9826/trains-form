@@ -21,6 +21,7 @@ module.exports = {
     'react',
   ],
   rules: {
-    'jsx-a11y/label-has-associated-control': 0
+    'jsx-a11y/label-has-associated-control': 0,
+    'react/require-default-props': 0,
   },
 };

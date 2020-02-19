@@ -1,52 +1,58 @@
 import React, { useState } from 'react';
-import TrainsContext from './helpers/context';
-import * as Props from './helpers/props';
-import FormWrapper from './wrappers/FormWrapper';
+import * as Types from './helpers/types';
+import {
+  EDIT_MODE,
+  CONFIGS_DEFAULT,
+  TEXT_TYPE,
+  NOTE_TYPE,
+} from './helpers/constants';
+import Context from './helpers/context';
+import Form from './blocks/Form';
 
-const TrainsForms = ({
-  mode, fields, configs, data,
-}) => {
+export default function TrainsForms({
+  mode = EDIT_MODE,
+  fields = [],
+  values = {},
+  configs = CONFIGS_DEFAULT,
+}) {
+  // Prepare configs
   const refinedConfigs = {
     ...configs,
-    innerSpacing: configs.innerSpacing || configs.spacing / 2,
+    innerSpacing: configs.innerSpacing || (configs.spacing / 2),
   };
 
-  const initData = data;
-
+  // Prepare values
+  const initValues = { ...values };
   fields.forEach((field) => {
-    if (typeof initData[field.name] !== 'undefined') {
+    if (initValues[field.name] !== undefined) {
       return;
     }
-    if (typeof field.default !== 'undefined') {
-      initData[field.name] = field.default;
-      return;
-    }
-    if (field.type === 'Text') {
-      initData[field.name] = '';
+    if (field.default !== undefined) {
+      initValues[field.name] = field.default;
+    } else if (field.type === TEXT_TYPE || field.type === NOTE_TYPE) {
+      initValues[field.name] = '';
     }
   });
 
-  const [formData, setData] = useState(initData);
-  const [errors, setErrors] = useState({});
+  const [formValues, setFormValues] = useState(initValues);
+  const [formErrors, setFormErrors] = useState({});
 
   const onChangeValue = (name, value) => {
-    const newData = { ...formData };
-    newData[name] = value;
-    setData(newData);
+    const newValues = { ...formValues };
+    newValues[name] = value;
+    setFormValues(newValues);
   };
 
   const onChangeError = (name, value) => {
-    const newErrors = { ...errors };
+    const newErrors = { ...formErrors };
     newErrors[name] = value;
-    setErrors(newErrors);
+    setFormErrors(newErrors);
   };
 
   const onChange = (field, value) => {
     if (field.max && value.length > field.max) {
       onChangeError(field.name, field.maxErrorMessage || `${field.max} characters Maximum`);
-      return;
-    }
-    if (field.min && value.length !== 0 && value.length < field.min) {
+    } else if (field.min && value.length !== 0 && value.length < field.min) {
       onChangeError(field.name, field.minErrorMessage || `${field.min} characters Minimum`);
     } else {
       onChangeError(field.name, null);
@@ -55,44 +61,28 @@ const TrainsForms = ({
   };
 
   const context = {
-    data: formData,
     mode,
-    errors,
     fields,
     configs: refinedConfigs,
+    values: formValues,
+    errors: formErrors,
     actions: {
       onChange,
     },
   };
 
   return (
-    <TrainsContext.Provider value={context}>
-      <div
-        style={{
-          paddingLeft: configs.innerSpacing,
-          paddingRight: configs.innerSpacing,
-          paddingTop: configs.innerSpacing,
-          paddingBottom: configs.innerSpacing,
-        }}
-      >
-        <FormWrapper />
+    <Context.Provider value={context}>
+      <div style={{ padding: refinedConfigs.innerSpacing }}>
+        <Form />
       </div>
-    </TrainsContext.Provider>
+    </Context.Provider>
   );
-};
-
-export default TrainsForms;
-
-TrainsForms.defaultProps = {
-  mode: Props.modeDefault,
-  fields: Props.fieldsDefault,
-  configs: Props.configsDefault,
-  data: Props.dataDefault,
-};
+}
 
 TrainsForms.propTypes = {
-  mode: Props.modeTypes,
-  fields: Props.fieldsTypes,
-  configs: Props.configsTypes,
-  data: Props.dataTypes,
+  mode: Types.MODE_TYPE,
+  fields: Types.FIELDS_TYPE,
+  values: Types.VALUES_TYPE,
+  configs: Types.CONFIGS_TYPE,
 };

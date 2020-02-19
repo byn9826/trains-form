@@ -1,37 +1,44 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames';
-import TrainsContext from '../helpers/context';
-import TrainsInput from '../fields/TrainsInput';
-import TrainsNote from '../fields/TrainsNote';
-import TrainsLabel from '../fields/TrainsLabel';
+import {
+  AUTO_MARGIN,
+  VIEW_MODE,
+  SEMANTIC_THEME,
+  TEXT_TYPE,
+  NOTE_TYPE,
+  MESSAGE_TYPE,
+} from '../helpers/constants';
+import Context from '../helpers/context';
+import Input from '../elements/Input';
+import Note from '../elements/Note';
+import Message from '../elements/Message';
 
-export default function FieldsWrapper() {
-  const trainsContext = useContext(TrainsContext);
+export default function Fields() {
   const {
     fields, configs, mode, errors,
-  } = trainsContext;
+  } = useContext(Context);
+
   return fields.map((field) => {
     let element = null;
     const elementStyle = {
-      marginTop: fields.label ? configs.innerSpacing / 2 : 'auto',
+      marginTop: field.label ? configs.innerSpacing / 2 : AUTO_MARGIN,
     };
-    const disabled = mode === 'View' || field.disabled;
+    const isDisabled = mode === VIEW_MODE || field.disabled;
     switch (field.type) {
-      case 'Text':
-        element = <TrainsInput field={field} disabled={disabled} elementStyle={elementStyle} />;
+      case TEXT_TYPE:
+        element = <Input field={field} disabled={isDisabled} elementStyle={elementStyle} />;
         break;
-      case 'Note':
-        element = <TrainsNote field={field} disabled={disabled} elementStyle={elementStyle} />;
+      case NOTE_TYPE:
+        element = <Note field={field} disabled={isDisabled} elementStyle={elementStyle} />;
         break;
-      case 'Label':
-        element = <TrainsLabel field={field} elementStyle={elementStyle} />;
-        break;
+      case MESSAGE_TYPE:
       default:
-        return null;
+        element = <Message field={field} elementStyle={elementStyle} />;
+        break;
     }
-    if (fields.type !== 'Label') {
+    if (fields.type !== MESSAGE_TYPE) {
       element = (
-        <div className={classNames('field', { disabled })}>
+        <div className={classNames('field', { disabled: isDisabled })}>
           {element}
         </div>
       );
@@ -45,7 +52,7 @@ export default function FieldsWrapper() {
       width: '100%',
     };
     switch (configs.theme) {
-      case 'Semantic':
+      case SEMANTIC_THEME:
       default:
         return (
           <div

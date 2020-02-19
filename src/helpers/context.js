@@ -1,13 +1,19 @@
 import { createContext } from 'react';
+import { EDIT_MODE, SEMANTIC_THEME } from './constants';
 
-const TrainsContext = createContext({
-  data: {},
+const Context = createContext({
+  mode: EDIT_MODE,
+  values: {},
+  errors: {},
   fields: [],
   configs: {
     spacing: 20,
     innerSpacing: 10,
-    theme: 'Semantic',
+    theme: SEMANTIC_THEME,
+  },
+  actions: {
+    onChange: () => {},
   },
 });
 
-export default TrainsContext;
+export default Context;
