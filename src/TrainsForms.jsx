@@ -7,6 +7,7 @@ import {
   NOTE_TYPE,
 } from './helpers/constants';
 import Context from './helpers/context';
+import { fieldValidator } from './helpers/validation';
 import Form from './blocks/Form';
 
 export default function TrainsForms({
@@ -15,13 +16,11 @@ export default function TrainsForms({
   values = {},
   configs = CONFIGS_DEFAULT,
 }) {
-  // Prepare configs
   const refinedConfigs = {
     ...configs,
     innerSpacing: configs.innerSpacing || (configs.spacing / 2),
   };
 
-  // Prepare values
   const initValues = { ...values };
   fields.forEach((field) => {
     if (initValues[field.name] !== undefined) {
@@ -50,14 +49,9 @@ export default function TrainsForms({
   };
 
   const onChange = (field, value) => {
-    if (field.max && value.length > field.max) {
-      onChangeError(field.name, field.maxErrorMessage || `${field.max} characters Maximum`);
-    } else if (field.min && value.length !== 0 && value.length < field.min) {
-      onChangeError(field.name, field.minErrorMessage || `${field.min} characters Minimum`);
-    } else {
-      onChangeError(field.name, null);
-    }
     onChangeValue(field.name, value);
+    const message = fieldValidator(field, value);
+    onChangeError(field.name, message);
   };
 
   const context = {

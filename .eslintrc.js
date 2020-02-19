@@ -23,5 +23,6 @@ module.exports = {
   rules: {
     'jsx-a11y/label-has-associated-control': 0,
     'react/require-default-props': 0,
+    'import/prefer-default-export': 0
   },
 };
