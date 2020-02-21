@@ -1,17 +1,14 @@
 import PropTypes from 'prop-types';
 import {
-  VIEW_MODE,
-  EDIT_MODE,
-  TEXT_TYPE,
-  NOTE_TYPE,
-  MESSAGE_TYPE,
-  SEMANTIC_THEME,
+  MODES,
+  TYPES,
+  THEMES,
 } from './constants';
 
-export const MODE_TYPE = PropTypes.oneOf([VIEW_MODE, EDIT_MODE]);
+export const MODE_TYPE = PropTypes.oneOf(MODES);
 
 export const FIELD_TYPE = PropTypes.shape({
-  type: PropTypes.oneOf([TEXT_TYPE, NOTE_TYPE, MESSAGE_TYPE]).isRequired,
+  type: PropTypes.oneOf(TYPES).isRequired,
   name: PropTypes.string.isRequired,
   title: PropTypes.string,
   width: PropTypes.number,
@@ -31,7 +28,7 @@ export const VALUES_TYPE = PropTypes.objectOf(PropTypes.any);
 export const CONFIGS_TYPE = PropTypes.shape({
   spacing: PropTypes.number,
   innerSpacing: PropTypes.number,
-  theme: PropTypes.oneOf([SEMANTIC_THEME]),
+  theme: PropTypes.oneOf(THEMES),
 });
 
 export const STYLE_TYPE = PropTypes.objectOf(PropTypes.any);

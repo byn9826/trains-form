@@ -5,8 +5,10 @@ import {
   CONFIGS_DEFAULT,
   TEXT_TYPE,
   NOTE_TYPE,
+  NUMBER_TYPE,
 } from './helpers/constants';
 import Context from './helpers/context';
+import { isDefined } from './helpers/utils';
 import { fieldValidator } from './helpers/validation';
 import Form from './blocks/Form';
 
@@ -23,12 +25,16 @@ export default function TrainsForms({
 
   const initValues = { ...values };
   fields.forEach((field) => {
-    if (initValues[field.name] !== undefined) {
+    if (isDefined(initValues[field.name])) {
       return;
     }
-    if (field.default !== undefined) {
+    if (isDefined(field.default)) {
       initValues[field.name] = field.default;
-    } else if (field.type === TEXT_TYPE || field.type === NOTE_TYPE) {
+    } else if (
+      field.type === TEXT_TYPE
+      || field.type === NOTE_TYPE
+      || field.type === NUMBER_TYPE
+    ) {
       initValues[field.name] = '';
     }
   });

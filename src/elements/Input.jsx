@@ -3,7 +3,12 @@ import { SEMANTIC_THEME } from '../helpers/constants';
 import Context from '../helpers/context';
 import * as Types from '../helpers/types';
 
-export default function Input({ field, disabled, elementStyle }) {
+export default function Input({
+  type,
+  field,
+  disabled,
+  elementStyle,
+}) {
   const { values, configs, actions } = useContext(Context);
 
   switch (configs.theme) {
@@ -11,7 +16,7 @@ export default function Input({ field, disabled, elementStyle }) {
     default:
       return (
         <input
-          type="text"
+          type={type.toLowerCase()}
           style={elementStyle}
           key={field.name}
           disabled={disabled}

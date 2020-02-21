@@ -2,6 +2,7 @@ import {
   MESSAGE_TYPE,
   TEXT_TYPE,
   NOTE_TYPE,
+  NUMBER_TYPE,
 } from '../../src/helpers/constants';
 
 export const REQUIRED_VALUES = {
@@ -14,26 +15,27 @@ export const REQUIRED_FIELDS = [
   {
     type: MESSAGE_TYPE,
     name: 'message',
-    title: 'Message Field',
   },
   {
     type: TEXT_TYPE,
     name: 'text_1',
-    title: 'Text Field',
     required: true,
     width: 50,
   },
   {
     type: TEXT_TYPE,
     name: 'text_2',
-    title: 'Text Field',
     required: true,
     width: 50,
   },
   {
+    type: NUMBER_TYPE,
+    name: 'number',
+    required: true,
+  },
+  {
     type: NOTE_TYPE,
     name: 'note',
-    title: 'Note Field',
     required: true,
     requiredError: 'Please input something!',
   },

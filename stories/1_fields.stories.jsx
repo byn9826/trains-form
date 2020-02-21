@@ -9,6 +9,7 @@ import { PLACEHOLDER_VALUES, PLACEHOLDER_FIELDS } from './__mocks__/placeholder_
 import { DEFAULT_VALUES, DEFAULT_FIELDS } from './__mocks__/default_fields';
 import { REQUIRED_VALUES, REQUIRED_FIELDS } from './__mocks__/required_fields';
 import { MAX_MIN_VALUES, MAX_MIN_FIELDS } from './__mocks__/max_min_fields';
+import { autoAppendTitle } from './helpers';
 
 setAddon(JSXAddon);
 
@@ -16,42 +17,42 @@ storiesOf('Fields', module)
   .addWithJSX('Basic', () => (
     <TrainsForms
       values={BASIC_VALUES}
-      fields={BASIC_FIELDS}
+      fields={autoAppendTitle(BASIC_FIELDS)}
       mode={EDIT_MODE}
     />
   ))
   .addWithJSX('Width', () => (
     <TrainsForms
       values={WIDTH_VALUES}
-      fields={WIDTH_FIELDS}
+      fields={autoAppendTitle(WIDTH_FIELDS)}
       mode={EDIT_MODE}
     />
   ))
   .addWithJSX('Placeholder', () => (
     <TrainsForms
       values={PLACEHOLDER_VALUES}
-      fields={PLACEHOLDER_FIELDS}
+      fields={autoAppendTitle(PLACEHOLDER_FIELDS)}
       mode={EDIT_MODE}
     />
   ))
   .addWithJSX('Default Value', () => (
     <TrainsForms
       values={DEFAULT_VALUES}
-      fields={DEFAULT_FIELDS}
+      fields={autoAppendTitle(DEFAULT_FIELDS)}
       mode={EDIT_MODE}
     />
   ))
   .addWithJSX('Required (+ validator)', () => (
     <TrainsForms
       values={REQUIRED_VALUES}
-      fields={REQUIRED_FIELDS}
+      fields={autoAppendTitle(REQUIRED_FIELDS)}
       mode={EDIT_MODE}
     />
   ))
   .addWithJSX('Min/Max (+ validator)', () => (
     <TrainsForms
       values={MAX_MIN_VALUES}
-      fields={MAX_MIN_FIELDS}
+      fields={autoAppendTitle(MAX_MIN_FIELDS)}
       mode={EDIT_MODE}
     />
   ));

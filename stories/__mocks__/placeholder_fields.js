@@ -2,6 +2,7 @@ import {
   MESSAGE_TYPE,
   TEXT_TYPE,
   NOTE_TYPE,
+  NUMBER_TYPE,
 } from '../../src/helpers/constants';
 
 export const PLACEHOLDER_VALUES = {
@@ -13,26 +14,27 @@ export const PLACEHOLDER_FIELDS = [
   {
     type: MESSAGE_TYPE,
     name: 'message',
-    title: 'Message Field',
   },
   {
     type: TEXT_TYPE,
     name: 'text_1',
-    title: 'Text Field',
     placeholder: 'This is placeholder',
     width: 50,
   },
   {
     type: TEXT_TYPE,
     name: 'text_2',
-    title: 'Text Field',
     width: 50,
     placeholder: 'This is placeholder',
   },
   {
+    type: NUMBER_TYPE,
+    name: 'number',
+    placeholder: 'Placeholder for numbers',
+  },
+  {
     type: NOTE_TYPE,
     name: 'note',
-    title: 'Note Field',
     placeholder: 'This is placeholder',
   },
 ];

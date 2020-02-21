@@ -5,6 +5,7 @@ import {
   VIEW_MODE,
   SEMANTIC_THEME,
   TEXT_TYPE,
+  NUMBER_TYPE,
   NOTE_TYPE,
   MESSAGE_TYPE,
 } from '../helpers/constants';
@@ -19,14 +20,22 @@ export default function Fields() {
   } = useContext(Context);
 
   return fields.map((field) => {
-    let element = null;
     const elementStyle = {
       marginTop: field.label ? configs.innerSpacing / 2 : AUTO_MARGIN,
     };
     const isDisabled = mode === VIEW_MODE || field.disabled;
+    let element;
     switch (field.type) {
       case TEXT_TYPE:
-        element = <Input field={field} disabled={isDisabled} elementStyle={elementStyle} />;
+      case NUMBER_TYPE:
+        element = (
+          <Input
+            type={field.type}
+            field={field}
+            disabled={isDisabled}
+            elementStyle={elementStyle}
+          />
+        );
         break;
       case NOTE_TYPE:
         element = <Note field={field} disabled={isDisabled} elementStyle={elementStyle} />;
