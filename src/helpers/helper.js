@@ -3,6 +3,7 @@ import {
   TEXT_TYPE,
   NOTE_TYPE,
   NUMBER_TYPE,
+  PASSWORD_TYPE,
 } from './constants';
 
 export const buildInitialValues = (values, fields) => {
@@ -15,6 +16,7 @@ export const buildInitialValues = (values, fields) => {
       initValues[field.name] = field.default;
     } else if (
       field.type === TEXT_TYPE
+      || field.type === PASSWORD_TYPE
       || field.type === NOTE_TYPE
       || field.type === NUMBER_TYPE
     ) {

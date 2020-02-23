@@ -3,6 +3,7 @@ import {
   TEXT_TYPE,
   NOTE_TYPE,
   NUMBER_TYPE,
+  PASSWORD_TYPE,
 } from '../../src/helpers/constants';
 
 export const MAX_MIN_VALUES = {
@@ -30,10 +31,19 @@ export const MAX_MIN_FIELDS = [
     max: 20,
   },
   {
+    type: PASSWORD_TYPE,
+    name: 'password',
+    required: true,
+    min: 10,
+    max: 20,
+    width: 50,
+  },
+  {
     type: NUMBER_TYPE,
     name: 'number',
     min: 99,
     max: 99,
+    width: 50,
   },
   {
     type: NOTE_TYPE,

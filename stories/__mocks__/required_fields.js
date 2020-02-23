@@ -3,6 +3,7 @@ import {
   TEXT_TYPE,
   NOTE_TYPE,
   NUMBER_TYPE,
+  PASSWORD_TYPE,
 } from '../../src/helpers/constants';
 
 export const REQUIRED_VALUES = {
@@ -29,9 +30,16 @@ export const REQUIRED_FIELDS = [
     width: 50,
   },
   {
+    type: PASSWORD_TYPE,
+    name: 'password',
+    required: true,
+    width: 50,
+  },
+  {
     type: NUMBER_TYPE,
     name: 'number',
     required: true,
+    width: 50,
   },
   {
     type: NOTE_TYPE,

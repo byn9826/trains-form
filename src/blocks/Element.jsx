@@ -3,18 +3,20 @@ import * as Types from '../helpers/types';
 import {
   TEXT_TYPE,
   NUMBER_TYPE,
+  PASSWORD_TYPE,
   NOTE_TYPE,
   MESSAGE_TYPE,
 } from '../helpers/constants';
 import Context from '../helpers/context';
 import Input from '../elements/Input';
 import Note from '../elements/Note';
+import Password from '../elements/Password';
 import Message from '../elements/Message';
 
 export default function Element({ field, disabled }) {
   const { configs, values, actions } = useContext(Context);
 
-  const styleBase = {
+  const propsBase = {
     field,
     disabled,
     theme: configs.theme,
@@ -31,12 +33,14 @@ export default function Element({ field, disabled }) {
   switch (field.type) {
     case TEXT_TYPE:
     case NUMBER_TYPE:
-      return <Input {...styleBase} />;
+      return <Input {...propsBase} />;
     case NOTE_TYPE:
-      return <Note {...styleBase} />;
+      return <Note {...propsBase} />;
+    case PASSWORD_TYPE:
+      return <Password {...propsBase} />;
     case MESSAGE_TYPE:
     default:
-      return <Message {...styleBase} />;
+      return <Message {...propsBase} />;
   }
 }
 

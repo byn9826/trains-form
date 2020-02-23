@@ -1,10 +1,23 @@
-import { TEXT_TYPE, NOTE_TYPE, NUMBER_TYPE } from './constants';
+import {
+  TEXT_TYPE,
+  NOTE_TYPE,
+  NUMBER_TYPE,
+  PASSWORD_TYPE,
+} from './constants';
 import { isNumber, isNotEmpty } from './utils';
+
+const isStringType = (type) => (
+  type === TEXT_TYPE
+  || type === NOTE_TYPE
+  || type === PASSWORD_TYPE
+);
+
+const isInputType = (type) => isStringType(type) || type === NUMBER_TYPE;
 
 const requiredIsValid = (field, value) => isNotEmpty(value);
 
 const maxIsValid = (field, value) => {
-  if (field.type === TEXT_TYPE || field.type === NOTE_TYPE) {
+  if (isStringType(field.type)) {
     return value.length <= field.max;
   }
   if (field.type === NUMBER_TYPE) {
@@ -14,7 +27,7 @@ const maxIsValid = (field, value) => {
 };
 
 const minIsValid = (field, value) => {
-  if (field.type === TEXT_TYPE || field.type === NOTE_TYPE) {
+  if (isStringType(field.type)) {
     return value.length >= field.min;
   }
   if (field.type === NUMBER_TYPE) {
@@ -29,6 +42,7 @@ export const fieldValidator = (field, value) => {
   }
   if (
     isNumber(field.max)
+    && isInputType(field.type)
     && isNotEmpty(value)
     && !maxIsValid(field, value)
   ) {
@@ -41,6 +55,7 @@ export const fieldValidator = (field, value) => {
   }
   if (
     isNumber(field.min)
+    && isInputType(field.type)
     && isNotEmpty(value)
     && !minIsValid(field, value)
   ) {

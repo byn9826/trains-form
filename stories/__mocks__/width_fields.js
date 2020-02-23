@@ -3,6 +3,7 @@ import {
   TEXT_TYPE,
   NUMBER_TYPE,
   NOTE_TYPE,
+  PASSWORD_TYPE,
 } from '../../src/helpers/constants';
 
 export const WIDTH_VALUES = {
@@ -10,6 +11,7 @@ export const WIDTH_VALUES = {
   text_1: '50% width',
   text_3: '60% width',
   note_1: '33.3% width',
+  password: '123456',
 };
 
 export const WIDTH_FIELDS = [
@@ -36,6 +38,10 @@ export const WIDTH_FIELDS = [
     type: NUMBER_TYPE,
     name: 'number',
     width: 40,
+  },
+  {
+    type: PASSWORD_TYPE,
+    name: 'password',
   },
   {
     type: NOTE_TYPE,

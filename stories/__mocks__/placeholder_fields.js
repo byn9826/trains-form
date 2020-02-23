@@ -3,6 +3,7 @@ import {
   TEXT_TYPE,
   NOTE_TYPE,
   NUMBER_TYPE,
+  PASSWORD_TYPE,
 } from '../../src/helpers/constants';
 
 export const PLACEHOLDER_VALUES = {
@@ -28,9 +29,16 @@ export const PLACEHOLDER_FIELDS = [
     placeholder: 'This is placeholder',
   },
   {
+    type: PASSWORD_TYPE,
+    name: 'password',
+    placeholder: 'Input your password here',
+    width: 50,
+  },
+  {
     type: NUMBER_TYPE,
     name: 'number',
     placeholder: 'Placeholder for numbers',
+    width: 50,
   },
   {
     type: NOTE_TYPE,
