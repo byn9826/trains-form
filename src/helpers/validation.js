@@ -28,8 +28,7 @@ export const fieldValidator = (field, value) => {
     return field.requiredError || 'This field is required';
   }
   if (
-    field.max
-    && isNumber(field.max)
+    isNumber(field.max)
     && isNotEmpty(value)
     && !maxIsValid(field, value)
   ) {
@@ -41,8 +40,7 @@ export const fieldValidator = (field, value) => {
       : `${field.max} characters maximum`;
   }
   if (
-    field.min
-    && isNumber(field.min)
+    isNumber(field.min)
     && isNotEmpty(value)
     && !minIsValid(field, value)
   ) {

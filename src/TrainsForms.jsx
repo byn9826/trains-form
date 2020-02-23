@@ -3,13 +3,10 @@ import * as Types from './helpers/types';
 import {
   EDIT_MODE,
   CONFIGS_DEFAULT,
-  TEXT_TYPE,
-  NOTE_TYPE,
-  NUMBER_TYPE,
 } from './helpers/constants';
 import Context from './helpers/context';
-import { isDefined } from './helpers/utils';
 import { fieldValidator } from './helpers/validation';
+import { buildInitialValues } from './helpers/helper';
 import Form from './blocks/Form';
 
 export default function TrainsForms({
@@ -23,23 +20,7 @@ export default function TrainsForms({
     innerSpacing: configs.innerSpacing || (configs.spacing / 2),
   };
 
-  const initValues = { ...values };
-  fields.forEach((field) => {
-    if (isDefined(initValues[field.name])) {
-      return;
-    }
-    if (isDefined(field.default)) {
-      initValues[field.name] = field.default;
-    } else if (
-      field.type === TEXT_TYPE
-      || field.type === NOTE_TYPE
-      || field.type === NUMBER_TYPE
-    ) {
-      initValues[field.name] = '';
-    }
-  });
-
-  const [formValues, setFormValues] = useState(initValues);
+  const [formValues, setFormValues] = useState(buildInitialValues(values, fields));
   const [formErrors, setFormErrors] = useState({});
 
   const onChangeValue = (name, value) => {
@@ -54,10 +35,11 @@ export default function TrainsForms({
     setFormErrors(newErrors);
   };
 
-  const onChange = (field, value) => {
-    onChangeValue(field.name, value);
-    const message = fieldValidator(field, value);
-    onChangeError(field.name, message);
+  const onChange = (name, value) => {
+    onChangeValue(name, value);
+    const targetField = fields.find((field) => field.name === name);
+    const message = fieldValidator(targetField, value);
+    onChangeError(name, message);
   };
 
   const context = {

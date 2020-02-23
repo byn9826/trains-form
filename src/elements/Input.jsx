@@ -1,29 +1,30 @@
-import React, { useContext } from 'react';
-import { SEMANTIC_THEME } from '../helpers/constants';
-import Context from '../helpers/context';
+import React from 'react';
 import * as Types from '../helpers/types';
+import { SEMANTIC_THEME } from '../helpers/constants';
 
 export default function Input({
   type,
-  field,
   disabled,
-  elementStyle,
+  style,
+  name,
+  placeholder,
+  value,
+  theme,
+  onChange,
 }) {
-  const { values, configs, actions } = useContext(Context);
-
-  switch (configs.theme) {
+  switch (theme) {
     case SEMANTIC_THEME:
     default:
       return (
         <input
           type={type.toLowerCase()}
-          style={elementStyle}
-          key={field.name}
+          style={style}
+          key={name}
           disabled={disabled}
-          name={field.name}
-          value={values[field.name]}
-          placeholder={field.placeholder}
-          onChange={(e) => actions.onChange(field, e.target.value)}
+          name={name}
+          value={value}
+          placeholder={placeholder}
+          onChange={(e) => onChange(name, e.target.value)}
         />
       );
   }

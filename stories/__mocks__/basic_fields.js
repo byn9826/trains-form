@@ -2,6 +2,7 @@ import {
   MESSAGE_TYPE,
   TEXT_TYPE,
   NUMBER_TYPE,
+  PASSWORD_TYPE,
   NOTE_TYPE,
 } from '../../src/helpers/constants';
 
@@ -23,6 +24,10 @@ export const BASIC_FIELDS = [
   {
     type: NUMBER_TYPE,
     name: 'number',
+  },
+  {
+    type: PASSWORD_TYPE,
+    name: 'password',
   },
   {
     type: NOTE_TYPE,

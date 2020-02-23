@@ -1,24 +1,29 @@
-import React, { useContext } from 'react';
-import { SEMANTIC_THEME } from '../helpers/constants';
-import Context from '../helpers/context';
+import React from 'react';
 import * as Types from '../helpers/types';
+import { SEMANTIC_THEME } from '../helpers/constants';
 
-export default function Note({ field, disabled, elementStyle }) {
-  const { values, configs, actions } = useContext(Context);
-
-  switch (configs.theme) {
+export default function Note({
+  disabled,
+  style,
+  name,
+  placeholder,
+  value,
+  theme,
+  onChange,
+}) {
+  switch (theme) {
     case SEMANTIC_THEME:
     default:
       return (
         <textarea
           rows="5"
-          style={elementStyle}
-          key={field.name}
+          style={style}
+          key={name}
           disabled={disabled}
-          name={field.name}
-          value={values[field.name]}
-          placeholder={field.placeholder}
-          onChange={(e) => actions.onChange(field, e.target.value)}
+          name={name}
+          value={value}
+          placeholder={placeholder}
+          onChange={(e) => onChange(name, e.target.value)}
         />
       );
   }

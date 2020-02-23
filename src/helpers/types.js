@@ -33,8 +33,16 @@ export const CONFIGS_TYPE = PropTypes.shape({
 
 export const STYLE_TYPE = PropTypes.objectOf(PropTypes.any);
 
+export const DISABLE_TYPE = PropTypes.bool;
+
 export const ELEMENT_TYPE = {
+  type: PropTypes.oneOf(TYPES),
   field: FIELD_TYPE,
-  elementStyle: STYLE_TYPE,
-  disabled: PropTypes.bool,
+  style: STYLE_TYPE,
+  disabled: DISABLE_TYPE,
+  name: PropTypes.string,
+  placeholder: PropTypes.string,
+  value: PropTypes.any,
+  theme: PropTypes.oneOf(THEMES),
+  onChange: PropTypes.func,
 };
