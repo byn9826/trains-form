@@ -18,7 +18,6 @@ export default function Note({
         <textarea
           rows="5"
           style={style}
-          key={name}
           disabled={disabled}
           name={name}
           value={value}

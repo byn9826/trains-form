@@ -4,6 +4,8 @@ import {
   NOTE_TYPE,
   NUMBER_TYPE,
   PASSWORD_TYPE,
+  TOGGLE_TYPE,
+  MESSAGE_TYPE,
 } from './constants';
 
 export const buildInitialValues = (values, fields) => {
@@ -13,14 +15,24 @@ export const buildInitialValues = (values, fields) => {
       return;
     }
     if (isDefined(field.default)) {
-      initValues[field.name] = field.default;
-    } else if (
-      field.type === TEXT_TYPE
-      || field.type === PASSWORD_TYPE
-      || field.type === NOTE_TYPE
-      || field.type === NUMBER_TYPE
-    ) {
-      initValues[field.name] = '';
+      initValues[field.name] = field.type === TOGGLE_TYPE
+        ? Boolean(field.default)
+        : field.default;
+      return;
+    }
+    switch (field.type) {
+      case TEXT_TYPE:
+      case PASSWORD_TYPE:
+      case NOTE_TYPE:
+      case NUMBER_TYPE:
+        initValues[field.name] = '';
+        break;
+      case TOGGLE_TYPE:
+        initValues[field.name] = false;
+        break;
+      case MESSAGE_TYPE:
+      default:
+        break;
     }
   });
   return initValues;

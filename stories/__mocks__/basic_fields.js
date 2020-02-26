@@ -4,6 +4,7 @@ import {
   NUMBER_TYPE,
   PASSWORD_TYPE,
   NOTE_TYPE,
+  TOGGLE_TYPE,
 } from '../../src/helpers/constants';
 
 export const BASIC_VALUES = {
@@ -32,5 +33,9 @@ export const BASIC_FIELDS = [
   {
     type: NOTE_TYPE,
     name: 'note',
+  },
+  {
+    type: TOGGLE_TYPE,
+    name: 'toggle',
   },
 ];

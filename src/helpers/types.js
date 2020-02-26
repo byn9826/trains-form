@@ -5,6 +5,8 @@ import {
   THEMES,
 } from './constants';
 
+export const VALUE_TYPE = PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool]);
+
 export const MODE_TYPE = PropTypes.oneOf(MODES);
 
 export const FIELD_TYPE = PropTypes.shape({
@@ -14,7 +16,7 @@ export const FIELD_TYPE = PropTypes.shape({
   width: PropTypes.number,
   required: PropTypes.bool,
   placeholder: PropTypes.string,
-  default: PropTypes.string,
+  default: VALUE_TYPE,
   max: PropTypes.number,
   maxErrorMessage: PropTypes.string,
   min: PropTypes.number,
@@ -42,7 +44,7 @@ export const ELEMENT_TYPE = {
   disabled: DISABLE_TYPE,
   name: PropTypes.string,
   placeholder: PropTypes.string,
-  value: PropTypes.any,
+  value: VALUE_TYPE,
   theme: PropTypes.oneOf(THEMES),
   onChange: PropTypes.func,
 };

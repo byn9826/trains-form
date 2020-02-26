@@ -4,6 +4,7 @@ import {
   NUMBER_TYPE,
   NOTE_TYPE,
   PASSWORD_TYPE,
+  TOGGLE_TYPE,
 } from '../../src/helpers/constants';
 
 export const WIDTH_VALUES = {
@@ -42,6 +43,12 @@ export const WIDTH_FIELDS = [
   {
     type: PASSWORD_TYPE,
     name: 'password',
+    width: 25,
+  },
+  {
+    type: TOGGLE_TYPE,
+    name: 'toggle',
+    width: 75,
   },
   {
     type: NOTE_TYPE,

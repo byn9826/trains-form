@@ -3,8 +3,9 @@ import {
   NOTE_TYPE,
   NUMBER_TYPE,
   PASSWORD_TYPE,
+  TOGGLE_TYPE,
 } from './constants';
-import { isNumber, isNotEmpty } from './utils';
+import { isNumber, isBoolean, isNotEmpty } from './utils';
 
 const isStringType = (type) => (
   type === TEXT_TYPE
@@ -14,7 +15,12 @@ const isStringType = (type) => (
 
 const isInputType = (type) => isStringType(type) || type === NUMBER_TYPE;
 
-const requiredIsValid = (field, value) => isNotEmpty(value);
+const requiredIsValid = (field, value) => {
+  if (field.type === TOGGLE_TYPE) {
+    return isBoolean(value);
+  }
+  return isNotEmpty(value);
+};
 
 const maxIsValid = (field, value) => {
   if (isStringType(field.type)) {

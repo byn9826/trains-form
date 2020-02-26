@@ -4,6 +4,7 @@ import {
   NOTE_TYPE,
   NUMBER_TYPE,
   PASSWORD_TYPE,
+  TOGGLE_TYPE,
 } from '../../src/helpers/constants';
 
 export const PLACEHOLDER_VALUES = {
@@ -38,6 +39,12 @@ export const PLACEHOLDER_FIELDS = [
     type: NUMBER_TYPE,
     name: 'number',
     placeholder: 'Placeholder for numbers',
+    width: 50,
+  },
+  {
+    type: TOGGLE_TYPE,
+    name: 'toggle',
+    placeholder: 'Placeholder for toggle',
     width: 50,
   },
   {

@@ -3,6 +3,7 @@ import {
   TEXT_TYPE,
   NOTE_TYPE,
   NUMBER_TYPE,
+  TOGGLE_TYPE,
 } from '../../src/helpers/constants';
 
 export const DEFAULT_VALUES = {
@@ -29,6 +30,11 @@ export const DEFAULT_FIELDS = [
     type: NUMBER_TYPE,
     name: 'number',
     default: '123',
+  },
+  {
+    type: TOGGLE_TYPE,
+    name: 'toggle',
+    default: true,
   },
   {
     type: NOTE_TYPE,

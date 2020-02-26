@@ -19,7 +19,6 @@ export default function Input({
         <input
           type={type.toLowerCase()}
           style={style}
-          key={name}
           disabled={disabled}
           name={name}
           value={value}

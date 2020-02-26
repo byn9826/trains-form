@@ -6,42 +6,54 @@ import {
   PASSWORD_TYPE,
   NOTE_TYPE,
   MESSAGE_TYPE,
+  TOGGLE_TYPE,
 } from '../helpers/constants';
 import Context from '../helpers/context';
 import Input from '../elements/Input';
-import Note from '../elements/Note';
 import Password from '../elements/Password';
+import Note from '../elements/Note';
+import Toggle from '../elements/Toogle';
 import Message from '../elements/Message';
 
 export default function Element({ field, disabled }) {
   const { configs, values, actions } = useContext(Context);
 
-  const propsBase = {
-    field,
-    disabled,
-    theme: configs.theme,
-    value: values[field.name],
-    name: field.name,
-    type: field.type,
-    placeholder: field.placeholder,
-    onChange: actions.onChange,
-    style: {
-      marginTop: field.label ? configs.innerSpacing / 2 : 'auto',
-    },
-  };
-
+  let TargetElement;
   switch (field.type) {
     case TEXT_TYPE:
     case NUMBER_TYPE:
-      return <Input {...propsBase} />;
+      TargetElement = Input;
+      break;
     case NOTE_TYPE:
-      return <Note {...propsBase} />;
+      TargetElement = Note;
+      break;
     case PASSWORD_TYPE:
-      return <Password {...propsBase} />;
+      TargetElement = Password;
+      break;
+    case TOGGLE_TYPE:
+      TargetElement = Toggle;
+      break;
     case MESSAGE_TYPE:
     default:
-      return <Message {...propsBase} />;
+      TargetElement = Message;
+      break;
   }
+
+  return (
+    <TargetElement
+      field={field}
+      disabled={disabled}
+      theme={configs.theme}
+      value={values[field.name]}
+      name={field.name}
+      type={field.type}
+      placeholder={field.placeholder}
+      onChange={actions.onChange}
+      style={{
+        marginTop: field.label ? configs.innerSpacing / 2 : 'auto',
+      }}
+    />
+  );
 }
 
 Element.propTypes = {
