@@ -5,6 +5,7 @@ import {
   NOTE_TYPE,
   PASSWORD_TYPE,
   TOGGLE_TYPE,
+  RADIO_TYPE,
 } from '../../src/helpers/constants';
 
 export const WIDTH_VALUES = {
@@ -43,12 +44,12 @@ export const WIDTH_FIELDS = [
   {
     type: PASSWORD_TYPE,
     name: 'password',
-    width: 25,
+    width: 35,
   },
   {
     type: TOGGLE_TYPE,
     name: 'toggle',
-    width: 75,
+    width: 65,
   },
   {
     type: NOTE_TYPE,
@@ -65,4 +66,19 @@ export const WIDTH_FIELDS = [
     name: 'note_3',
     width: 33.3,
   },
+  {
+    type: RADIO_TYPE,
+    name: 'radio',
+    width: 20,
+  },
 ];
+
+export const WIDTH_OPTIONS = {
+  radio: [
+    { label: 'Option A', value: 0 },
+    { label: 'Option B', value: 1 },
+    { label: 'Option C', value: 2 },
+    { label: 'Option D', value: 3 },
+    { label: 'Option E', value: 4 },
+  ],
+};

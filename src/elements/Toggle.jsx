@@ -2,7 +2,7 @@ import React from 'react';
 import * as Types from '../helpers/types';
 import { SEMANTIC_THEME } from '../helpers/constants';
 
-export default function Toogle({
+export default function Toggle({
   disabled,
   style,
   name,
@@ -31,4 +31,4 @@ export default function Toogle({
   }
 }
 
-Toogle.propTypes = Types.ELEMENT_TYPE;
+Toggle.propTypes = Types.ELEMENT_TYPE;

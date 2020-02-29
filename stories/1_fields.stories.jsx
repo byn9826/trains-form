@@ -3,11 +3,11 @@ import { setAddon, storiesOf } from '@storybook/react';
 import JSXAddon from 'storybook-addon-jsx';
 import TrainsForms from '../src/TrainsForms';
 import { EDIT_MODE } from '../src/helpers/constants';
-import { BASIC_VALUES, BASIC_FIELDS } from './__mocks__/basic_fields';
-import { WIDTH_VALUES, WIDTH_FIELDS } from './__mocks__/width_fields';
+import { BASIC_VALUES, BASIC_FIELDS, BASIC_OPTIONS } from './__mocks__/basic_fields';
+import { WIDTH_VALUES, WIDTH_FIELDS, WIDTH_OPTIONS } from './__mocks__/width_fields';
 import { PLACEHOLDER_VALUES, PLACEHOLDER_FIELDS } from './__mocks__/placeholder_fields';
-import { DEFAULT_VALUES, DEFAULT_FIELDS } from './__mocks__/default_fields';
-import { REQUIRED_VALUES, REQUIRED_FIELDS } from './__mocks__/required_fields';
+import { DEFAULT_VALUES, DEFAULT_FIELDS, DEFAULT_OPTIONS } from './__mocks__/default_fields';
+import { REQUIRED_VALUES, REQUIRED_FIELDS, REQUIRED_OPTIONS } from './__mocks__/required_fields';
 import { MAX_MIN_VALUES, MAX_MIN_FIELDS } from './__mocks__/max_min_fields';
 import { autoAppendTitle } from './helpers';
 
@@ -18,6 +18,7 @@ storiesOf('Fields', module)
     <TrainsForms
       values={BASIC_VALUES}
       fields={autoAppendTitle(BASIC_FIELDS)}
+      options={BASIC_OPTIONS}
       mode={EDIT_MODE}
     />
   ))
@@ -25,6 +26,7 @@ storiesOf('Fields', module)
     <TrainsForms
       values={WIDTH_VALUES}
       fields={autoAppendTitle(WIDTH_FIELDS)}
+      options={WIDTH_OPTIONS}
       mode={EDIT_MODE}
     />
   ))
@@ -39,6 +41,7 @@ storiesOf('Fields', module)
     <TrainsForms
       values={DEFAULT_VALUES}
       fields={autoAppendTitle(DEFAULT_FIELDS)}
+      options={DEFAULT_OPTIONS}
       mode={EDIT_MODE}
     />
   ))
@@ -46,6 +49,7 @@ storiesOf('Fields', module)
     <TrainsForms
       values={REQUIRED_VALUES}
       fields={autoAppendTitle(REQUIRED_FIELDS)}
+      options={REQUIRED_OPTIONS}
       mode={EDIT_MODE}
     />
   ))

@@ -4,6 +4,7 @@ import {
   NOTE_TYPE,
   NUMBER_TYPE,
   TOGGLE_TYPE,
+  RADIO_TYPE,
 } from '../../src/helpers/constants';
 
 export const DEFAULT_VALUES = {
@@ -41,4 +42,17 @@ export const DEFAULT_FIELDS = [
     name: 'note',
     default: 'Default value for Note',
   },
+  {
+    type: RADIO_TYPE,
+    name: 'radio',
+    default: 2,
+  },
 ];
+
+export const DEFAULT_OPTIONS = {
+  radio: [
+    { label: 'Option A', value: 0 },
+    { label: 'Option B', value: 1 },
+    { label: 'Option C', value: 2 },
+  ],
+};

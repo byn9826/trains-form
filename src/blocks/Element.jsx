@@ -7,16 +7,23 @@ import {
   NOTE_TYPE,
   MESSAGE_TYPE,
   TOGGLE_TYPE,
+  RADIO_TYPE,
 } from '../helpers/constants';
 import Context from '../helpers/context';
 import Input from '../elements/Input';
 import Password from '../elements/Password';
 import Note from '../elements/Note';
-import Toggle from '../elements/Toogle';
+import Toggle from '../elements/Toggle';
 import Message from '../elements/Message';
+import Radio from '../elements/Radio';
 
 export default function Element({ field, disabled }) {
-  const { configs, values, actions } = useContext(Context);
+  const {
+    configs,
+    values,
+    options,
+    actions,
+  } = useContext(Context);
 
   let TargetElement;
   switch (field.type) {
@@ -33,6 +40,9 @@ export default function Element({ field, disabled }) {
     case TOGGLE_TYPE:
       TargetElement = Toggle;
       break;
+    case RADIO_TYPE:
+      TargetElement = Radio;
+      break;
     case MESSAGE_TYPE:
     default:
       TargetElement = Message;
@@ -45,6 +55,7 @@ export default function Element({ field, disabled }) {
       disabled={disabled}
       theme={configs.theme}
       value={values[field.name]}
+      options={options[field.name]}
       name={field.name}
       type={field.type}
       placeholder={field.placeholder}

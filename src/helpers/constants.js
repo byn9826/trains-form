@@ -8,6 +8,7 @@ export const PASSWORD_TYPE = 'Password';
 export const NOTE_TYPE = 'Note';
 export const MESSAGE_TYPE = 'Message';
 export const TOGGLE_TYPE = 'Toggle';
+export const RADIO_TYPE = 'Radio';
 export const TYPES = [
   MESSAGE_TYPE,
   TEXT_TYPE,
@@ -15,6 +16,7 @@ export const TYPES = [
   PASSWORD_TYPE,
   NOTE_TYPE,
   TOGGLE_TYPE,
+  RADIO_TYPE,
 ];
 
 export const SEMANTIC_THEME = 'Semantic';

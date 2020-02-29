@@ -27,6 +27,13 @@ export const FIELDS_TYPE = PropTypes.arrayOf(FIELD_TYPE);
 
 export const VALUES_TYPE = PropTypes.objectOf(PropTypes.any);
 
+export const ELEMENT_OPTIONS_TYPE = PropTypes.arrayOf(PropTypes.shape({
+  label: PropTypes.isRequired,
+  value: PropTypes.isRequired,
+}));
+
+export const FORM_OPTIONS_TYPE = PropTypes.objectOf(ELEMENT_OPTIONS_TYPE);
+
 export const CONFIGS_TYPE = PropTypes.shape({
   spacing: PropTypes.number,
   innerSpacing: PropTypes.number,
@@ -45,6 +52,7 @@ export const ELEMENT_TYPE = {
   name: PropTypes.string,
   placeholder: PropTypes.string,
   value: VALUE_TYPE,
+  options: ELEMENT_OPTIONS_TYPE,
   theme: PropTypes.oneOf(THEMES),
   onChange: PropTypes.func,
 };

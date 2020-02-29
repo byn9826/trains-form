@@ -13,6 +13,7 @@ export default function TrainsForms({
   mode = EDIT_MODE,
   fields = [],
   values = {},
+  options = {},
   configs = CONFIGS_DEFAULT,
 }) {
   const refinedConfigs = {
@@ -45,6 +46,7 @@ export default function TrainsForms({
   const context = {
     mode,
     fields,
+    options,
     configs: refinedConfigs,
     values: formValues,
     errors: formErrors,
@@ -66,5 +68,6 @@ TrainsForms.propTypes = {
   mode: Types.MODE_TYPE,
   fields: Types.FIELDS_TYPE,
   values: Types.VALUES_TYPE,
+  options: Types.FORM_OPTIONS_TYPE,
   configs: Types.CONFIGS_TYPE,
 };

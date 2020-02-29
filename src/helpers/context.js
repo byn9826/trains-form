@@ -4,6 +4,7 @@ import { EDIT_MODE, SEMANTIC_THEME } from './constants';
 const Context = createContext({
   mode: EDIT_MODE,
   values: {},
+  options: {},
   errors: {},
   fields: [],
   configs: {

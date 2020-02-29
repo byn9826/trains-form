@@ -5,6 +5,7 @@ import {
   NUMBER_TYPE,
   PASSWORD_TYPE,
   TOGGLE_TYPE,
+  RADIO_TYPE,
 } from '../../src/helpers/constants';
 
 export const REQUIRED_VALUES = {
@@ -54,4 +55,17 @@ export const REQUIRED_FIELDS = [
     required: true,
     requiredError: 'Please input something!',
   },
+  {
+    type: RADIO_TYPE,
+    name: 'radio',
+    required: true,
+  },
 ];
+
+export const REQUIRED_OPTIONS = {
+  radio: [
+    { label: 'Option A', value: 0 },
+    { label: 'Option B', value: 1 },
+    { label: 'Option C', value: 2 },
+  ],
+};
