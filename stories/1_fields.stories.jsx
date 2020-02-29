@@ -7,6 +7,7 @@ import { BASIC_VALUES, BASIC_FIELDS, BASIC_OPTIONS } from './__mocks__/basic_fie
 import { WIDTH_VALUES, WIDTH_FIELDS, WIDTH_OPTIONS } from './__mocks__/width_fields';
 import { PLACEHOLDER_VALUES, PLACEHOLDER_FIELDS } from './__mocks__/placeholder_fields';
 import { DEFAULT_VALUES, DEFAULT_FIELDS, DEFAULT_OPTIONS } from './__mocks__/default_fields';
+import { DISABLED_VALUES, DISABLED_FIELDS, DISABLED_OPTIONS } from './__mocks__/disabled_fields';
 import { REQUIRED_VALUES, REQUIRED_FIELDS, REQUIRED_OPTIONS } from './__mocks__/required_fields';
 import { MAX_MIN_VALUES, MAX_MIN_FIELDS } from './__mocks__/max_min_fields';
 import { autoAppendTitle } from './helpers';
@@ -42,6 +43,14 @@ storiesOf('Fields', module)
       values={DEFAULT_VALUES}
       fields={autoAppendTitle(DEFAULT_FIELDS)}
       options={DEFAULT_OPTIONS}
+      mode={EDIT_MODE}
+    />
+  ))
+  .addWithJSX('Disabled', () => (
+    <TrainsForms
+      values={DISABLED_VALUES}
+      fields={autoAppendTitle(DISABLED_FIELDS)}
+      options={DISABLED_OPTIONS}
       mode={EDIT_MODE}
     />
   ))
