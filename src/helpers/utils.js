@@ -11,5 +11,8 @@ export const isNotEmpty = (value) => {
   if (typeof value === 'string' && value.trim() === '') {
     return false;
   }
+  if (Array.isArray(value) && value.length === 0) {
+    return false;
+  }
   return true;
 };

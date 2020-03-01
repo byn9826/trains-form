@@ -6,6 +6,7 @@ import {
 } from './constants';
 
 export const VALUE_TYPE = PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool]);
+export const ARRAY_VALUE_TYPE = PropTypes.array;
 
 export const MODE_TYPE = PropTypes.oneOf(MODES);
 
@@ -16,7 +17,7 @@ export const FIELD_TYPE = PropTypes.shape({
   width: PropTypes.number,
   required: PropTypes.bool,
   placeholder: PropTypes.string,
-  default: VALUE_TYPE,
+  default: PropTypes.oneOfType([VALUE_TYPE, ARRAY_VALUE_TYPE]),
   max: PropTypes.number,
   maxErrorMessage: PropTypes.string,
   min: PropTypes.number,

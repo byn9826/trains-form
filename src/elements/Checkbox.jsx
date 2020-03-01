@@ -2,7 +2,7 @@ import React from 'react';
 import * as Types from '../helpers/types';
 import { SEMANTIC_THEME } from '../helpers/constants';
 
-export default function Radio({
+export default function Checkbox({
   disabled,
   style,
   name,
@@ -11,7 +11,12 @@ export default function Radio({
   theme,
   onChange,
 }) {
-  const onClick = (option) => onChange(name, option.value);
+  const onClick = (option) => {
+    const newValue = value.includes(option.value)
+      ? value.filter((v) => v !== option.value)
+      : [...value, option.value];
+    onChange(name, newValue);
+  };
 
   switch (theme) {
     case SEMANTIC_THEME:
@@ -33,11 +38,11 @@ export default function Radio({
                 onKeyDown={() => onClick(option)}
                 role="button"
               >
-                <div className="ui radio checkbox">
+                <div className="ui checkbox">
                   <input
-                    type="radio"
+                    type="checkbox"
                     name={name}
-                    checked={value === option.value}
+                    checked={value.includes(option.value)}
                     className="hidden"
                     readOnly
                     tabIndex="0"
@@ -53,4 +58,7 @@ export default function Radio({
   }
 }
 
-Radio.propTypes = Types.ELEMENT_TYPE;
+Checkbox.propTypes = {
+  ...Types.ELEMENT_TYPE,
+  value: Types.ARRAY_VALUE_TYPE,
+};

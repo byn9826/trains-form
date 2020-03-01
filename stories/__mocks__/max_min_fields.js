@@ -4,6 +4,7 @@ import {
   NOTE_TYPE,
   NUMBER_TYPE,
   PASSWORD_TYPE,
+  CHECKBOX_TYPE,
 } from '../../src/helpers/constants';
 
 export const MAX_MIN_VALUES = {
@@ -53,4 +54,20 @@ export const MAX_MIN_FIELDS = [
     minError: 'Too short',
     maxError: 'Too long',
   },
+  {
+    type: CHECKBOX_TYPE,
+    name: 'checkbox',
+    min: 1,
+    max: 3,
+  },
 ];
+
+export const MAX_MIN_OPTIONS = {
+  checkbox: [
+    { label: 'Option A', value: 0 },
+    { label: 'Option B', value: 1 },
+    { label: 'Option C', value: 2 },
+    { label: 'Option D', value: 3 },
+    { label: 'Option E', value: 4 },
+  ],
+};

@@ -8,6 +8,7 @@ import {
   MESSAGE_TYPE,
   TOGGLE_TYPE,
   RADIO_TYPE,
+  CHECKBOX_TYPE,
 } from '../helpers/constants';
 import Context from '../helpers/context';
 import Input from '../elements/Input';
@@ -16,6 +17,7 @@ import Note from '../elements/Note';
 import Toggle from '../elements/Toggle';
 import Message from '../elements/Message';
 import Radio from '../elements/Radio';
+import Checkbox from '../elements/Checkbox';
 
 export default function Element({ field, disabled }) {
   const {
@@ -42,6 +44,9 @@ export default function Element({ field, disabled }) {
       break;
     case RADIO_TYPE:
       TargetElement = Radio;
+      break;
+    case CHECKBOX_TYPE:
+      TargetElement = Checkbox;
       break;
     case MESSAGE_TYPE:
     default:

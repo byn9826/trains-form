@@ -5,11 +5,13 @@ import {
   NUMBER_TYPE,
   TOGGLE_TYPE,
   RADIO_TYPE,
+  CHECKBOX_TYPE,
 } from '../../src/helpers/constants';
 
 export const DISABLED_VALUES = {
   message: 'Examples of how to define disabled fields',
   text: 'Disabled fields',
+  checkbox: [1],
 };
 
 export const DISABLED_FIELDS = [
@@ -43,10 +45,20 @@ export const DISABLED_FIELDS = [
     name: 'radio',
     disabled: true,
   },
+  {
+    type: CHECKBOX_TYPE,
+    name: 'checkbox',
+    disabled: true,
+  },
 ];
 
 export const DISABLED_OPTIONS = {
   radio: [
+    { label: 'Option A', value: 0 },
+    { label: 'Option B', value: 1 },
+    { label: 'Option C', value: 2 },
+  ],
+  checkbox: [
     { label: 'Option A', value: 0 },
     { label: 'Option B', value: 1 },
     { label: 'Option C', value: 2 },

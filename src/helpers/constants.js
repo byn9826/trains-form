@@ -9,6 +9,7 @@ export const NOTE_TYPE = 'Note';
 export const MESSAGE_TYPE = 'Message';
 export const TOGGLE_TYPE = 'Toggle';
 export const RADIO_TYPE = 'Radio';
+export const CHECKBOX_TYPE = 'Checkbox';
 export const TYPES = [
   MESSAGE_TYPE,
   TEXT_TYPE,
@@ -17,6 +18,7 @@ export const TYPES = [
   NOTE_TYPE,
   TOGGLE_TYPE,
   RADIO_TYPE,
+  CHECKBOX_TYPE,
 ];
 
 export const SEMANTIC_THEME = 'Semantic';

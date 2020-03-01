@@ -6,6 +6,7 @@ import {
   PASSWORD_TYPE,
   TOGGLE_TYPE,
   RADIO_TYPE,
+  CHECKBOX_TYPE,
 } from '../../src/helpers/constants';
 
 export const REQUIRED_VALUES = {
@@ -59,11 +60,24 @@ export const REQUIRED_FIELDS = [
     type: RADIO_TYPE,
     name: 'radio',
     required: true,
+    width: 50,
+  },
+  {
+    type: CHECKBOX_TYPE,
+    name: 'checkbox',
+    required: true,
+    default: [0],
+    width: 50,
   },
 ];
 
 export const REQUIRED_OPTIONS = {
   radio: [
+    { label: 'Option A', value: 0 },
+    { label: 'Option B', value: 1 },
+    { label: 'Option C', value: 2 },
+  ],
+  checkbox: [
     { label: 'Option A', value: 0 },
     { label: 'Option B', value: 1 },
     { label: 'Option C', value: 2 },

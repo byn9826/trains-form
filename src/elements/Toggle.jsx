@@ -15,11 +15,10 @@ export default function Toggle({
     case SEMANTIC_THEME:
     default:
       return (
-        <div className="ui toggle checkbox">
+        <div className="ui toggle checkbox" style={style}>
           <input
             tabIndex={0}
             type="checkbox"
-            style={style}
             disabled={disabled}
             name={name}
             checked={value}

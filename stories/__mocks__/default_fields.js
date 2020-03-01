@@ -5,6 +5,7 @@ import {
   NUMBER_TYPE,
   TOGGLE_TYPE,
   RADIO_TYPE,
+  CHECKBOX_TYPE,
 } from '../../src/helpers/constants';
 
 export const DEFAULT_VALUES = {
@@ -47,10 +48,20 @@ export const DEFAULT_FIELDS = [
     name: 'radio',
     default: 2,
   },
+  {
+    type: CHECKBOX_TYPE,
+    name: 'checkbox',
+    default: [0, 1],
+  },
 ];
 
 export const DEFAULT_OPTIONS = {
   radio: [
+    { label: 'Option A', value: 0 },
+    { label: 'Option B', value: 1 },
+    { label: 'Option C', value: 2 },
+  ],
+  checkbox: [
     { label: 'Option A', value: 0 },
     { label: 'Option B', value: 1 },
     { label: 'Option C', value: 2 },

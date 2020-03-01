@@ -6,6 +6,7 @@ import {
   PASSWORD_TYPE,
   TOGGLE_TYPE,
   RADIO_TYPE,
+  CHECKBOX_TYPE,
 } from '../../src/helpers/constants';
 
 export const WIDTH_VALUES = {
@@ -14,6 +15,7 @@ export const WIDTH_VALUES = {
   text_3: '60% width',
   note_1: '33.3% width',
   password: '123456',
+  checkbox: [1, 2],
 };
 
 export const WIDTH_FIELDS = [
@@ -69,12 +71,24 @@ export const WIDTH_FIELDS = [
   {
     type: RADIO_TYPE,
     name: 'radio',
-    width: 20,
+    width: 30,
+  },
+  {
+    type: CHECKBOX_TYPE,
+    name: 'checkbox',
+    width: 30,
   },
 ];
 
 export const WIDTH_OPTIONS = {
   radio: [
+    { label: 'Option A', value: 0 },
+    { label: 'Option B', value: 1 },
+    { label: 'Option C', value: 2 },
+    { label: 'Option D', value: 3 },
+    { label: 'Option E', value: 4 },
+  ],
+  checkbox: [
     { label: 'Option A', value: 0 },
     { label: 'Option B', value: 1 },
     { label: 'Option C', value: 2 },
