@@ -5,7 +5,7 @@ import {
   NUMBER_TYPE,
   PASSWORD_TYPE,
   TOGGLE_TYPE,
-} from '../../src/helpers/constants';
+} from '../../../src/helpers/constants';
 
 export const PLACEHOLDER_VALUES = {
   message: 'Examples of how to define placeholder for fields',

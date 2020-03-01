@@ -7,7 +7,7 @@ import {
   TOGGLE_TYPE,
   RADIO_TYPE,
   CHECKBOX_TYPE,
-} from '../../src/helpers/constants';
+} from '../../../src/helpers/constants';
 
 export const WIDTH_VALUES = {
   message: 'Examples of how to define width of fields',

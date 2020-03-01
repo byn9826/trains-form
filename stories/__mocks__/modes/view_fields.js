@@ -1,64 +1,63 @@
 import {
   MESSAGE_TYPE,
   TEXT_TYPE,
-  NOTE_TYPE,
   NUMBER_TYPE,
+  PASSWORD_TYPE,
+  NOTE_TYPE,
   TOGGLE_TYPE,
   RADIO_TYPE,
   CHECKBOX_TYPE,
-} from '../../src/helpers/constants';
+} from '../../../src/helpers/constants';
 
-export const DISABLED_VALUES = {
-  message: 'Examples of how to define disabled fields',
-  text: 'Disabled fields',
-  checkbox: [1],
+export const VIEW_VALUES = {
+  message: 'Examples of how to define values and fields for viewing a form',
+  number: 123456,
+  text: 'Init value for Text type field',
+  radio: 1,
 };
 
-export const DISABLED_FIELDS = [
+export const VIEW_FIELDS = [
   {
     type: MESSAGE_TYPE,
     name: 'message',
-    disabled: true,
   },
   {
     type: TEXT_TYPE,
     name: 'text',
-    disabled: true,
   },
   {
     type: NUMBER_TYPE,
     name: 'number',
-    disabled: true,
   },
   {
-    type: TOGGLE_TYPE,
-    name: 'toggle',
-    disabled: true,
+    type: PASSWORD_TYPE,
+    name: 'password',
   },
   {
     type: NOTE_TYPE,
     name: 'note',
-    disabled: true,
+  },
+  {
+    type: TOGGLE_TYPE,
+    name: 'toggle',
   },
   {
     type: RADIO_TYPE,
-    name: 'radio',
-    disabled: true,
+    name: 'radio_1',
   },
   {
     type: CHECKBOX_TYPE,
-    name: 'checkbox',
-    disabled: true,
+    name: 'checkbox_1',
   },
 ];
 
-export const DISABLED_OPTIONS = {
-  radio: [
+export const VIEW_OPTIONS = {
+  radio_1: [
     { label: 'Option A', value: 0 },
     { label: 'Option B', value: 1 },
     { label: 'Option C', value: 2 },
   ],
-  checkbox: [
+  checkbox_1: [
     { label: 'Option A', value: 0 },
     { label: 'Option B', value: 1 },
     { label: 'Option C', value: 2 },

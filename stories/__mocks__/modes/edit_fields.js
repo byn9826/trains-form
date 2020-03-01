@@ -7,10 +7,10 @@ import {
   TOGGLE_TYPE,
   RADIO_TYPE,
   CHECKBOX_TYPE,
-} from '../../src/helpers/constants';
+} from '../../../src/helpers/constants';
 
 export const EDIT_VALUES = {
-  message: 'Examples of how to define values and fields for editing',
+  message: 'Examples of how to define values and fields for editing a form',
   number: 123456,
   text: 'Init value for Text type field',
   radio: 1,

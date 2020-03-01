@@ -3,75 +3,59 @@ import {
   TEXT_TYPE,
   NOTE_TYPE,
   NUMBER_TYPE,
-  PASSWORD_TYPE,
   TOGGLE_TYPE,
   RADIO_TYPE,
   CHECKBOX_TYPE,
-} from '../../src/helpers/constants';
+} from '../../../src/helpers/constants';
 
-export const REQUIRED_VALUES = {
-  message: 'Examples of how to define required fields and how validator works',
-  text_1: 'No error on init, show error once content has been removed',
-  note: 'Customize required error message',
+export const DEFAULT_VALUES = {
+  text_2: 'Default value will be ignored if its init value is not empty',
 };
 
-export const REQUIRED_FIELDS = [
+export const DEFAULT_FIELDS = [
   {
     type: MESSAGE_TYPE,
     name: 'message',
+    default: 'Examples of how to define default value of fields',
   },
   {
     type: TEXT_TYPE,
     name: 'text_1',
-    required: true,
-    width: 50,
+    default: 'Init field with default value if its value is empty',
   },
   {
     type: TEXT_TYPE,
     name: 'text_2',
-    required: true,
-    width: 50,
-  },
-  {
-    type: PASSWORD_TYPE,
-    name: 'password',
-    required: true,
-    width: 50,
+    default: 'This default value will be ignored',
   },
   {
     type: NUMBER_TYPE,
     name: 'number',
-    required: true,
-    width: 50,
+    default: '123',
   },
   {
     type: TOGGLE_TYPE,
     name: 'toggle',
-    required: true,
-    width: 50,
+    default: true,
   },
   {
     type: NOTE_TYPE,
     name: 'note',
-    required: true,
-    requiredError: 'Please input something!',
+    default: 'Default value for Note',
   },
   {
     type: RADIO_TYPE,
     name: 'radio',
-    required: true,
-    width: 50,
+    default: 2,
   },
   {
     type: CHECKBOX_TYPE,
     name: 'checkbox',
-    required: true,
-    default: [0],
-    width: 50,
+    default: [0, 1],
   },
 ];
 
-export const REQUIRED_OPTIONS = {
+export const DEFAULT_OPTIONS = {
   radio: [
     { label: 'Option A', value: 0 },
     { label: 'Option B', value: 1 },

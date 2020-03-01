@@ -5,7 +5,7 @@ import {
   NUMBER_TYPE,
   PASSWORD_TYPE,
   CHECKBOX_TYPE,
-} from '../../src/helpers/constants';
+} from '../../../src/helpers/constants';
 
 export const MAX_MIN_VALUES = {
   message: 'Examples of how to define max/min value of fields and how validator works',

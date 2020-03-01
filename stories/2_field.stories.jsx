@@ -3,26 +3,17 @@ import { setAddon, storiesOf } from '@storybook/react';
 import JSXAddon from 'storybook-addon-jsx';
 import TrainsForms from '../src/TrainsForms';
 import { EDIT_MODE } from '../src/helpers/constants';
-import { EDIT_VALUES, EDIT_FIELDS, EDIT_OPTIONS } from './__mocks__/edit_fields';
-import { WIDTH_VALUES, WIDTH_FIELDS, WIDTH_OPTIONS } from './__mocks__/width_fields';
-import { PLACEHOLDER_VALUES, PLACEHOLDER_FIELDS } from './__mocks__/placeholder_fields';
-import { DEFAULT_VALUES, DEFAULT_FIELDS, DEFAULT_OPTIONS } from './__mocks__/default_fields';
-import { DISABLED_VALUES, DISABLED_FIELDS, DISABLED_OPTIONS } from './__mocks__/disabled_fields';
-import { REQUIRED_VALUES, REQUIRED_FIELDS, REQUIRED_OPTIONS } from './__mocks__/required_fields';
-import { MAX_MIN_VALUES, MAX_MIN_FIELDS, MAX_MIN_OPTIONS } from './__mocks__/max_min_fields';
+import { WIDTH_VALUES, WIDTH_FIELDS, WIDTH_OPTIONS } from './__mocks__/fields/width_fields';
+import { PLACEHOLDER_VALUES, PLACEHOLDER_FIELDS } from './__mocks__/fields/placeholder_fields';
+import { DEFAULT_VALUES, DEFAULT_FIELDS, DEFAULT_OPTIONS } from './__mocks__/fields/default_fields';
+import { DISABLED_VALUES, DISABLED_FIELDS, DISABLED_OPTIONS } from './__mocks__/fields/disabled_fields';
+import { REQUIRED_VALUES, REQUIRED_FIELDS, REQUIRED_OPTIONS } from './__mocks__/fields/required_fields';
+import { MAX_MIN_VALUES, MAX_MIN_FIELDS, MAX_MIN_OPTIONS } from './__mocks__/fields/max_min_fields';
 import { autoAppendTitle } from './helpers';
 
 setAddon(JSXAddon);
 
-storiesOf('Fields', module)
-  .addWithJSX('Edit', () => (
-    <TrainsForms
-      values={EDIT_VALUES}
-      fields={autoAppendTitle(EDIT_FIELDS)}
-      options={EDIT_OPTIONS}
-      mode={EDIT_MODE}
-    />
-  ))
+storiesOf('Field', module)
   .addWithJSX('Width', () => (
     <TrainsForms
       values={WIDTH_VALUES}
