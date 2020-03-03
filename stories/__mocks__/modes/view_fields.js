@@ -7,6 +7,7 @@ import {
   TOGGLE_TYPE,
   RADIO_TYPE,
   CHECKBOX_TYPE,
+  SELECT_TYPE,
 } from '../../../src/helpers/constants';
 
 export const VIEW_VALUES = {
@@ -14,6 +15,10 @@ export const VIEW_VALUES = {
   number: 123456,
   text: 'Init value for Text type field',
   radio: 1,
+  password: '12345',
+  toggle: true,
+  checkbox_1: [1, 2],
+  select: 2,
 };
 
 export const VIEW_FIELDS = [
@@ -49,6 +54,10 @@ export const VIEW_FIELDS = [
     type: CHECKBOX_TYPE,
     name: 'checkbox_1',
   },
+  {
+    type: SELECT_TYPE,
+    name: 'select',
+  },
 ];
 
 export const VIEW_OPTIONS = {
@@ -58,6 +67,11 @@ export const VIEW_OPTIONS = {
     { label: 'Option C', value: 2 },
   ],
   checkbox_1: [
+    { label: 'Option A', value: 0 },
+    { label: 'Option B', value: 1 },
+    { label: 'Option C', value: 2 },
+  ],
+  select: [
     { label: 'Option A', value: 0 },
     { label: 'Option B', value: 1 },
     { label: 'Option C', value: 2 },

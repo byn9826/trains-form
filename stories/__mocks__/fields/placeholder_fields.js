@@ -5,6 +5,7 @@ import {
   NUMBER_TYPE,
   PASSWORD_TYPE,
   TOGGLE_TYPE,
+  SELECT_TYPE,
 } from '../../../src/helpers/constants';
 
 export const PLACEHOLDER_VALUES = {
@@ -38,13 +39,13 @@ export const PLACEHOLDER_FIELDS = [
   {
     type: NUMBER_TYPE,
     name: 'number',
-    placeholder: 'Placeholder for numbers',
+    placeholder: 'Placeholder for Numbers',
     width: 50,
   },
   {
     type: TOGGLE_TYPE,
     name: 'toggle',
-    placeholder: 'Placeholder for toggle',
+    placeholder: 'Placeholder for Toggle',
     width: 50,
   },
   {
@@ -52,4 +53,19 @@ export const PLACEHOLDER_FIELDS = [
     name: 'note',
     placeholder: 'This is placeholder',
   },
+  {
+    type: SELECT_TYPE,
+    name: 'select',
+    placeholder: 'Please select...',
+  },
 ];
+
+export const PLACEHOLDER_OPTIONS = {
+  select: [
+    { label: 'Option A', value: 0 },
+    { label: 'Option B', value: 1 },
+    { label: 'Option C', value: 2 },
+    { label: 'Option D', value: 3 },
+    { label: 'Option E', value: 4 },
+  ],
+};

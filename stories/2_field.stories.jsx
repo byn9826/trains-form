@@ -4,7 +4,7 @@ import JSXAddon from 'storybook-addon-jsx';
 import TrainsForms from '../src/TrainsForms';
 import { EDIT_MODE } from '../src/helpers/constants';
 import { WIDTH_VALUES, WIDTH_FIELDS, WIDTH_OPTIONS } from './__mocks__/fields/width_fields';
-import { PLACEHOLDER_VALUES, PLACEHOLDER_FIELDS } from './__mocks__/fields/placeholder_fields';
+import { PLACEHOLDER_VALUES, PLACEHOLDER_FIELDS, PLACEHOLDER_OPTIONS } from './__mocks__/fields/placeholder_fields';
 import { DEFAULT_VALUES, DEFAULT_FIELDS, DEFAULT_OPTIONS } from './__mocks__/fields/default_fields';
 import { DISABLED_VALUES, DISABLED_FIELDS, DISABLED_OPTIONS } from './__mocks__/fields/disabled_fields';
 import { REQUIRED_VALUES, REQUIRED_FIELDS, REQUIRED_OPTIONS } from './__mocks__/fields/required_fields';
@@ -27,6 +27,7 @@ storiesOf('Field', module)
       values={PLACEHOLDER_VALUES}
       fields={autoAppendTitle(PLACEHOLDER_FIELDS)}
       mode={EDIT_MODE}
+      options={PLACEHOLDER_OPTIONS}
     />
   ))
   .addWithJSX('Default Value', () => (

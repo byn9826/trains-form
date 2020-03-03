@@ -6,6 +6,7 @@ import {
   TOGGLE_TYPE,
   RADIO_TYPE,
   CHECKBOX_TYPE,
+  SELECT_TYPE,
 } from '../../../src/helpers/constants';
 
 export const DISABLED_VALUES = {
@@ -50,6 +51,11 @@ export const DISABLED_FIELDS = [
     name: 'checkbox',
     disabled: true,
   },
+  {
+    type: SELECT_TYPE,
+    name: 'select',
+    disabled: true,
+  },
 ];
 
 export const DISABLED_OPTIONS = {
@@ -59,6 +65,11 @@ export const DISABLED_OPTIONS = {
     { label: 'Option C', value: 2 },
   ],
   checkbox: [
+    { label: 'Option A', value: 0 },
+    { label: 'Option B', value: 1 },
+    { label: 'Option C', value: 2 },
+  ],
+  select: [
     { label: 'Option A', value: 0 },
     { label: 'Option B', value: 1 },
     { label: 'Option C', value: 2 },

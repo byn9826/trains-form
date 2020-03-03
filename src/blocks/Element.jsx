@@ -9,6 +9,7 @@ import {
   TOGGLE_TYPE,
   RADIO_TYPE,
   CHECKBOX_TYPE,
+  SELECT_TYPE,
 } from '../helpers/constants';
 import Context from '../helpers/context';
 import Input from '../elements/Input';
@@ -17,6 +18,7 @@ import Note from '../elements/Note';
 import Toggle from '../elements/Toggle';
 import Message from '../elements/Message';
 import Radio from '../elements/Radio';
+import Dropdown from '../elements/Dropdown';
 import Checkbox from '../elements/Checkbox';
 
 export default function Element({ field, disabled }) {
@@ -47,6 +49,9 @@ export default function Element({ field, disabled }) {
       break;
     case CHECKBOX_TYPE:
       TargetElement = Checkbox;
+      break;
+    case SELECT_TYPE:
+      TargetElement = Dropdown;
       break;
     case MESSAGE_TYPE:
     default:
