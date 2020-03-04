@@ -10,7 +10,7 @@ jobs:
       with:
         persist-credentials: false
     - name: Build and Deploy
-      uses: JamesIves/github-pages-deploy-action@v2
+      uses: JamesIves/github-pages-deploy-action@releases/v2
       env:
         ACCESS_TOKEN: ${{ secrets.ACTION_TOKEN }}
         BRANCH: gh-pages
