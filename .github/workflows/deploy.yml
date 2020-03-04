@@ -1,7 +1,5 @@
 name: Deploy
 on: push
-env:
-  NODE_VERSION: '10.x'
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -10,19 +8,13 @@ jobs:
       uses: actions/checkout@v2
       with:
         persist-credentials: false
-    - name: Setup
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ env.NODE_VERSION }}
-
-    - name: Build
+    - name: Install
       run: npm install
+    - name: Build
       run: npm run build
-
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@releases/v3
       with:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        BASE_BRANCH: master
         BRANCH: gh-pages
         FOLDER: docs
