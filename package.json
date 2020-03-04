@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack --config webpack.config.js --watch",
+    "start": "start-storybook -p 6006",
+    "build": "build-storybook",
     "lint": "eslint ./src --ext .jsx,.js",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook -o docs"
+    "example": "webpack --config webpack.config.js --watch"
   },
   "repository": {
     "type": "git",
