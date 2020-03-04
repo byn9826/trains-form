@@ -1,21 +1,21 @@
-name: Publish
+name: Deploy
 on: push
 env:
   NODE_VERSION: '10.x'
 jobs:
-  publish-storybook:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: Use Node.js ${{ env.NODE_VERSION }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ env.NODE_VERSION }}
-
     - name: Checkout
-      uses: actions/checkout@v1
+      uses: actions/checkout@v2
+      with:
+        persist-credentials: false
+
+    - name: Install
+      run: npm install
 
     - name: Build
-       run: npm install & npm run build
+      run: npm run build
 
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@releases/v3
