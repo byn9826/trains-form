@@ -9,6 +9,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
       with:
+        ref: master
         persist-credentials: false
 
     - name: Install
@@ -18,9 +19,9 @@ jobs:
       run: npm run build
 
     - name: Deploy
-      uses: JamesIves/github-pages-deploy-action@3.3.2
+      uses: JamesIves/github-pages-deploy-action@releases/v3
       with:
-        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         BASE_BRANCH: master
         BRANCH: gh-pages
         FOLDER: docs
