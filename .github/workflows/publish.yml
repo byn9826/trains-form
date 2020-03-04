@@ -10,8 +10,8 @@ jobs:
       with:
         persist-credentials: false
     - name: Build and Deploy
-      uses: JamesIves/github-pages-deploy-action@releases/v2
-      env:
+      uses: JamesIves/github-pages-deploy-action@releases/v3
+      with:
         ACCESS_TOKEN: ${{ secrets.ACTION_TOKEN }}
         BRANCH: gh-pages
-        BUILD_SCRIPT: npm install && npm run build-storybook
+        FOLDER: docs
