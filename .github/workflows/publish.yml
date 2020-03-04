@@ -1,15 +1,25 @@
 name: Publish
 on: push
+env:
+  NODE_VERSION: '10.x'
 jobs:
   publish-storybook:
-    name: Publish Storybook
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+    - name: Use Node.js ${{ env.NODE_VERSION }}
+      uses: actions/setup-node@v1
       with:
-        persist-credentials: false
-    - name: Build and Deploy
+        node-version: ${{ env.NODE_VERSION }}
+
+    - name: Checkout
+      uses: actions/checkout@v1
+
+    - name: Build
+       run: |
+          npm install
+          npm build
+
+    - name: Deploy
       uses: JamesIves/github-pages-deploy-action@releases/v3
       with:
         ACCESS_TOKEN: ${{ secrets.ACTION_TOKEN }}
