@@ -1,14 +1,5 @@
-import {
-  MESSAGE_TYPE,
-  TEXT_TYPE,
-  NOTE_TYPE,
-  NUMBER_TYPE,
-  PASSWORD_TYPE,
-  TOGGLE_TYPE,
-  RADIO_TYPE,
-  CHECKBOX_TYPE,
-  SELECT_TYPE,
-} from '../../../src/helpers/constants';
+import { FORM_CONSTANTS } from '../../../src/index';
+import { autoAppendTitleExample } from '../../helpers';
 
 export const REQUIRED_VALUES = {
   message: 'Examples of how to define required fields and how validator works',
@@ -16,67 +7,67 @@ export const REQUIRED_VALUES = {
   note: 'Customize required error message',
 };
 
-export const REQUIRED_FIELDS = [
+export const REQUIRED_FIELDS = autoAppendTitleExample([
   {
-    type: MESSAGE_TYPE,
+    type: FORM_CONSTANTS.MESSAGE_TYPE,
     name: 'message',
   },
   {
-    type: TEXT_TYPE,
+    type: FORM_CONSTANTS.TEXT_TYPE,
     name: 'text_1',
     required: true,
     width: 50,
   },
   {
-    type: TEXT_TYPE,
+    type: FORM_CONSTANTS.TEXT_TYPE,
     name: 'text_2',
     required: true,
     width: 50,
   },
   {
-    type: PASSWORD_TYPE,
+    type: FORM_CONSTANTS.PASSWORD_TYPE,
     name: 'password',
     required: true,
     width: 50,
   },
   {
-    type: NUMBER_TYPE,
+    type: FORM_CONSTANTS.NUMBER_TYPE,
     name: 'number',
     required: true,
     width: 50,
   },
   {
-    type: TOGGLE_TYPE,
+    type: FORM_CONSTANTS.TOGGLE_TYPE,
     name: 'toggle',
     required: true,
     width: 50,
   },
   {
-    type: NOTE_TYPE,
+    type: FORM_CONSTANTS.NOTE_TYPE,
     name: 'note',
     required: true,
     requiredError: 'Please input something!',
   },
   {
-    type: RADIO_TYPE,
+    type: FORM_CONSTANTS.RADIO_TYPE,
     name: 'radio',
     required: true,
     width: 50,
   },
   {
-    type: CHECKBOX_TYPE,
+    type: FORM_CONSTANTS.CHECKBOX_TYPE,
     name: 'checkbox',
     required: true,
     default: [0],
     width: 50,
   },
   {
-    type: SELECT_TYPE,
+    type: FORM_CONSTANTS.SELECT_TYPE,
     name: 'select',
     required: true,
     width: 50,
   },
-];
+]);
 
 export const REQUIRED_OPTIONS = {
   radio: [

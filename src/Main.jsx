@@ -1,24 +1,29 @@
 import React, { useState } from 'react';
 import * as Types from './helpers/types';
-import {
-  EDIT_MODE,
-  CONFIGS_DEFAULT,
-} from './helpers/constants';
+import { EDIT_MODE, SEMANTIC_THEME } from './helpers/constants';
 import Context from './helpers/context';
 import { fieldValidator } from './helpers/validation';
 import { buildInitialValues } from './helpers/helper';
 import Form from './blocks/Form';
+
+const CONFIGS_DEFAULT = {
+  spacing: 20,
+  theme: SEMANTIC_THEME,
+};
 
 export default function TrainsForms({
   mode = EDIT_MODE,
   fields = [],
   values = {},
   options = {},
-  configs = CONFIGS_DEFAULT,
+  configs = {},
 }) {
+  const themeConfig = configs.theme || CONFIGS_DEFAULT.theme;
+  const spacingConfig = configs.spacing || CONFIGS_DEFAULT.spacing;
   const refinedConfigs = {
-    ...configs,
-    innerSpacing: configs.innerSpacing || (configs.spacing / 2),
+    theme: themeConfig,
+    spacing: spacingConfig,
+    innerSpacing: configs.innerSpacing || (spacingConfig / 2),
   };
 
   const [formValues, setFormValues] = useState(buildInitialValues(values, fields));

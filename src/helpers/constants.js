@@ -25,8 +25,3 @@ export const TYPES = [
 
 export const SEMANTIC_THEME = 'Semantic';
 export const THEMES = [SEMANTIC_THEME];
-
-export const CONFIGS_DEFAULT = {
-  spacing: 20,
-  theme: SEMANTIC_THEME,
-};

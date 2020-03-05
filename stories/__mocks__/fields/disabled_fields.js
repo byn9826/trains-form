@@ -1,13 +1,5 @@
-import {
-  MESSAGE_TYPE,
-  TEXT_TYPE,
-  NOTE_TYPE,
-  NUMBER_TYPE,
-  TOGGLE_TYPE,
-  RADIO_TYPE,
-  CHECKBOX_TYPE,
-  SELECT_TYPE,
-} from '../../../src/helpers/constants';
+import { FORM_CONSTANTS } from '../../../src/index';
+import { autoAppendTitleExample } from '../../helpers';
 
 export const DISABLED_VALUES = {
   message: 'Examples of how to define disabled fields',
@@ -15,48 +7,48 @@ export const DISABLED_VALUES = {
   checkbox: [1],
 };
 
-export const DISABLED_FIELDS = [
+export const DISABLED_FIELDS = autoAppendTitleExample([
   {
-    type: MESSAGE_TYPE,
+    type: FORM_CONSTANTS.MESSAGE_TYPE,
     name: 'message',
     disabled: true,
   },
   {
-    type: TEXT_TYPE,
+    type: FORM_CONSTANTS.TEXT_TYPE,
     name: 'text',
     disabled: true,
   },
   {
-    type: NUMBER_TYPE,
+    type: FORM_CONSTANTS.NUMBER_TYPE,
     name: 'number',
     disabled: true,
   },
   {
-    type: TOGGLE_TYPE,
+    type: FORM_CONSTANTS.TOGGLE_TYPE,
     name: 'toggle',
     disabled: true,
   },
   {
-    type: NOTE_TYPE,
+    type: FORM_CONSTANTS.NOTE_TYPE,
     name: 'note',
     disabled: true,
   },
   {
-    type: RADIO_TYPE,
+    type: FORM_CONSTANTS.RADIO_TYPE,
     name: 'radio',
     disabled: true,
   },
   {
-    type: CHECKBOX_TYPE,
+    type: FORM_CONSTANTS.CHECKBOX_TYPE,
     name: 'checkbox',
     disabled: true,
   },
   {
-    type: SELECT_TYPE,
+    type: FORM_CONSTANTS.SELECT_TYPE,
     name: 'select',
     disabled: true,
   },
-];
+]);
 
 export const DISABLED_OPTIONS = {
   radio: [

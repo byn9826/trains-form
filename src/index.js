@@ -1,0 +1,32 @@
+import TrainsForms from './Main';
+import {
+  VIEW_MODE,
+  EDIT_MODE,
+  MESSAGE_TYPE,
+  TEXT_TYPE,
+  NUMBER_TYPE,
+  PASSWORD_TYPE,
+  NOTE_TYPE,
+  TOGGLE_TYPE,
+  RADIO_TYPE,
+  CHECKBOX_TYPE,
+  SELECT_TYPE,
+  SEMANTIC_THEME,
+} from './helpers/constants';
+
+export default TrainsForms;
+
+export const FORM_CONSTANTS = {
+  VIEW_MODE,
+  EDIT_MODE,
+  MESSAGE_TYPE,
+  TEXT_TYPE,
+  NUMBER_TYPE,
+  PASSWORD_TYPE,
+  NOTE_TYPE,
+  TOGGLE_TYPE,
+  RADIO_TYPE,
+  CHECKBOX_TYPE,
+  SELECT_TYPE,
+  SEMANTIC_THEME,
+};

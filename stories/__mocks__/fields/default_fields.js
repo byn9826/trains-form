@@ -1,65 +1,57 @@
-import {
-  MESSAGE_TYPE,
-  TEXT_TYPE,
-  NOTE_TYPE,
-  NUMBER_TYPE,
-  TOGGLE_TYPE,
-  RADIO_TYPE,
-  CHECKBOX_TYPE,
-  SELECT_TYPE,
-} from '../../../src/helpers/constants';
+import { FORM_CONSTANTS } from '../../../src/index';
+import { autoAppendTitleExample } from '../../helpers';
 
 export const DEFAULT_VALUES = {
   text_2: 'Default value will be ignored if its init value is not empty',
 };
 
-export const DEFAULT_FIELDS = [
+export const DEFAULT_FIELDS = autoAppendTitleExample([
   {
-    type: MESSAGE_TYPE,
+    type: FORM_CONSTANTS.MESSAGE_TYPE,
     name: 'message',
     default: 'Examples of how to define default value of fields',
   },
   {
-    type: TEXT_TYPE,
+    type: FORM_CONSTANTS.TEXT_TYPE,
     name: 'text_1',
     default: 'Init field with default value if its value is empty',
   },
   {
-    type: TEXT_TYPE,
+    type: FORM_CONSTANTS.TEXT_TYPE,
     name: 'text_2',
     default: 'This default value will be ignored',
   },
   {
-    type: NUMBER_TYPE,
+    type: FORM_CONSTANTS.NUMBER_TYPE,
     name: 'number',
     default: '123',
   },
   {
-    type: TOGGLE_TYPE,
+    type: FORM_CONSTANTS.TOGGLE_TYPE,
     name: 'toggle',
     default: true,
   },
   {
-    type: NOTE_TYPE,
+    type: FORM_CONSTANTS.NOTE_TYPE,
     name: 'note',
     default: 'Default value for Note',
   },
   {
-    type: RADIO_TYPE,
+    type: FORM_CONSTANTS.RADIO_TYPE,
     name: 'radio',
     default: 2,
   },
   {
-    type: CHECKBOX_TYPE,
+    type: FORM_CONSTANTS.CHECKBOX_TYPE,
     name: 'checkbox',
     default: [0, 1],
   },
   {
-    type: SELECT_TYPE,
+    type: FORM_CONSTANTS.SELECT_TYPE,
     name: 'select',
     default: 1,
   },
-];
+]);
 
 export const DEFAULT_OPTIONS = {
   radio: [
