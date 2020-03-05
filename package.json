@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack --config webpack.config.js --watch",
+    "start": "start-storybook -p 6006",
+    "build": "build-storybook -o docs",
     "lint": "eslint ./src --ext .jsx,.js",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "example": "webpack --config webpack.config.js --watch"
   },
   "repository": {
     "type": "git",
@@ -19,7 +19,7 @@
   "bugs": {
     "url": "https://github.com/byn9826/trains-forms/issues"
   },
-  "homepage": "https://github.com/byn9826/trains-forms#readme",
+  "homepage": "https://byn9826.github.io/trains-forms",
   "dependencies": {
     "@storybook/react": "^5.3.13",
     "classnames": "^2.2.6",
