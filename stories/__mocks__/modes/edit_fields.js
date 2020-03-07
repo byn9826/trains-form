@@ -41,10 +41,6 @@ export const EDIT_FIELDS = autoAppendTitleExample([
     type: FORM_CONSTANTS.CHECKBOX_TYPE,
     name: 'checkbox_1',
   },
-  {
-    type: FORM_CONSTANTS.SELECT_TYPE,
-    name: 'select',
-  },
 ]);
 
 export const EDIT_OPTIONS = {
@@ -54,11 +50,6 @@ export const EDIT_OPTIONS = {
     { label: 'Option C', value: 2 },
   ],
   checkbox_1: [
-    { label: 'Option A', value: 0 },
-    { label: 'Option B', value: 1 },
-    { label: 'Option C', value: 2 },
-  ],
-  select: [
     { label: 'Option A', value: 0 },
     { label: 'Option B', value: 1 },
     { label: 'Option C', value: 2 },

@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 import * as Types from '../helpers/types';
 import {
   TEXT_TYPE,
@@ -9,7 +10,7 @@ import {
   TOGGLE_TYPE,
   RADIO_TYPE,
   CHECKBOX_TYPE,
-  SELECT_TYPE,
+  // SELECT_TYPE,
 } from '../helpers/constants';
 import Context from '../helpers/context';
 import Input from '../elements/Input';
@@ -18,7 +19,7 @@ import Note from '../elements/Note';
 import Toggle from '../elements/Toggle';
 import Message from '../elements/Message';
 import Radio from '../elements/Radio';
-import Dropdown from '../elements/Dropdown';
+// import Dropdown from '../elements/Dropdown';
 import Checkbox from '../elements/Checkbox';
 
 export default function Element({ field, disabled }) {
@@ -50,9 +51,9 @@ export default function Element({ field, disabled }) {
     case CHECKBOX_TYPE:
       TargetElement = Checkbox;
       break;
-    case SELECT_TYPE:
-      TargetElement = Dropdown;
-      break;
+    // case SELECT_TYPE:
+    //   TargetElement = Dropdown;
+    //   break;
     case MESSAGE_TYPE:
     default:
       TargetElement = Message;
@@ -79,5 +80,5 @@ export default function Element({ field, disabled }) {
 
 Element.propTypes = {
   field: Types.FIELD_TYPE,
-  disabled: Types.DISABLE_TYPE,
+  disabled: PropTypes.bool,
 };

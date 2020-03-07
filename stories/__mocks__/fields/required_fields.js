@@ -61,12 +61,6 @@ export const REQUIRED_FIELDS = autoAppendTitleExample([
     default: [0],
     width: 50,
   },
-  {
-    type: FORM_CONSTANTS.SELECT_TYPE,
-    name: 'select',
-    required: true,
-    width: 50,
-  },
 ]);
 
 export const REQUIRED_OPTIONS = {
@@ -76,11 +70,6 @@ export const REQUIRED_OPTIONS = {
     { label: 'Option C', value: 2 },
   ],
   checkbox: [
-    { label: 'Option A', value: 0 },
-    { label: 'Option B', value: 1 },
-    { label: 'Option C', value: 2 },
-  ],
-  select: [
     { label: 'Option A', value: 0 },
     { label: 'Option B', value: 1 },
     { label: 'Option C', value: 2 },

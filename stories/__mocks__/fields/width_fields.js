@@ -70,11 +70,6 @@ export const WIDTH_FIELDS = autoAppendTitleExample([
     name: 'checkbox',
     width: 30,
   },
-  {
-    type: FORM_CONSTANTS.SELECT_TYPE,
-    name: 'select',
-    width: 30,
-  },
 ]);
 
 export const WIDTH_OPTIONS = {
@@ -91,10 +86,5 @@ export const WIDTH_OPTIONS = {
     { label: 'Option C', value: 2 },
     { label: 'Option D', value: 3 },
     { label: 'Option E', value: 4 },
-  ],
-  select: [
-    { label: 'Option A', value: 0 },
-    { label: 'Option B', value: 1 },
-    { label: 'Option C', value: 2 },
   ],
 };

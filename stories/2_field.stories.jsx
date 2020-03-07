@@ -3,7 +3,7 @@ import { setAddon, storiesOf } from '@storybook/react';
 import JSXAddon from 'storybook-addon-jsx';
 import TrainsForms, { FORM_CONSTANTS } from '../src/index';
 import { WIDTH_VALUES, WIDTH_FIELDS, WIDTH_OPTIONS } from './__mocks__/fields/width_fields';
-import { PLACEHOLDER_VALUES, PLACEHOLDER_FIELDS, PLACEHOLDER_OPTIONS } from './__mocks__/fields/placeholder_fields';
+import { PLACEHOLDER_VALUES, PLACEHOLDER_FIELDS } from './__mocks__/fields/placeholder_fields';
 import { DEFAULT_VALUES, DEFAULT_FIELDS, DEFAULT_OPTIONS } from './__mocks__/fields/default_fields';
 import { DISABLED_VALUES, DISABLED_FIELDS, DISABLED_OPTIONS } from './__mocks__/fields/disabled_fields';
 import { REQUIRED_VALUES, REQUIRED_FIELDS, REQUIRED_OPTIONS } from './__mocks__/fields/required_fields';

@@ -25,6 +25,7 @@ module.exports = {
     'react/require-default-props': 0,
     'import/prefer-default-export': 0,
     'jsx-a11y/interactive-supports-focus': 0,
-    'import/no-extraneous-dependencies': 0
+    'import/no-extraneous-dependencies': 0,
+    'no-alert': 0
   },
 };

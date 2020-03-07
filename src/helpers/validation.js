@@ -50,6 +50,8 @@ const minIsValid = (field, value) => {
   return true;
 };
 
+export const isEmptyErrors = (errors) => !Object.values(errors).find((error) => error);
+
 export const fieldValidator = (field, value) => {
   if (field.required && !requiredIsValid(field, value)) {
     return field.requiredError || 'This field is required';

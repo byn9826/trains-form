@@ -10,7 +10,7 @@ import {
   TOGGLE_TYPE,
   RADIO_TYPE,
   CHECKBOX_TYPE,
-  SELECT_TYPE,
+  // SELECT_TYPE,
   SEMANTIC_THEME,
 } from './helpers/constants';
 
@@ -27,6 +27,6 @@ export const FORM_CONSTANTS = {
   TOGGLE_TYPE,
   RADIO_TYPE,
   CHECKBOX_TYPE,
-  SELECT_TYPE,
+  // SELECT_TYPE,
   SEMANTIC_THEME,
 };

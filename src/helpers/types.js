@@ -39,17 +39,17 @@ export const CONFIGS_TYPE = PropTypes.shape({
   spacing: PropTypes.number,
   innerSpacing: PropTypes.number,
   theme: PropTypes.oneOf(THEMES),
+  submitTitle: PropTypes.string,
+  submitError: PropTypes.string,
 });
 
 export const STYLE_TYPE = PropTypes.objectOf(PropTypes.any);
-
-export const DISABLE_TYPE = PropTypes.bool;
 
 export const ELEMENT_TYPE = {
   type: PropTypes.oneOf(TYPES),
   field: FIELD_TYPE,
   style: STYLE_TYPE,
-  disabled: DISABLE_TYPE,
+  disabled: PropTypes.bool,
   name: PropTypes.string,
   placeholder: PropTypes.string,
   value: VALUE_TYPE,

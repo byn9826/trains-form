@@ -46,19 +46,4 @@ export const PLACEHOLDER_FIELDS = autoAppendTitleExample([
     name: 'note',
     placeholder: 'This is placeholder',
   },
-  {
-    type: FORM_CONSTANTS.SELECT_TYPE,
-    name: 'select',
-    placeholder: 'Please select...',
-  },
 ]);
-
-export const PLACEHOLDER_OPTIONS = {
-  select: [
-    { label: 'Option A', value: 0 },
-    { label: 'Option B', value: 1 },
-    { label: 'Option C', value: 2 },
-    { label: 'Option D', value: 3 },
-    { label: 'Option E', value: 4 },
-  ],
-};
