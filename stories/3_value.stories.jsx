@@ -1,15 +1,16 @@
-import { FORM_CONSTANTS } from '../../../src/index';
-import { autoAppendTitleExample } from '../../helpers';
+import { storiesOf } from '@storybook/react';
+import useForm, { FORM_CONSTANTS } from '../src/index';
+import { autoAppendTitleExample } from './helpers';
 
-export const DEFAULT_VALUES = {
+const VALUES = {
   text_2: 'Default value will be ignored if its init value is not empty',
 };
 
-export const DEFAULT_FIELDS = autoAppendTitleExample([
+const FIELDS = autoAppendTitleExample([
   {
     type: FORM_CONSTANTS.MESSAGE_TYPE,
     name: 'message',
-    default: 'Examples of how to define default value of fields',
+    default: 'Examples of how to define default values for fields',
   },
   {
     type: FORM_CONSTANTS.TEXT_TYPE,
@@ -48,7 +49,7 @@ export const DEFAULT_FIELDS = autoAppendTitleExample([
   },
 ]);
 
-export const DEFAULT_OPTIONS = {
+const OPTIONS = {
   radio: [
     { label: 'Option A', value: 0 },
     { label: 'Option B', value: 1 },
@@ -60,3 +61,29 @@ export const DEFAULT_OPTIONS = {
     { label: 'Option C', value: 2 },
   ],
 };
+
+storiesOf('Value', module)
+  .add('Default', () => {
+    const [Form] = useForm({
+      values: VALUES,
+      fields: FIELDS,
+      options: OPTIONS,
+      mode: FORM_CONSTANTS.EDIT_MODE,
+    });
+    return Form;
+  })
+  .add('Disabled', () => {
+    const [Form] = useForm({
+      values: VALUES,
+      fields: FIELDS.map((field) => ({
+        ...field,
+        default: field.name === 'message'
+          ? 'Examples of how to define disabled fields'
+          : field.name,
+        disabled: true,
+      })),
+      options: OPTIONS,
+      mode: FORM_CONSTANTS.EDIT_MODE,
+    });
+    return Form;
+  });

@@ -14,7 +14,7 @@ const CONFIGS_DEFAULT = {
   submitError: 'Please check your inputs!',
 };
 
-export default function TrainsForms({
+export default function Main({
   mode = EDIT_MODE,
   fields = [],
   values = {},
@@ -84,16 +84,18 @@ export default function TrainsForms({
     hasSubmitError,
   };
 
-  return (
+  const mainForm = (
     <Context.Provider value={context}>
       <div style={{ padding: refinedConfigs.innerSpacing }}>
         <Form />
       </div>
     </Context.Provider>
   );
+
+  return [mainForm];
 }
 
-TrainsForms.propTypes = {
+Main.propTypes = {
   mode: Types.MODE_TYPE,
   fields: Types.FIELDS_TYPE,
   values: Types.VALUES_TYPE,

@@ -1,26 +1,84 @@
-import React from 'react';
-import { setAddon, storiesOf } from '@storybook/react';
-import JSXAddon from 'storybook-addon-jsx';
-import TrainsForms, { FORM_CONSTANTS } from '../src/index';
-import { VIEW_VALUES, VIEW_FIELDS, VIEW_OPTIONS } from './__mocks__/modes/view_fields';
-import { EDIT_VALUES, EDIT_FIELDS, EDIT_OPTIONS } from './__mocks__/modes/edit_fields';
+import { storiesOf } from '@storybook/react';
+import useForm, { FORM_CONSTANTS } from '../src/index';
+import { autoAppendTitleExample } from './helpers';
 
-setAddon(JSXAddon);
+const VALUES = {
+  message: 'Examples of how to build a form for viewing',
+  number: 123456,
+  text: 'Init value for Text type field',
+  radio: 1,
+  password: '12345',
+  toggle: true,
+  checkbox_1: [1, 2],
+};
+
+const FIELDS = autoAppendTitleExample([
+  {
+    type: FORM_CONSTANTS.MESSAGE_TYPE,
+    name: 'message',
+  },
+  {
+    type: FORM_CONSTANTS.TEXT_TYPE,
+    name: 'text',
+  },
+  {
+    type: FORM_CONSTANTS.NUMBER_TYPE,
+    name: 'number',
+  },
+  {
+    type: FORM_CONSTANTS.PASSWORD_TYPE,
+    name: 'password',
+  },
+  {
+    type: FORM_CONSTANTS.NOTE_TYPE,
+    name: 'note',
+  },
+  {
+    type: FORM_CONSTANTS.TOGGLE_TYPE,
+    name: 'toggle',
+  },
+  {
+    type: FORM_CONSTANTS.RADIO_TYPE,
+    name: 'radio_1',
+  },
+  {
+    type: FORM_CONSTANTS.CHECKBOX_TYPE,
+    name: 'checkbox_1',
+  },
+]);
+
+const OPTIONS = {
+  radio_1: [
+    { label: 'Option A', value: 0 },
+    { label: 'Option B', value: 1 },
+    { label: 'Option C', value: 2 },
+  ],
+  checkbox_1: [
+    { label: 'Option A', value: 0 },
+    { label: 'Option B', value: 1 },
+    { label: 'Option C', value: 2 },
+  ],
+};
 
 storiesOf('Mode', module)
-  .addWithJSX('View', () => (
-    <TrainsForms
-      values={VIEW_VALUES}
-      fields={VIEW_FIELDS}
-      options={VIEW_OPTIONS}
-      mode={FORM_CONSTANTS.VIEW_MODE}
-    />
-  ))
-  .addWithJSX('Edit', () => (
-    <TrainsForms
-      values={EDIT_VALUES}
-      fields={EDIT_FIELDS}
-      options={EDIT_OPTIONS}
-      mode={FORM_CONSTANTS.EDIT_MODE}
-    />
-  ));
+  .add('View', () => {
+    const [Form] = useForm({
+      values: VALUES,
+      fields: FIELDS,
+      options: OPTIONS,
+      mode: FORM_CONSTANTS.VIEW_MODE,
+    });
+    return Form;
+  })
+  .add('Edit', () => {
+    const [Form] = useForm({
+      values: {
+        ...VALUES,
+        message: 'Examples of how to build a form for editing',
+      },
+      fields: FIELDS,
+      options: OPTIONS,
+      mode: FORM_CONSTANTS.EDIT_MODE,
+    });
+    return Form;
+  });

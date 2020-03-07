@@ -22,6 +22,7 @@ export const buildInitialValues = (values, fields) => {
       case PASSWORD_TYPE:
       case NOTE_TYPE:
       case NUMBER_TYPE:
+      case MESSAGE_TYPE:
         initValues[field.name] = isDefined(field.default) ? field.default : '';
         break;
       case TOGGLE_TYPE:
@@ -36,7 +37,6 @@ export const buildInitialValues = (values, fields) => {
           ? field.default
           : [];
         break;
-      case MESSAGE_TYPE:
       default:
         break;
     }

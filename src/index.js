@@ -1,4 +1,4 @@
-import TrainsForms from './Main';
+import useForm from './Main';
 import {
   VIEW_MODE,
   EDIT_MODE,
@@ -14,7 +14,7 @@ import {
   SEMANTIC_THEME,
 } from './helpers/constants';
 
-export default TrainsForms;
+export default useForm;
 
 export const FORM_CONSTANTS = {
   VIEW_MODE,

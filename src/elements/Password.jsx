@@ -11,6 +11,7 @@ export default function Password({
   value,
   theme,
   onChange,
+  placeholder,
 }) {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -30,6 +31,7 @@ export default function Password({
             name={name}
             value={value}
             theme={theme}
+            placeholder={placeholder}
             onChange={onChange}
           />
           <button

@@ -66,7 +66,7 @@ export const fieldValidator = (field, value) => {
       return field.maxError;
     }
     if (isNumberType(field.type)) {
-      return `Maximum: ${field.max}`;
+      return `Maximum Number: ${field.max}`;
     }
     if (isArrayType(field.type)) {
       return `Maximum ${field.max} selection allowed`;
@@ -83,7 +83,7 @@ export const fieldValidator = (field, value) => {
       return field.minError;
     }
     if (isNumberType(field.type)) {
-      return `Minimum: ${field.min}`;
+      return `Minimum Number: ${field.min}`;
     }
     if (isArrayType(field.type)) {
       return `Minimum ${field.min} selection required`;
