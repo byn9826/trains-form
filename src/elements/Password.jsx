@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import classNames from 'classnames';
 import * as Types from '../helpers/types';
 import { SEMANTIC_THEME, PASSWORD_TYPE, TEXT_TYPE } from '../helpers/constants';
+import { buildClassNames } from '../helpers/builder';
 import Input from './Input';
 
 export default function Password({
@@ -40,7 +40,8 @@ export default function Password({
             onClick={() => setIsVisible(!isVisible)}
           >
             <i
-              className={classNames('icon eye', {
+              className={buildClassNames({
+                'icon eye': true,
                 slash: isVisible,
               })}
             />

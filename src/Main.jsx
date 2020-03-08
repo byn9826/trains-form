@@ -4,7 +4,7 @@ import * as Types from './helpers/types';
 import { EDIT_MODE, SEMANTIC_THEME } from './helpers/constants';
 import Context from './helpers/context';
 import { fieldValidator, isEmptyErrors } from './helpers/validation';
-import { buildInitialValues } from './helpers/helper';
+import { buildInitialValues } from './helpers/builder';
 import { isFunction } from './helpers/utils';
 import Form from './blocks/Form';
 

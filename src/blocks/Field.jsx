@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import classNames from 'classnames';
 import * as Types from '../helpers/types';
 import {
   VIEW_MODE,
@@ -7,6 +6,7 @@ import {
 } from '../helpers/constants';
 import Context from '../helpers/context';
 import { isNumber } from '../helpers/utils';
+import { buildClassNames } from '../helpers/builder';
 import Element from './Element';
 
 export default function Field({ field }) {
@@ -28,7 +28,8 @@ export default function Field({ field }) {
     default:
       return (
         <div
-          className={classNames('field', {
+          className={buildClassNames({
+            field: true,
             required: field.required,
           })}
           style={{
@@ -41,8 +42,10 @@ export default function Field({ field }) {
         >
           {field.title && <label>{field.title}</label>}
           <div
-            className={classNames('field', {
-              disabled, error,
+            className={buildClassNames({
+              field: true,
+              disabled,
+              error,
             })}
           >
             <Element

@@ -43,3 +43,13 @@ export const buildInitialValues = (values, fields) => {
   });
   return initValues;
 };
+
+export const buildClassNames = (classNames) => {
+  const validClasses = [];
+  Object.keys(classNames).forEach((className) => {
+    if (classNames[className]) {
+      validClasses.push(className);
+    }
+  });
+  return validClasses.join(' ');
+};
