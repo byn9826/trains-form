@@ -4,13 +4,13 @@
 ```
 npm install trains-forms --save;
 npm install semantic-ui-css --save;
+import 'semantic-ui-css/semantic.min.css';
 ```
 
 ## Example
 [Demos & examples](https://byn9826.github.io/trains-forms)
 ```
 import useForm, { FORM_CONSTANTS };
-import 'semantic-ui-css/semantic.min.css';
 
 const fields = [
   {
@@ -185,7 +185,7 @@ return (
         100
       </td>
       <td>
-        Message, Text, Number, Password, Note, Toggle, Radio, Checkbox
+        Message, Text, Number, Password, Note, Toggle, Radio, Checkbox, SingleSelect
       </td>
     </tr>
     <tr>
@@ -200,7 +200,7 @@ return (
       </td>
       <td></td>
       <td>
-        Text, Number, Password, Note, Toggle
+        Text, Number, Password, Note, Toggle, SingleSelect
       </td>
     </tr>
     <tr>
@@ -215,7 +215,7 @@ return (
       </td>
       <td></td>
       <td>
-        Message, Text, Number, Note, Toggle, Radio, Checkbox
+        Message, Text, Number, Note, Toggle, Radio, Checkbox, SingleSelect
       </td>
     </tr>
     <tr>
@@ -232,7 +232,7 @@ return (
         false
       </td>
       <td>
-        Message, Text, Number, Password, Note, Toggle, Radio, Checkbox
+        Message, Text, Number, Password, Note, Toggle, Radio, Checkbox, SingleSelect
       </td>
     </tr>
     <tr>
@@ -249,7 +249,7 @@ return (
         false
       </td>
       <td>
-        Message, Text, Number, Password, Note, Toggle, Radio, Checkbox
+        Message, Text, Number, Password, Note, Toggle, Radio, Checkbox, SingleSelect
       </td>
     </tr>
     <tr>
@@ -266,7 +266,7 @@ return (
         'This field is required.'
       </td>
       <td>
-        Message, Text, Number, Password, Note, Toggle, Radio, Checkbox
+        Message, Text, Number, Password, Note, Toggle, Radio, Checkbox, SingleSelect
       </td>
     </tr>
     <tr>

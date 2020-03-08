@@ -47,6 +47,11 @@ const FIELDS = autoAppendTitleExample([
     name: 'checkbox',
     default: [0, 1],
   },
+  {
+    type: FORM_CONSTANTS.SINGLE_SELECT_TYPE,
+    name: 'single_select',
+    default: 2,
+  },
 ]);
 
 const OPTIONS = {
@@ -56,6 +61,11 @@ const OPTIONS = {
     { label: 'Option C', value: 2 },
   ],
   checkbox: [
+    { label: 'Option A', value: 0 },
+    { label: 'Option B', value: 1 },
+    { label: 'Option C', value: 2 },
+  ],
+  single_select: [
     { label: 'Option A', value: 0 },
     { label: 'Option B', value: 1 },
     { label: 'Option C', value: 2 },
@@ -79,7 +89,7 @@ storiesOf('Value', module)
         ...field,
         default: field.name === 'message'
           ? 'Examples of how to define disabled fields'
-          : field.name,
+          : field.default,
         disabled: true,
       })),
       options: OPTIONS,

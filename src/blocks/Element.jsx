@@ -10,7 +10,7 @@ import {
   TOGGLE_TYPE,
   RADIO_TYPE,
   CHECKBOX_TYPE,
-  // SELECT_TYPE,
+  SINGLE_SELECT_TYPE,
 } from '../helpers/constants';
 import Context from '../helpers/context';
 import Input from '../elements/Input';
@@ -19,7 +19,7 @@ import Note from '../elements/Note';
 import Toggle from '../elements/Toggle';
 import Message from '../elements/Message';
 import Radio from '../elements/Radio';
-// import Dropdown from '../elements/Dropdown';
+import Dropdown from '../elements/Dropdown';
 import Checkbox from '../elements/Checkbox';
 
 export default function Element({ field, disabled }) {
@@ -30,35 +30,19 @@ export default function Element({ field, disabled }) {
     actions,
   } = useContext(Context);
 
-  let TargetElement;
-  switch (field.type) {
-    case TEXT_TYPE:
-    case NUMBER_TYPE:
-      TargetElement = Input;
-      break;
-    case NOTE_TYPE:
-      TargetElement = Note;
-      break;
-    case PASSWORD_TYPE:
-      TargetElement = Password;
-      break;
-    case TOGGLE_TYPE:
-      TargetElement = Toggle;
-      break;
-    case RADIO_TYPE:
-      TargetElement = Radio;
-      break;
-    case CHECKBOX_TYPE:
-      TargetElement = Checkbox;
-      break;
-    // case SELECT_TYPE:
-    //   TargetElement = Dropdown;
-    //   break;
-    case MESSAGE_TYPE:
-    default:
-      TargetElement = Message;
-      break;
-  }
+  const elements = {
+    [TEXT_TYPE]: Input,
+    [NUMBER_TYPE]: Input,
+    [NOTE_TYPE]: Note,
+    [PASSWORD_TYPE]: Password,
+    [TOGGLE_TYPE]: Toggle,
+    [RADIO_TYPE]: Radio,
+    [CHECKBOX_TYPE]: Checkbox,
+    [SINGLE_SELECT_TYPE]: Dropdown,
+    [MESSAGE_TYPE]: Message,
+  };
+
+  const TargetElement = elements[field.type] || Message;
 
   return (
     <TargetElement

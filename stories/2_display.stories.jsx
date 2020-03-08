@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/react';
 import useForm, { FORM_CONSTANTS } from '../src/index';
 import { autoAppendTitleExample } from './helpers';
 
-const VALUES = {
+const WIDTH_VALUES = {
   message: 'Examples of how to define width of fields',
   text_1: '50% width',
   text_3: '60% width',
@@ -11,7 +11,7 @@ const VALUES = {
   checkbox: [1, 2],
 };
 
-const FIELDS = autoAppendTitleExample([
+const WIDTH_FIELDS = autoAppendTitleExample([
   {
     type: FORM_CONSTANTS.MESSAGE_TYPE,
     name: 'message',
@@ -71,6 +71,11 @@ const FIELDS = autoAppendTitleExample([
     name: 'checkbox',
     width: 30,
   },
+  {
+    type: FORM_CONSTANTS.SINGLE_SELECT_TYPE,
+    name: 'single_select',
+    width: 30,
+  },
 ]);
 
 const OPTIONS = {
@@ -88,11 +93,17 @@ const OPTIONS = {
     { label: 'Option D', value: 3 },
     { label: 'Option E', value: 4 },
   ],
+  single_select: [
+    { label: 'Option A', value: 0 },
+    { label: 'Option B', value: 1 },
+    { label: 'Option C', value: 2 },
+    { label: 'Option D', value: 3 },
+    { label: 'Option E', value: 4 },
+  ],
 };
 
 const PLACEHOLDER_VALUES = {
   message: 'Examples of how to define placeholder for fields',
-  text_2: 'Placeholder will be ignored if there is a value',
 };
 
 const PLACEHOLDER_FIELDS = autoAppendTitleExample([
@@ -105,12 +116,6 @@ const PLACEHOLDER_FIELDS = autoAppendTitleExample([
     name: 'text_1',
     placeholder: 'This is placeholder',
     width: 50,
-  },
-  {
-    type: FORM_CONSTANTS.TEXT_TYPE,
-    name: 'text_2',
-    width: 50,
-    placeholder: 'This is placeholder',
   },
   {
     type: FORM_CONSTANTS.PASSWORD_TYPE,
@@ -135,13 +140,18 @@ const PLACEHOLDER_FIELDS = autoAppendTitleExample([
     name: 'note',
     placeholder: 'This is placeholder',
   },
+  {
+    type: FORM_CONSTANTS.SINGLE_SELECT_TYPE,
+    name: 'single_select',
+    placeholder: 'Please select...',
+  },
 ]);
 
 storiesOf('Display', module)
   .add('Width', () => {
     const [formRender] = useForm({
-      values: VALUES,
-      fields: FIELDS,
+      values: WIDTH_VALUES,
+      fields: WIDTH_FIELDS,
       options: OPTIONS,
       mode: FORM_CONSTANTS.EDIT_MODE,
     });
@@ -151,6 +161,7 @@ storiesOf('Display', module)
     const [formRender] = useForm({
       values: PLACEHOLDER_VALUES,
       fields: PLACEHOLDER_FIELDS,
+      options: OPTIONS,
       mode: FORM_CONSTANTS.EDIT_MODE,
     });
     return formRender();

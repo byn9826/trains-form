@@ -27,7 +27,10 @@ export default function Password({
           <Input
             type={isVisible ? TEXT_TYPE : PASSWORD_TYPE}
             disabled={disabled}
-            style={style}
+            style={{
+              ...style,
+              width: 'calc(100% - 40px)',
+            }}
             name={name}
             value={value}
             theme={theme}
@@ -36,6 +39,7 @@ export default function Password({
           />
           <button
             type="button"
+            style={{ width: 40 }}
             className="ui icon button basic"
             onClick={() => setIsVisible(!isVisible)}
           >

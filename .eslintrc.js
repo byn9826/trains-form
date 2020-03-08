@@ -21,11 +21,12 @@ module.exports = {
     'react',
   ],
   rules: {
-    'jsx-a11y/label-has-associated-control': 0,
     'react/require-default-props': 0,
     'import/prefer-default-export': 0,
-    'jsx-a11y/interactive-supports-focus': 0,
     'import/no-extraneous-dependencies': 0,
+    'jsx-a11y/label-has-associated-control': 0,
+    'jsx-a11y/control-has-associated-label': 0,
+    'jsx-a11y/interactive-supports-focus': 0,
     'no-alert': 0,
   },
 };

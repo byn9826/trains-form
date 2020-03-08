@@ -62,6 +62,12 @@ const REQUIRED_FIELDS = autoAppendTitleExample([
     default: [0],
     width: 50,
   },
+  {
+    type: FORM_CONSTANTS.SINGLE_SELECT_TYPE,
+    name: 'single_select',
+    required: true,
+    width: 50,
+  },
 ]);
 
 const OPTIONS = {
@@ -76,6 +82,11 @@ const OPTIONS = {
     { label: 'Option C', value: 2 },
     { label: 'Option D', value: 3 },
     { label: 'Option E', value: 4 },
+  ],
+  single_select: [
+    { label: 'Option A', value: 0 },
+    { label: 'Option B', value: 1 },
+    { label: 'Option C', value: 2 },
   ],
 };
 

@@ -56,6 +56,11 @@ export const FIELDS = autoAppendTitleExample([
     required: true,
     min: 2,
   },
+  {
+    type: FORM_CONSTANTS.SINGLE_SELECT_TYPE,
+    name: 'single_select',
+    required: true,
+  },
 ]);
 
 export const OPTIONS = {
@@ -65,6 +70,11 @@ export const OPTIONS = {
     { label: 'Option C', value: 2 },
   ],
   checkbox_1: [
+    { label: 'Option A', value: 0 },
+    { label: 'Option B', value: 1 },
+    { label: 'Option C', value: 2 },
+  ],
+  single_select: [
     { label: 'Option A', value: 0 },
     { label: 'Option B', value: 1 },
     { label: 'Option C', value: 2 },
