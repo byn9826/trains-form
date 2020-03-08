@@ -26,7 +26,7 @@ const fields = [
   {
     name: 'pet_type',
     type: FORM_CONSTANTS.RADIO_TYPE,
-    title: 'Pet Type,
+    title: 'Pet Type',
   },
 ];
 
@@ -35,7 +35,7 @@ const values = {
 };
 
 const options = {
-  user_gender: [
+  pet_type: [
     { label: 'Dog', value: 1 },
     { label: 'Cat', value: 2 },
     { label: 'Bird', value: 3 },
