@@ -54,7 +54,7 @@ export const isEmptyErrors = (errors) => !Object.values(errors).find((error) => 
 
 export const fieldValidator = (field, value) => {
   if (field.required && !requiredIsValid(field, value)) {
-    return field.requiredError || 'This field is required';
+    return field.requiredError || 'This field is required.';
   }
   if (
     isNumber(field.max)
@@ -66,12 +66,12 @@ export const fieldValidator = (field, value) => {
       return field.maxError;
     }
     if (isNumberType(field.type)) {
-      return `Maximum Number: ${field.max}`;
+      return `Number is required to be no greater than ${field.max}.`;
     }
     if (isArrayType(field.type)) {
-      return `Maximum ${field.max} selection allowed`;
+      return `Maximum ${field.max} selection allowed.`;
     }
-    return `${field.max} characters maximum`;
+    return `Maximum ${field.max} characters allowed.`;
   }
   if (
     isNumber(field.min)
@@ -83,12 +83,12 @@ export const fieldValidator = (field, value) => {
       return field.minError;
     }
     if (isNumberType(field.type)) {
-      return `Minimum Number: ${field.min}`;
+      return `Number is required to be no less than ${field.min}.`;
     }
     if (isArrayType(field.type)) {
-      return `Minimum ${field.min} selection required`;
+      return `Minimum ${field.min} selection required.`;
     }
-    return `${field.min} characters Minimum`;
+    return `Minimum ${field.min} characters required.`;
   }
   return null;
 };

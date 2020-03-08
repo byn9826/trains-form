@@ -24,7 +24,7 @@ export default function Form() {
         >
           {fields.map((field) => <Field key={field.name} field={field} />)}
           {
-            actions.onSubmit && (
+            configs.allowSubmitButton && (
               <div style={{ display: 'block', textAlign: 'right' }}>
                 {
                   hasSubmitError && (

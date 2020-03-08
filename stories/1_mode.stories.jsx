@@ -62,16 +62,16 @@ const OPTIONS = {
 
 storiesOf('Mode', module)
   .add('View', () => {
-    const [Form] = useForm({
+    const [formRender] = useForm({
       values: VALUES,
       fields: FIELDS,
       options: OPTIONS,
       mode: FORM_CONSTANTS.VIEW_MODE,
     });
-    return Form;
+    return formRender();
   })
   .add('Edit', () => {
-    const [Form] = useForm({
+    const [formRender] = useForm({
       values: {
         ...VALUES,
         message: 'Examples of how to build a form for editing',
@@ -80,5 +80,5 @@ storiesOf('Mode', module)
       options: OPTIONS,
       mode: FORM_CONSTANTS.EDIT_MODE,
     });
-    return Form;
+    return formRender();
   });

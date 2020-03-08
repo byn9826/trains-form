@@ -41,6 +41,7 @@ export const CONFIGS_TYPE = PropTypes.shape({
   theme: PropTypes.oneOf(THEMES),
   submitTitle: PropTypes.string,
   submitError: PropTypes.string,
+  allowSubmitButton: PropTypes.bool,
 });
 
 export const STYLE_TYPE = PropTypes.objectOf(PropTypes.any);

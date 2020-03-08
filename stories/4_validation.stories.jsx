@@ -136,20 +136,20 @@ const MAX_MIN_FIELDS = autoAppendTitleExample([
 
 storiesOf('Validation', module)
   .add('Required', () => {
-    const [Form] = useForm({
+    const [formRender] = useForm({
       values: REQUIRED_VALUES,
       fields: REQUIRED_FIELDS,
       options: OPTIONS,
       mode: FORM_CONSTANTS.EDIT_MODE,
     });
-    return Form;
+    return formRender();
   })
   .add('Min & Max', () => {
-    const [Form] = useForm({
+    const [formRender] = useForm({
       values: MAX_MIN_VALUES,
       fields: MAX_MIN_FIELDS,
       options: OPTIONS,
       mode: FORM_CONSTANTS.EDIT_MODE,
     });
-    return Form;
+    return formRender();
   });

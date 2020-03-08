@@ -5,6 +5,7 @@ import { EDIT_MODE, SEMANTIC_THEME } from './helpers/constants';
 import Context from './helpers/context';
 import { fieldValidator, isEmptyErrors } from './helpers/validation';
 import { buildInitialValues } from './helpers/helper';
+import { isFunction } from './helpers/utils';
 import Form from './blocks/Form';
 
 const CONFIGS_DEFAULT = {
@@ -29,6 +30,7 @@ export default function Main({
     theme: configs.theme || CONFIGS_DEFAULT.theme,
     submitTitle: configs.submitTitle || CONFIGS_DEFAULT.submitTitle,
     submitError: configs.submitError || CONFIGS_DEFAULT.submitError,
+    allowSubmitButton: isFunction(onSubmit),
   };
 
   const [formValues, setFormValues] = useState(buildInitialValues(values, fields));
@@ -63,7 +65,7 @@ export default function Main({
     });
     setFormErrors(errors);
     if (isEmptyErrors(errors)) {
-      onSubmit();
+      onSubmit(formValues);
     } else {
       setHasSubmitError(true);
     }
@@ -79,12 +81,11 @@ export default function Main({
     actions: {
       onChange,
       preSubmit,
-      onSubmit,
     },
     hasSubmitError,
   };
 
-  const mainForm = (
+  const formRender = () => (
     <Context.Provider value={context}>
       <div style={{ padding: refinedConfigs.innerSpacing }}>
         <Form />
@@ -92,7 +93,7 @@ export default function Main({
     </Context.Provider>
   );
 
-  return [mainForm];
+  return [formRender];
 }
 
 Main.propTypes = {

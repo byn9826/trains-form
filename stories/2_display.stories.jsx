@@ -139,19 +139,19 @@ const PLACEHOLDER_FIELDS = autoAppendTitleExample([
 
 storiesOf('Display', module)
   .add('Width', () => {
-    const [Form] = useForm({
+    const [formRender] = useForm({
       values: VALUES,
       fields: FIELDS,
       options: OPTIONS,
       mode: FORM_CONSTANTS.EDIT_MODE,
     });
-    return Form;
+    return formRender();
   })
   .add('Placeholder', () => {
-    const [Form] = useForm({
+    const [formRender] = useForm({
       values: PLACEHOLDER_VALUES,
       fields: PLACEHOLDER_FIELDS,
       mode: FORM_CONSTANTS.EDIT_MODE,
     });
-    return Form;
+    return formRender();
   });

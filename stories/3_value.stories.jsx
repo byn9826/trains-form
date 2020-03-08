@@ -64,16 +64,16 @@ const OPTIONS = {
 
 storiesOf('Value', module)
   .add('Default', () => {
-    const [Form] = useForm({
+    const [formRender] = useForm({
       values: VALUES,
       fields: FIELDS,
       options: OPTIONS,
       mode: FORM_CONSTANTS.EDIT_MODE,
     });
-    return Form;
+    return formRender();
   })
   .add('Disabled', () => {
-    const [Form] = useForm({
+    const [formRender] = useForm({
       values: VALUES,
       fields: FIELDS.map((field) => ({
         ...field,
@@ -85,5 +85,5 @@ storiesOf('Value', module)
       options: OPTIONS,
       mode: FORM_CONSTANTS.EDIT_MODE,
     });
-    return Form;
+    return formRender();
   });
