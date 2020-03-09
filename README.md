@@ -3,12 +3,19 @@
 ## Install
 ```
 npm install trains-forms --save;
+
+// Import css file of the theme you want to use
 npm install semantic-ui-css --save;
 import 'semantic-ui-css/semantic.min.css';
 ```
+## Features
+1. Build forms with simple configs.
+2. Easily switch forms between view and edit mode.
+3. Built-in error handler.
 
-## Example
-[Demos & examples](https://byn9826.github.io/trains-forms)
+## How to use
+[Complete demos & examples](https://byn9826.github.io/trains-forms)
+### Simple Example
 ```
 import useForm, { FORM_CONSTANTS };
 
@@ -81,13 +88,17 @@ return (
     <tr>
       <td>Values</td>
       <td>Object: field name/value pairs</td>
-      <td>Object keys come from field names, object values turn into field values.</td>
+      <td>
+        Object keys come from field names, object values turn into field values.
+      </td>
       <td>{}</td>
     </tr>
     <tr>
       <td>Options</td>
       <td>Object: options for select type fields</td>
-      <td>Object keys come from field names, object values(Array: Objects contain label and value keys) turn into field options.</td>
+      <td>
+        Object keys come from field names, object values(Array: Objects contain label and value keys) turn into field options.
+      </td>
       <td>{}</td>
     </tr>
     <tr>
@@ -99,7 +110,9 @@ return (
     <tr>
       <td>onSubmit</td>
       <td>Function</td>
-      <td>Built-in submit button will be rendered when provided, and this function will be called with form values if there's no validation error after submit button clicked.</td>
+      <td>
+        Built-in submit button will be rendered when provided, and this function will be called with form values if there's no validation error after submit button clicked.
+      </td>
       <td>null</td>
     </tr>
   </tbody>
@@ -145,6 +158,14 @@ return (
       <td>String</td>
       <td>Customize the content of error message when submit error occurs.</td>
       <td>'Please check your inputs!'</td>
+    </tr>
+    <tr>
+      <td>validateOnChange</td>
+      <td>Bolean</td>
+      <td>
+        Determine validate field value on change or not. This will not affect validation on submit
+      </td>
+      <td>true</td>
     </tr>
   </tbody>
 </table>

@@ -145,7 +145,7 @@ const MAX_MIN_FIELDS = autoAppendTitleExample([
   },
 ]);
 
-storiesOf('Validation', module)
+storiesOf('Validation on change', module)
   .add('Required', () => {
     const [formRender] = useForm({
       values: REQUIRED_VALUES,
@@ -161,6 +161,18 @@ storiesOf('Validation', module)
       fields: MAX_MIN_FIELDS,
       options: OPTIONS,
       mode: FORM_CONSTANTS.EDIT_MODE,
+    });
+    return formRender();
+  })
+  .add('Disable validation', () => {
+    const [formRender] = useForm({
+      values: MAX_MIN_VALUES,
+      fields: MAX_MIN_FIELDS,
+      options: OPTIONS,
+      mode: FORM_CONSTANTS.EDIT_MODE,
+      configs: {
+        validateOnChange: false,
+      },
     });
     return formRender();
   });

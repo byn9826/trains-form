@@ -29,16 +29,16 @@
     "url": "https://github.com/byn9826/trains-forms/issues"
   },
   "homepage": "https://byn9826.github.io/trains-forms",
-  "dependencies": {
-    "prop-types": "^15.7.2"
-  },
+  "dependencies": {},
   "peerDependencies": {
     "react": ">=16.8",
-    "react-dom": ">=16.8"
+    "react-dom": ">=16.8",
+    "prop-types": ">=15.5.7"
   },
   "devDependencies": {
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
+    "prop-types": "^15.7.2",
     "@babel/cli": "^7.7.0",
     "@babel/core": "^7.7.2",
     "@babel/preset-env": "^7.7.1",

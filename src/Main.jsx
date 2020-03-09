@@ -5,7 +5,7 @@ import { EDIT_MODE, SEMANTIC_THEME } from './helpers/constants';
 import Context from './helpers/context';
 import { fieldValidator, isEmptyErrors } from './helpers/validation';
 import { buildInitialValues } from './helpers/builder';
-import { isFunction } from './helpers/utils';
+import { isFunction, isBoolean } from './helpers/utils';
 import Form from './blocks/Form';
 
 const CONFIGS_DEFAULT = {
@@ -13,6 +13,7 @@ const CONFIGS_DEFAULT = {
   theme: SEMANTIC_THEME,
   submitTitle: 'Submit',
   submitError: 'Please check your inputs!',
+  validateOnChange: true,
 };
 
 export default function Main({
@@ -24,12 +25,15 @@ export default function Main({
   onSubmit = null,
 }) {
   const spacingConfig = configs.spacing || CONFIGS_DEFAULT.spacing;
-  const refinedConfigs = {
+  const combinedConfig = {
     spacing: spacingConfig,
     innerSpacing: configs.innerSpacing || (spacingConfig / 2),
     theme: configs.theme || CONFIGS_DEFAULT.theme,
     submitTitle: configs.submitTitle || CONFIGS_DEFAULT.submitTitle,
     submitError: configs.submitError || CONFIGS_DEFAULT.submitError,
+    validateOnChange: isBoolean(configs.validateOnChange)
+      ? configs.validateOnChange
+      : CONFIGS_DEFAULT.validateOnChange,
     allowSubmitButton: isFunction(onSubmit),
   };
 
@@ -51,9 +55,11 @@ export default function Main({
 
   const onChange = (name, value) => {
     onChangeValue(name, value);
-    const targetField = fields.find((field) => field.name === name);
-    const message = fieldValidator(targetField, value);
-    onChangeError(name, message);
+    if (combinedConfig.validateOnChange) {
+      const targetField = fields.find((field) => field.name === name);
+      const message = fieldValidator(targetField, value);
+      onChangeError(name, message);
+    }
     setHasSubmitError(false);
   };
 
@@ -75,7 +81,7 @@ export default function Main({
     mode,
     fields,
     options,
-    configs: refinedConfigs,
+    configs: combinedConfig,
     values: formValues,
     errors: formErrors,
     actions: {
@@ -87,7 +93,7 @@ export default function Main({
 
   const formRender = () => (
     <Context.Provider value={context}>
-      <div style={{ padding: refinedConfigs.innerSpacing }}>
+      <div style={{ padding: combinedConfig.innerSpacing }}>
         <Form />
       </div>
     </Context.Provider>
