@@ -104,7 +104,7 @@ const FIELDS = autoAppendTitleExample([
   },
 ]);
 
-storiesOf('Validation Control', module)
+storiesOf('Validation Config', module)
   .add('Enable validation on initial form', () => {
     const [formRender] = useForm({
       values: INITIAL_VALUES,

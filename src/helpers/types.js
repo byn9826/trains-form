@@ -39,11 +39,12 @@ export const CONFIGS_TYPE = PropTypes.shape({
   spacing: PropTypes.number,
   innerSpacing: PropTypes.number,
   theme: PropTypes.oneOf(THEMES),
-  submitTitle: PropTypes.string,
-  submitError: PropTypes.string,
   allowSubmitButton: PropTypes.bool,
   validateOnInitial: PropTypes.bool,
   validateOnChange: PropTypes.bool,
+  submitTitle: PropTypes.string,
+  submitError: PropTypes.string,
+  requiredError: PropTypes.string,
 });
 
 export const STYLE_TYPE = PropTypes.objectOf(PropTypes.any);

@@ -11,10 +11,11 @@ import Form from './blocks/Form';
 const CONFIGS_DEFAULT = {
   spacing: 20,
   theme: SEMANTIC_THEME,
-  submitTitle: 'Submit',
-  submitError: 'Please check your inputs!',
   validateOnInitial: false,
   validateOnChange: true,
+  submitTitle: 'Submit',
+  submitError: 'Please check your inputs!',
+  requiredError: 'This field is required.',
 };
 
 export default function Main({
@@ -26,26 +27,31 @@ export default function Main({
   onSubmit = null,
 }) {
   const spacingConfig = configs.spacing || CONFIGS_DEFAULT.spacing;
-  const combinedConfig = {
+  const combinedConfigs = {
     spacing: spacingConfig,
     innerSpacing: configs.innerSpacing || (spacingConfig / 2),
     theme: configs.theme || CONFIGS_DEFAULT.theme,
     submitTitle: configs.submitTitle || CONFIGS_DEFAULT.submitTitle,
     submitError: configs.submitError || CONFIGS_DEFAULT.submitError,
+    requiredError: configs.requiredError || CONFIGS_DEFAULT.requiredError,
+    allowSubmitButton: isFunction(onSubmit),
     validateOnInitial: isBoolean(configs.validateOnInitial)
       ? configs.validateOnInitial
       : CONFIGS_DEFAULT.validateOnInitial,
     validateOnChange: isBoolean(configs.validateOnChange)
       ? configs.validateOnChange
       : CONFIGS_DEFAULT.validateOnChange,
-    allowSubmitButton: isFunction(onSubmit),
   };
 
   const initialValues = buildInitialValues(values, fields);
   const initialErrors = {};
   if (configs.validateOnInitial) {
     fields.forEach((field) => {
-      initialErrors[field.name] = fieldValidator(field, initialValues[field.name]);
+      initialErrors[field.name] = fieldValidator(
+        field,
+        initialValues[field.name],
+        combinedConfigs,
+      );
     });
   }
 
@@ -67,9 +73,9 @@ export default function Main({
 
   const onChange = (name, value) => {
     onChangeValue(name, value);
-    if (combinedConfig.validateOnChange) {
+    if (combinedConfigs.validateOnChange) {
       const targetField = fields.find((field) => field.name === name);
-      const message = fieldValidator(targetField, value);
+      const message = fieldValidator(targetField, value, combinedConfigs);
       onChangeError(name, message);
     }
     setHasSubmitError(false);
@@ -78,7 +84,7 @@ export default function Main({
   const preSubmit = () => {
     const errors = {};
     fields.forEach((field) => {
-      const message = fieldValidator(field, formValues[field.name]);
+      const message = fieldValidator(field, formValues[field.name], combinedConfigs);
       errors[field.name] = message;
     });
     setFormErrors(errors);
@@ -93,7 +99,7 @@ export default function Main({
     mode,
     fields,
     options,
-    configs: combinedConfig,
+    configs: combinedConfigs,
     values: formValues,
     errors: formErrors,
     actions: {
@@ -105,7 +111,7 @@ export default function Main({
 
   const formRender = () => (
     <Context.Provider value={context}>
-      <div style={{ padding: combinedConfig.innerSpacing }}>
+      <div style={{ padding: combinedConfigs.innerSpacing }}>
         <Form />
       </div>
     </Context.Provider>

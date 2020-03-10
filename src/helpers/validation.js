@@ -52,9 +52,9 @@ const minIsValid = (field, value) => {
 
 export const isEmptyErrors = (errors) => !Object.values(errors).find((error) => error);
 
-export const fieldValidator = (field, value) => {
+export const fieldValidator = (field, value, configs) => {
   if (field.required && !requiredIsValid(field, value)) {
-    return field.requiredError || 'This field is required.';
+    return field.requiredError || configs.requiredError;
   }
   if (
     isNumber(field.max)

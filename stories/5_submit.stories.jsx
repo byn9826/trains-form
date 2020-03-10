@@ -83,17 +83,13 @@ export const OPTIONS = {
 
 
 storiesOf('Submit', module)
-  .add('Built-in Button', () => {
+  .add('Built-in Submit Button', () => {
     const [formRender] = useForm({
       values: VALUES,
       fields: FIELDS,
       options: OPTIONS,
       mode: FORM_CONSTANTS.EDIT_MODE,
       onSubmit: (values) => window.confirm(`Success! Values: ${JSON.stringify(values)}`),
-      configs: {
-        submitTitle: 'Save',
-        submitError: 'Something wrong with your inputs!',
-      },
     });
     return formRender();
   });

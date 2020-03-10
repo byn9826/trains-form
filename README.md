@@ -12,6 +12,7 @@ import 'semantic-ui-css/semantic.min.css';
 1. Render forms directly by configs.
 2. Easily switch forms between view and edit mode.
 3. Built-in validations.
+4. Ability to customize all title and error messages.
 
 ## How to use
 [Complete demos & examples](https://byn9826.github.io/trains-forms)
@@ -148,18 +149,6 @@ return (
       <td>10</td>
     </tr>
     <tr>
-      <td>submitTitle</td>
-      <td>String</td>
-      <td>Customize the name of submit button.</td>
-      <td>'Submit'</td>
-    </tr>
-    <tr>
-      <td>submitError</td>
-      <td>String</td>
-      <td>Customize the content of error message when submit error occurs.</td>
-      <td>'Please check your inputs!'</td>
-    </tr>
-    <tr>
       <td>validateOnInitial</td>
       <td>Bolean</td>
       <td>
@@ -174,6 +163,24 @@ return (
         Determine should validate field on value changes or not. This will not affect validation on submit.
       </td>
       <td>true</td>
+    </tr>
+    <tr>
+      <td>submitTitle</td>
+      <td>String</td>
+      <td>Customize the name of submit button.</td>
+      <td>'Submit'</td>
+    </tr>
+    <tr>
+      <td>submitError</td>
+      <td>String</td>
+      <td>Customize the content of error message when submit error occurs.</td>
+      <td>'Please check your inputs!'</td>
+    </tr>
+    <tr>
+      <td>requiredError</td>
+      <td>String</td>
+      <td>Customize the content of error message on required fields globally.</td>
+      <td>'This field is required.'</td>
     </tr>
   </tbody>
 </table>
@@ -292,7 +299,7 @@ return (
         Define the content of error message for require validation.
       </td>
       <td>
-        'This field is required.'
+        (Same as Form Configs requiredError)
       </td>
       <td>
         Message, Text, Number, Password, Note, Toggle, Radio, Checkbox, SingleSelect
