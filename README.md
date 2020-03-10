@@ -9,9 +9,9 @@ npm install semantic-ui-css --save;
 import 'semantic-ui-css/semantic.min.css';
 ```
 ## Features
-1. Build forms with simple configs.
+1. Render forms directly by configs.
 2. Easily switch forms between view and edit mode.
-3. Built-in error handler.
+3. Built-in validations.
 
 ## How to use
 [Complete demos & examples](https://byn9826.github.io/trains-forms)
@@ -160,10 +160,18 @@ return (
       <td>'Please check your inputs!'</td>
     </tr>
     <tr>
+      <td>validateOnInitial</td>
+      <td>Bolean</td>
+      <td>
+        Determine should validate fields on initial form or not.
+      </td>
+      <td>false</td>
+    </tr>
+    <tr>
       <td>validateOnChange</td>
       <td>Bolean</td>
       <td>
-        Determine validate field value on change or not. This will not affect validation on submit
+        Determine should validate field on value changes or not. This will not affect validation on submit.
       </td>
       <td>true</td>
     </tr>

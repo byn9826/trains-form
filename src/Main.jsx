@@ -13,6 +13,7 @@ const CONFIGS_DEFAULT = {
   theme: SEMANTIC_THEME,
   submitTitle: 'Submit',
   submitError: 'Please check your inputs!',
+  validateOnInitial: false,
   validateOnChange: true,
 };
 
@@ -31,14 +32,25 @@ export default function Main({
     theme: configs.theme || CONFIGS_DEFAULT.theme,
     submitTitle: configs.submitTitle || CONFIGS_DEFAULT.submitTitle,
     submitError: configs.submitError || CONFIGS_DEFAULT.submitError,
+    validateOnInitial: isBoolean(configs.validateOnInitial)
+      ? configs.validateOnInitial
+      : CONFIGS_DEFAULT.validateOnInitial,
     validateOnChange: isBoolean(configs.validateOnChange)
       ? configs.validateOnChange
       : CONFIGS_DEFAULT.validateOnChange,
     allowSubmitButton: isFunction(onSubmit),
   };
 
-  const [formValues, setFormValues] = useState(buildInitialValues(values, fields));
-  const [formErrors, setFormErrors] = useState({});
+  const initialValues = buildInitialValues(values, fields);
+  const initialErrors = {};
+  if (configs.validateOnInitial) {
+    fields.forEach((field) => {
+      initialErrors[field.name] = fieldValidator(field, initialValues[field.name]);
+    });
+  }
+
+  const [formValues, setFormValues] = useState(initialValues);
+  const [formErrors, setFormErrors] = useState(initialErrors);
   const [hasSubmitError, setHasSubmitError] = useState(false);
 
   const onChangeValue = (name, value) => {

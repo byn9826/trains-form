@@ -42,6 +42,7 @@ export const CONFIGS_TYPE = PropTypes.shape({
   submitTitle: PropTypes.string,
   submitError: PropTypes.string,
   allowSubmitButton: PropTypes.bool,
+  validateOnInitial: PropTypes.bool,
   validateOnChange: PropTypes.bool,
 });
 
