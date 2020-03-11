@@ -5,18 +5,27 @@ import {
   PASSWORD_TYPE,
   TOGGLE_TYPE,
   CHECKBOX_TYPE,
+  RADIO_TYPE,
+  SINGLE_SELECT_TYPE,
 } from './constants';
 import { isNumber, isBoolean, isNotEmpty } from './utils';
 
-const isStringType = (type) => (
+export const isStringType = (type) => (
   type === TEXT_TYPE
   || type === NOTE_TYPE
   || type === PASSWORD_TYPE
 );
 
-const isNumberType = (type) => type === NUMBER_TYPE;
+export const isNumberType = (type) => type === NUMBER_TYPE;
 
-const isArrayType = (type) => type === CHECKBOX_TYPE;
+export const isArrayType = (type) => type === CHECKBOX_TYPE;
+
+export const isBooleanType = (type) => type === TOGGLE_TYPE;
+
+export const isSelectType = (type) => (
+  type === RADIO_TYPE
+  || type === SINGLE_SELECT_TYPE
+);
 
 const isMinMaxType = (type) => isStringType(type) || isNumberType(type) || isArrayType(type);
 

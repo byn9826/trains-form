@@ -42,7 +42,12 @@ export default function Element({ field, disabled }) {
     [MESSAGE_TYPE]: Message,
   };
 
-  const TargetElement = elements[field.type] || Message;
+  let TargetElement;
+  if (configs.viewAsMessage) {
+    TargetElement = Message;
+  } else {
+    TargetElement = elements[field.type] || Message;
+  }
 
   return (
     <TargetElement

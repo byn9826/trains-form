@@ -13,6 +13,7 @@ const CONFIGS_DEFAULT = {
   theme: SEMANTIC_THEME,
   validateOnInitial: false,
   validateOnChange: true,
+  viewAsMessage: false,
   submitTitle: 'Submit',
   submitError: 'Please check your inputs!',
   requiredError: 'This field is required.',
@@ -41,6 +42,9 @@ export default function Main({
     validateOnChange: isBoolean(configs.validateOnChange)
       ? configs.validateOnChange
       : CONFIGS_DEFAULT.validateOnChange,
+    viewAsMessage: isBoolean(configs.viewAsMessage)
+      ? configs.viewAsMessage
+      : CONFIGS_DEFAULT.viewAsMessage,
   };
 
   const initialValues = buildInitialValues(values, fields);

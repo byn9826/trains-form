@@ -12,10 +12,10 @@ import 'semantic-ui-css/semantic.min.css';
 1. Render forms directly by configs.
 2. Easily switch forms between view and edit mode.
 3. Built-in validations.
-4. Ability to customize all title and error messages.
+4. Ability to customize title and error messages.
 
 ## How to use
-[Complete demos & examples](https://byn9826.github.io/trains-forms)
+[Detailed demos & examples](https://byn9826.github.io/trains-forms)
 ### Simple Example
 ```
 import useForm, { FORM_CONSTANTS };
@@ -150,7 +150,7 @@ return (
     </tr>
     <tr>
       <td>validateOnInitial</td>
-      <td>Bolean</td>
+      <td>Boolean</td>
       <td>
         Determine should validate fields on initial form or not.
       </td>
@@ -158,11 +158,19 @@ return (
     </tr>
     <tr>
       <td>validateOnChange</td>
-      <td>Bolean</td>
+      <td>Boolean</td>
       <td>
         Determine should validate field on value changes or not. This will not affect validation on submit.
       </td>
       <td>true</td>
+    </tr>
+    <tr>
+      <td>viewAsMessage</td>
+      <td>Boolean</td>
+      <td>
+        Display fields in view mode as plain messages rather than disabled fields.
+      </td>
+      <td>false</td>
     </tr>
     <tr>
       <td>submitTitle</td>

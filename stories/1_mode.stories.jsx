@@ -9,7 +9,10 @@ const VALUES = {
   radio: 1,
   password: '12345',
   toggle: true,
+  note: 'a textarea field',
   checkbox_1: [1, 2],
+  single_select: 1,
+  radio_1: 0,
 };
 
 const FIELDS = autoAppendTitleExample([
@@ -76,6 +79,18 @@ storiesOf('Mode', module)
       fields: FIELDS,
       options: OPTIONS,
       mode: FORM_CONSTANTS.VIEW_MODE,
+    });
+    return formRender();
+  })
+  .add('View as message', () => {
+    const [formRender] = useForm({
+      values: VALUES,
+      fields: FIELDS,
+      options: OPTIONS,
+      mode: FORM_CONSTANTS.VIEW_MODE,
+      configs: {
+        viewAsMessage: true,
+      },
     });
     return formRender();
   })
