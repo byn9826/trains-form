@@ -29,7 +29,7 @@ const REQUIRED_FIELDS = autoAppendTitleExample([
 ]);
 
 storiesOf('Message Config', module)
-  .add('Customize message for required error', () => {
+  .add('Customize messages for required error', () => {
     const [formRender] = useForm({
       values: REQUIRED_VALUES,
       fields: REQUIRED_FIELDS,
@@ -40,7 +40,7 @@ storiesOf('Message Config', module)
     });
     return formRender();
   })
-  .add('Customize message for submit button', () => {
+  .add('Customize messages for submit button', () => {
     const [formRender] = useForm({
       values: REQUIRED_VALUES,
       fields: REQUIRED_FIELDS,

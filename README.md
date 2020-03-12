@@ -1,4 +1,5 @@
 # TrainsForms
+All in one dynamic form builder in React.
 
 ## Install
 ```
@@ -51,7 +52,7 @@ const options = {
   ],
 };
 
-const [formRender] = useForm({
+const [formRender, getFormDetails] = useForm({
   fields,
   values,
   options,
@@ -60,9 +61,17 @@ const [formRender] = useForm({
 
 return (
   <div>
-    ...
     {formRender()}
-    ...
+    <button
+      onClick={() => {
+        const details = getFormDetails();
+        console.log('All inputs are valid:', details.isReady);
+        console.log('Field Values:', details.values);
+        console.log('Field Errors:', details.errors);
+      }}
+    >
+      Get Form Detail
+    </button>
   </div>
 );
 ```

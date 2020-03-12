@@ -85,18 +85,32 @@ export default function Main({
     setHasSubmitError(false);
   };
 
-  const preSubmit = () => {
+  const getFormErrors = () => {
     const errors = {};
     fields.forEach((field) => {
       const message = fieldValidator(field, formValues[field.name], combinedConfigs);
       errors[field.name] = message;
     });
+    return errors;
+  };
+
+  const preSubmit = () => {
+    const errors = getFormErrors();
     setFormErrors(errors);
     if (isEmptyErrors(errors)) {
       onSubmit(formValues);
     } else {
       setHasSubmitError(true);
     }
+  };
+
+  const getFormDetails = () => {
+    const errors = getFormErrors();
+    return {
+      isReady: isEmptyErrors(errors),
+      values: formValues,
+      errors,
+    };
   };
 
   const context = {
@@ -121,7 +135,7 @@ export default function Main({
     </Context.Provider>
   );
 
-  return [formRender];
+  return [formRender, getFormDetails];
 }
 
 Main.propTypes = {

@@ -1,3 +1,4 @@
+import React from 'react';
 import { storiesOf } from '@storybook/react';
 import useForm, { FORM_CONSTANTS } from '../src/index';
 import { autoAppendTitleExample } from './helpers';
@@ -92,4 +93,32 @@ storiesOf('Submit', module)
       onSubmit: (values) => window.confirm(`Success! Values: ${JSON.stringify(values)}`),
     });
     return formRender();
+  })
+  .add('getFormDetails function', () => {
+    const [formRender, getFormDetails] = useForm({
+      values: VALUES,
+      fields: FIELDS,
+      options: OPTIONS,
+      mode: FORM_CONSTANTS.EDIT_MODE,
+    });
+    return (
+      <div>
+        {formRender()}
+        <button
+          className="ui primary button"
+          type="button"
+          onClick={() => {
+            const formDetails = getFormDetails();
+            window.confirm(`All inputs are valid: ${formDetails.isReady}`);
+            window.confirm(`Field Values: ${JSON.stringify(formDetails.values)}`);
+            window.confirm(`Field Errors: ${JSON.stringify(formDetails.errors)}`);
+          }}
+          style={{
+            marginLeft: 20,
+          }}
+        >
+          Get From Details
+        </button>
+      </div>
+    );
   });
