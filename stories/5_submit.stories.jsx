@@ -117,7 +117,20 @@ storiesOf('Submit', module)
             marginLeft: 20,
           }}
         >
-          Get From Details
+          Get Form Details
+        </button>
+        <button
+          className="ui primary button"
+          type="button"
+          onClick={() => {
+            const details = getFormDetails(true);
+            window.confirm(JSON.stringify(details));
+          }}
+          style={{
+            marginLeft: 20,
+          }}
+        >
+          Get details and display error messages
         </button>
       </div>
     );

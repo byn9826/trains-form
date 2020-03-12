@@ -104,8 +104,11 @@ export default function Main({
     }
   };
 
-  const getFormDetails = () => {
+  const getFormDetails = (shouldTriggerValidation = false) => {
     const errors = getFormErrors();
+    if (shouldTriggerValidation) {
+      setFormErrors(errors);
+    }
     return {
       isReady: isEmptyErrors(errors),
       values: formValues,

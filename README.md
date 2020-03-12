@@ -70,7 +70,10 @@ return (
         console.log('Field Errors:', details.errors);
       }}
     >
-      Get Form Detail
+      Get Details
+    </button>
+    <button onClick={() => getFormDetails(true)}>
+      Get details and display error messages.
     </button>
   </div>
 );
