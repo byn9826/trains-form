@@ -40,9 +40,7 @@ const fields = [
   },
 ];
 
-const values = {
-  pet_name: 'Shilee',
-};
+const values = { pet_name: 'Shilee' };
 
 const options = {
   pet_type: [
@@ -53,11 +51,8 @@ const options = {
   ],
 };
 
-const [formRender, getFormDetails] = useForm({
-  fields,
-  values,
-  options,
-  mode: FORM_CONSTANTS.EDIT_MODE,
+const [formRender, { getFormDetails, resetFormValues }] = useForm({
+  fields, values, options, mode: FORM_CONSTANTS.EDIT_MODE,
 });
 
 return (
@@ -66,15 +61,16 @@ return (
     <button
       onClick={() => {
         const details = getFormDetails();
-        console.log('All inputs are valid:', details.isReady);
-        console.log('Field Values:', details.values);
-        console.log('Field Errors:', details.errors);
+        console.log(details.isReady, details.values, details.errors);
       }}
     >
-      Get Details
+      Get Details.
     </button>
-    <button onClick={() => getFormDetails(true)}>
+    <button onClick={() => getFormDetails({ validating: true })}>
       Get details and display error messages.
+    </button>
+    <button onClick={resetFromValues}>
+      Reset to form initial values.
     </button>
   </div>
 );

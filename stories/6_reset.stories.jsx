@@ -83,19 +83,9 @@ export const OPTIONS = {
 };
 
 
-storiesOf('Submit', module)
-  .add('Built-in Submit Button', () => {
-    const [formRender] = useForm({
-      values: VALUES,
-      fields: FIELDS,
-      options: OPTIONS,
-      mode: FORM_CONSTANTS.EDIT_MODE,
-      onSubmit: (values) => window.confirm(`Success! Values: ${JSON.stringify(values)}`),
-    });
-    return formRender();
-  })
-  .add('getFormDetails function', () => {
-    const [formRender, { getFormDetails }] = useForm({
+storiesOf('Reset', module)
+  .add('resetValues function', () => {
+    const [formRender, { resetFormValues }] = useForm({
       values: VALUES,
       fields: FIELDS,
       options: OPTIONS,
@@ -108,29 +98,14 @@ storiesOf('Submit', module)
           className="ui primary button"
           type="button"
           onClick={() => {
-            const formDetails = getFormDetails();
-            window.confirm(`All inputs are valid: ${formDetails.isReady}`);
-            window.confirm(`Field Values: ${JSON.stringify(formDetails.values)}`);
-            window.confirm(`Field Errors: ${JSON.stringify(formDetails.errors)}`);
+            resetFormValues();
+            window.confirm('Will Reset!');
           }}
           style={{
             marginLeft: 20,
           }}
         >
-          Get Form Details
-        </button>
-        <button
-          className="ui primary button"
-          type="button"
-          onClick={() => {
-            const details = getFormDetails({ validating: true });
-            window.confirm(JSON.stringify(details));
-          }}
-          style={{
-            marginLeft: 20,
-          }}
-        >
-          Get details and display error messages
+          Reset to initial values
         </button>
       </div>
     );

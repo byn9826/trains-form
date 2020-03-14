@@ -104,9 +104,9 @@ export default function Main({
     }
   };
 
-  const getFormDetails = (shouldTriggerValidation = false) => {
+  const getFormDetails = (triggers) => {
     const errors = getFormErrors();
-    if (shouldTriggerValidation) {
+    if (triggers.validating) {
       setFormErrors(errors);
     }
     return {
@@ -114,6 +114,11 @@ export default function Main({
       values: formValues,
       errors,
     };
+  };
+
+  const resetFormValues = () => {
+    setFormValues(initialValues);
+    setFormErrors(initialErrors);
   };
 
   const context = {
@@ -138,7 +143,10 @@ export default function Main({
     </Context.Provider>
   );
 
-  return [formRender, getFormDetails];
+  return [formRender, {
+    getFormDetails,
+    resetFormValues,
+  }];
 }
 
 Main.propTypes = {
