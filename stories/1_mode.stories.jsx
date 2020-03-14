@@ -84,7 +84,10 @@ storiesOf('Mode', module)
   })
   .add('View as message', () => {
     const [formRender] = useForm({
-      values: VALUES,
+      values: {
+        ...VALUES,
+        message: 'Examples of how to build a form for viewing as messages',
+      },
       fields: FIELDS,
       options: OPTIONS,
       mode: FORM_CONSTANTS.VIEW_MODE,

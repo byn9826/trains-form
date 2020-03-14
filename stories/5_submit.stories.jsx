@@ -96,7 +96,10 @@ storiesOf('Submit', module)
   })
   .add('getFormDetails Action', () => {
     const [formRender, { getFormDetails }] = useForm({
-      values: VALUES,
+      values: {
+        ...VALUES,
+        message: 'Examples of how to use getFormDetails action',
+      },
       fields: FIELDS,
       options: OPTIONS,
       mode: FORM_CONSTANTS.EDIT_MODE,

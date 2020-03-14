@@ -4,7 +4,7 @@ import useForm, { FORM_CONSTANTS } from '../src/index';
 import { autoAppendTitleExample } from './helpers';
 
 const VALUES = {
-  message: 'Examples of how to use built-in submit button',
+  message: 'Examples of how to use validateFormValues action',
   number: 1,
   text: 'Init value for Text type field',
   radio: 1,
@@ -109,7 +109,10 @@ storiesOf('Form Action', module)
   })
   .add('resetFormValues Action', () => {
     const [formRender, { resetFormValues }] = useForm({
-      values: VALUES,
+      values: {
+        ...VALUES,
+        message: 'Example of how to use resetFormValues action',
+      },
       fields: FIELDS,
       options: OPTIONS,
       mode: FORM_CONSTANTS.EDIT_MODE,
