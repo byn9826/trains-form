@@ -51,7 +51,11 @@ const options = {
   ],
 };
 
-const [formRender, { getFormDetails, resetFormValues }] = useForm({
+const [formRender, {
+  getFormDetails,
+  resetFormValues,
+  validateFormValues,
+}] = useForm({
   fields, values, options, mode: FORM_CONSTANTS.EDIT_MODE,
 });
 
@@ -64,13 +68,13 @@ return (
         console.log(details.isReady, details.values, details.errors);
       }}
     >
-      Get Details.
+      Get form status, values, errors.
     </button>
-    <button onClick={() => getFormDetails({ validating: true })}>
-      Get details and display error messages.
-    </button>
-    <button onClick={resetFromValues}>
+    <button onClick={resetFormValues}>
       Reset to form initial values.
+    </button>
+    <button onClick={validateFormValues}>
+      Validate all fields and display error messages.
     </button>
   </div>
 );

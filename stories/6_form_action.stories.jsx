@@ -83,8 +83,31 @@ export const OPTIONS = {
 };
 
 
-storiesOf('Reset', module)
-  .add('resetValues function', () => {
+storiesOf('Form Action', module)
+  .add('validateFormValues Action', () => {
+    const [formRender, { validateFormValues }] = useForm({
+      values: VALUES,
+      fields: FIELDS,
+      options: OPTIONS,
+      mode: FORM_CONSTANTS.EDIT_MODE,
+    });
+    return (
+      <div>
+        {formRender()}
+        <button
+          className="ui primary button"
+          type="button"
+          onClick={validateFormValues}
+          style={{
+            marginLeft: 20,
+          }}
+        >
+          Trigger validation on all fields
+        </button>
+      </div>
+    );
+  })
+  .add('resetFormValues Action', () => {
     const [formRender, { resetFormValues }] = useForm({
       values: VALUES,
       fields: FIELDS,
@@ -97,10 +120,7 @@ storiesOf('Reset', module)
         <button
           className="ui primary button"
           type="button"
-          onClick={() => {
-            resetFormValues();
-            window.confirm('Will Reset!');
-          }}
+          onClick={resetFormValues}
           style={{
             marginLeft: 20,
           }}

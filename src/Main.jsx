@@ -104,11 +104,8 @@ export default function Main({
     }
   };
 
-  const getFormDetails = (triggers) => {
+  const getFormDetails = () => {
     const errors = getFormErrors();
-    if (triggers.validating) {
-      setFormErrors(errors);
-    }
     return {
       isReady: isEmptyErrors(errors),
       values: formValues,
@@ -120,6 +117,8 @@ export default function Main({
     setFormValues(initialValues);
     setFormErrors(initialErrors);
   };
+
+  const validateFormValues = () => setFormErrors(getFormErrors());
 
   const context = {
     mode,
@@ -146,6 +145,7 @@ export default function Main({
   return [formRender, {
     getFormDetails,
     resetFormValues,
+    validateFormValues,
   }];
 }
 

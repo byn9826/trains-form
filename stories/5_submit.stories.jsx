@@ -94,7 +94,7 @@ storiesOf('Submit', module)
     });
     return formRender();
   })
-  .add('getFormDetails function', () => {
+  .add('getFormDetails Action', () => {
     const [formRender, { getFormDetails }] = useForm({
       values: VALUES,
       fields: FIELDS,
@@ -118,19 +118,6 @@ storiesOf('Submit', module)
           }}
         >
           Get Form Details
-        </button>
-        <button
-          className="ui primary button"
-          type="button"
-          onClick={() => {
-            const details = getFormDetails({ validating: true });
-            window.confirm(JSON.stringify(details));
-          }}
-          style={{
-            marginLeft: 20,
-          }}
-        >
-          Get details and display error messages
         </button>
       </div>
     );
