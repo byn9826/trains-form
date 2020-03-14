@@ -1,6 +1,8 @@
 # TrainsForms
 All in one dynamic form builder in React.
 
+[![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/byn9826/trains-forms/blob/master/LICENSE)
+[![npm](https://img.shields.io/npm/dt/trains-forms)](https://www.npmjs.com/package/trains-forms)
 ## Install
 ```
 npm install trains-forms --save;
@@ -10,11 +12,10 @@ npm install semantic-ui-css --save;
 import 'semantic-ui-css/semantic.min.css';
 ```
 ## Features
-1. Render forms directly by configs.
-2. Easily switch forms between view and edit mode.
-3. Built-in validations.
-4. Ability to customize title and error messages.
-
+1. Could render forms directly by simple configs.
+2. Could easily switch between view and edit mode.
+3. Built-in field validations and could be customized.
+4. Built-in error messages and could be customized.
 ## How to use
 [Detailed demos & examples](https://byn9826.github.io/trains-forms)
 ### Simple Example
@@ -323,6 +324,38 @@ return (
       </td>
       <td>
         Message, Text, Number, Password, Note, Toggle, Radio, Checkbox, SingleSelect
+      </td>
+    </tr>
+    <tr>
+      <td>
+        match
+      </td>
+      <td>
+        Regx
+      </td>
+      <td>
+        Require value match the regx provided.
+      </td>
+      <td></td>
+      <td>
+        Text, Password, Note
+      </td>
+    </tr>
+    <tr>
+      <td>
+        matchError
+      </td>
+      <td>
+        String
+      </td>
+      <td>
+        Define the content of error message for regx validation.
+      </td>
+      <td>
+        `Regx: ${field.match}`
+      </td>
+      <td>
+        Text, Password, Note
       </td>
     </tr>
     <tr>

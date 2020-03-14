@@ -145,6 +145,42 @@ const MAX_MIN_FIELDS = autoAppendTitleExample([
   },
 ]);
 
+const MATCH_VALUES = {
+  message: 'Examples of how to define field validation based on regular expression',
+  text: '',
+  password: '',
+};
+
+const MATCH_FIELDS = autoAppendTitleExample([
+  {
+    type: FORM_CONSTANTS.MESSAGE_TYPE,
+    name: 'message',
+  },
+  {
+    type: FORM_CONSTANTS.TEXT_TYPE,
+    name: 'text',
+    required: true,
+    width: 50,
+    match: /\S+@\S+\.\S+/,
+    matchError: 'Email required',
+  },
+  {
+    type: FORM_CONSTANTS.PASSWORD_TYPE,
+    name: 'password',
+    required: true,
+    match: /^[A-Z]/,
+    matchError: 'Should start with upper case letter',
+    width: 50,
+  },
+  {
+    type: FORM_CONSTANTS.NOTE_TYPE,
+    name: 'note',
+    match: /^[ABC]/,
+    width: 50,
+    matchError: 'Should start with A or B or C',
+  },
+]);
+
 storiesOf('Field Validation', module)
   .add('Required', () => {
     const [formRender] = useForm({
@@ -160,6 +196,14 @@ storiesOf('Field Validation', module)
       values: MAX_MIN_VALUES,
       fields: MAX_MIN_FIELDS,
       options: OPTIONS,
+      mode: FORM_CONSTANTS.EDIT_MODE,
+    });
+    return formRender();
+  })
+  .add('Regular Expression', () => {
+    const [formRender] = useForm({
+      values: MATCH_VALUES,
+      fields: MATCH_FIELDS,
       mode: FORM_CONSTANTS.EDIT_MODE,
     });
     return formRender();

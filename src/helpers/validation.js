@@ -66,6 +66,13 @@ export const fieldValidator = (field, value, configs) => {
     return field.requiredError || configs.requiredError;
   }
   if (
+    field.match
+    && isStringType(field.type)
+    && !value.match(field.match)
+  ) {
+    return field.matchError || `Regx: ${field.match}`;
+  }
+  if (
     isNumber(field.max)
     && isMinMaxType(field.type)
     && isNotEmpty(value)
