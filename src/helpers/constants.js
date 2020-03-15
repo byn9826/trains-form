@@ -11,6 +11,7 @@ export const TOGGLE_TYPE = 'Toggle';
 export const RADIO_TYPE = 'Radio';
 export const CHECKBOX_TYPE = 'Checkbox';
 export const SINGLE_SELECT_TYPE = 'SingleSelect';
+export const DATE_TYPE = 'Date';
 export const TYPES = [
   MESSAGE_TYPE,
   TEXT_TYPE,
@@ -21,6 +22,7 @@ export const TYPES = [
   RADIO_TYPE,
   CHECKBOX_TYPE,
   SINGLE_SELECT_TYPE,
+  DATE_TYPE,
 ];
 
 export const SEMANTIC_THEME = 'Semantic';

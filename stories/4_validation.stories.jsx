@@ -68,6 +68,13 @@ const REQUIRED_FIELDS = autoAppendTitleExample([
     required: true,
     width: 50,
   },
+  {
+    type: FORM_CONSTANTS.DATE_TYPE,
+    name: 'date',
+    required: true,
+    width: 50,
+    default: new Date(),
+  },
 ]);
 
 const OPTIONS = {

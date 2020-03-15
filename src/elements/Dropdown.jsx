@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import * as Types from '../helpers/types';
 import { SEMANTIC_THEME } from '../helpers/constants';
 import { buildClassNames } from '../helpers/builder';
+import { getDropdownStyle } from '../helpers/style';
 
 export default function Dropdown({
   disabled,
@@ -12,15 +13,20 @@ export default function Dropdown({
   theme,
   placeholder,
   onChange,
+  allowClear = true,
 }) {
   const [showDropdown, setShowDropdown] = useState(false);
   const selectedValue = options.find((option) => option.value === value);
 
-  const onClickOption = (option) => {
+  const onClickOption = (e, option) => {
+    e.stopPropagation();
     onChange(name, option.value);
     setShowDropdown(false);
   };
-  const onClickField = () => setShowDropdown(!showDropdown);
+  const onClickField = (e) => {
+    e.stopPropagation();
+    setShowDropdown(!showDropdown);
+  };
   const onClickIcon = (e) => {
     e.stopPropagation();
     if (selectedValue) {
@@ -44,10 +50,7 @@ export default function Dropdown({
           role="button"
           style={{
             ...style,
-            display: 'flex',
-            justifyContent: 'space-between',
-            paddingLeft: 10,
-            paddingRight: 10,
+            ...getDropdownStyle(showDropdown),
           }}
         >
           {selectedValue && (
@@ -61,7 +64,7 @@ export default function Dropdown({
             </div>
           )}
           {
-            !disabled && (
+            allowClear && !disabled && (
               <i
                 className={buildClassNames({
                   icon: true,
@@ -85,8 +88,8 @@ export default function Dropdown({
                 <div
                   className="item"
                   key={option.value}
-                  onClick={() => onClickOption(option)}
-                  onKeyDown={() => onClickOption(option)}
+                  onClick={(e) => onClickOption(e, option)}
+                  onKeyDown={(e) => onClickOption(e, option)}
                   role="button"
                 >
                   {option.label}

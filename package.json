@@ -1,14 +1,13 @@
 {
   "name": "trains-forms",
-  "version": "1.1.3",
-  "description": "Dynamic Form Builder in React",
+  "version": "1.2.0",
+  "description": "All in One Dynamic React Form Builder",
   "keywords": [
-    "Dynamic Form Builder",
-    "Form Mode",
-    "Form Display",
-    "Form Value",
+    "Dynamic Form",
+    "Form Builder",
+    "React Form",
     "Form Validation",
-    "Form Submit"
+    "Date Picker"
   ],
   "main": "dist/index.js",
   "scripts": {

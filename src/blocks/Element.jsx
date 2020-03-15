@@ -11,6 +11,7 @@ import {
   RADIO_TYPE,
   CHECKBOX_TYPE,
   SINGLE_SELECT_TYPE,
+  DATE_TYPE,
 } from '../helpers/constants';
 import Context from '../helpers/context';
 import Input from '../elements/Input';
@@ -21,6 +22,7 @@ import Message from '../elements/Message';
 import Radio from '../elements/Radio';
 import Dropdown from '../elements/Dropdown';
 import Checkbox from '../elements/Checkbox';
+import Calendar from '../elements/Calendar';
 
 export default function Element({ field, disabled }) {
   const {
@@ -40,6 +42,7 @@ export default function Element({ field, disabled }) {
     [CHECKBOX_TYPE]: Checkbox,
     [SINGLE_SELECT_TYPE]: Dropdown,
     [MESSAGE_TYPE]: Message,
+    [DATE_TYPE]: Calendar,
   };
 
   let TargetElement;

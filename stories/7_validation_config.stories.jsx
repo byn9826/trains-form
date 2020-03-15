@@ -102,6 +102,11 @@ const FIELDS = autoAppendTitleExample([
     required: true,
     width: 50,
   },
+  {
+    type: FORM_CONSTANTS.DATE_TYPE,
+    name: 'date',
+    required: true,
+  },
 ]);
 
 storiesOf('Validation Config', module)

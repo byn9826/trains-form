@@ -13,6 +13,7 @@ const VALUES = {
   checkbox_1: [1, 2],
   single_select: 1,
   radio_1: 0,
+  date_picker: new Date(),
 };
 
 const FIELDS = autoAppendTitleExample([
@@ -51,6 +52,10 @@ const FIELDS = autoAppendTitleExample([
   {
     type: FORM_CONSTANTS.SINGLE_SELECT_TYPE,
     name: 'single_select',
+  },
+  {
+    type: FORM_CONSTANTS.DATE_TYPE,
+    name: 'date_picker',
   },
 ]);
 

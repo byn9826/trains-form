@@ -7,7 +7,9 @@ import {
   isSelectType,
   isBooleanType,
   isArrayType,
+  isCalendarType,
 } from '../helpers/validation';
+import { getDateString } from '../helpers/utils';
 
 export default function Message({
   style,
@@ -39,6 +41,8 @@ export default function Message({
       if (matchedOptions.length !== 0) {
         labelValue = matchedOptions.join(', ');
       }
+    } else if (isCalendarType(type)) {
+      labelValue = getDateString(value);
     }
   }
   switch (theme) {

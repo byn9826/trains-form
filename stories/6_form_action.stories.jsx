@@ -62,6 +62,11 @@ export const FIELDS = autoAppendTitleExample([
     name: 'single_select',
     required: true,
   },
+  {
+    type: FORM_CONSTANTS.DATE_TYPE,
+    name: 'date',
+    required: true,
+  },
 ]);
 
 export const OPTIONS = {
