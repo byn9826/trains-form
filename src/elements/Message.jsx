@@ -9,7 +9,7 @@ import {
   isArrayType,
   isCalendarType,
 } from '../helpers/validation';
-import { getDateString } from '../helpers/utils';
+import { getDateString } from '../helpers/datetime';
 
 export default function Message({
   style,

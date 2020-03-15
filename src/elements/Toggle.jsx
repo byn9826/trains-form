@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import * as Types from '../helpers/types';
 import { SEMANTIC_THEME } from '../helpers/constants';
 
@@ -30,4 +31,7 @@ export default function Toggle({
   }
 }
 
-Toggle.propTypes = Types.ELEMENT_TYPE;
+Toggle.propTypes = {
+  ...Types.ELEMENT_TYPE,
+  value: PropTypes.bool,
+};

@@ -1,4 +1,4 @@
-import { isDefined } from './utils';
+import { isDefined, isDate, isArray } from './utils';
 import {
   TEXT_TYPE,
   NOTE_TYPE,
@@ -31,13 +31,17 @@ export const buildInitialValues = (values, fields) => {
         break;
       case RADIO_TYPE:
       case SINGLE_SELECT_TYPE:
-      case DATE_TYPE:
         initValues[field.name] = isDefined(field.default) ? field.default : null;
         break;
       case CHECKBOX_TYPE:
-        initValues[field.name] = isDefined(field.default) && Array.isArray(field.default)
+        initValues[field.name] = isDefined(field.default) && isArray(field.default)
           ? field.default
           : [];
+        break;
+      case DATE_TYPE:
+        initValues[field.name] = isDefined(field.default) && isDate(field.default)
+          ? field.default
+          : null;
         break;
       default:
         break;

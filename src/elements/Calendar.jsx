@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import * as Types from '../helpers/types';
 import { SEMANTIC_THEME } from '../helpers/constants';
 import { buildClassNames } from '../helpers/builder';
@@ -7,7 +8,7 @@ import {
   getMonthName,
   getWeekdayName,
   getDateString,
-} from '../helpers/utils';
+} from '../helpers/datetime';
 import { getDropdownStyle } from '../helpers/style';
 import Dropdown from './Dropdown';
 
@@ -271,4 +272,7 @@ export default function Calendar({
   }
 }
 
-Calendar.propTypes = Types.ELEMENT_TYPE;
+Calendar.propTypes = {
+  ...Types.ELEMENT_TYPE,
+  value: PropTypes.instanceOf(Date),
+};

@@ -1,5 +1,5 @@
 # TrainsForms
-All in one dynamic form builder in React.
+All in one React dynamic form builder, make form easier.
 
 [![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/byn9826/trains-forms/blob/master/LICENSE)
 [![npm](https://img.shields.io/npm/dt/trains-forms)](https://www.npmjs.com/package/trains-forms)
@@ -12,10 +12,12 @@ npm install semantic-ui-css --save;
 import 'semantic-ui-css/semantic.min.css';
 ```
 ## Features
-1. Could render forms directly by simple configs.
-2. Could easily switch between view and edit mode.
-3. Built-in field validations and could be customized.
-4. Built-in error messages and could be customized.
+1. Render complex form by simple configs.
+2. Easily switch between view and edit mode.
+3. Built-in configurable validations.
+4. Configurable error messages.
+5. Built-in date picker.
+6. Minimal dependencies, small bundle size.
 ## How to use
 [Detailed demos & examples](https://byn9826.github.io/trains-forms)
 ### Simple Example

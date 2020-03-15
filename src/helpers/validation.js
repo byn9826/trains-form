@@ -9,7 +9,12 @@ import {
   SINGLE_SELECT_TYPE,
   DATE_TYPE,
 } from './constants';
-import { isNumber, isBoolean, isNotEmpty } from './utils';
+import {
+  isNumber,
+  isBoolean,
+  isArray,
+  isNotEmpty,
+} from './utils';
 
 export const isStringType = (type) => (
   type === TEXT_TYPE
@@ -37,7 +42,7 @@ const requiredIsValid = (field, value) => {
     return isBoolean(value);
   }
   if (field.type === CHECKBOX_TYPE) {
-    return Array.isArray(value) && value.length !== 0;
+    return isArray(value) && value.length !== 0;
   }
   return isNotEmpty(value);
 };

@@ -9,8 +9,8 @@ export const VALUE_TYPE = PropTypes.oneOfType([
   PropTypes.string,
   PropTypes.number,
   PropTypes.bool,
-  PropTypes.object,
   PropTypes.array,
+  PropTypes.instanceOf(Date),
 ]);
 
 export const MODE_TYPE = PropTypes.oneOf(MODES);

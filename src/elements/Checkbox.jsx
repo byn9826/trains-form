@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import * as Types from '../helpers/types';
 import { SEMANTIC_THEME } from '../helpers/constants';
 
@@ -58,4 +59,7 @@ export default function Checkbox({
   }
 }
 
-Checkbox.propTypes = Types.ELEMENT_TYPE;
+Checkbox.propTypes = {
+  ...Types.ELEMENT_TYPE,
+  value: PropTypes.array,
+};
