@@ -52,6 +52,11 @@ const FIELDS = autoAppendTitleExample([
     name: 'single_select',
     default: 2,
   },
+  {
+    type: FORM_CONSTANTS.DATE_TYPE,
+    name: 'date_picker',
+    default: new Date(),
+  },
 ]);
 
 const OPTIONS = {

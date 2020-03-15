@@ -58,7 +58,4 @@ export default function Checkbox({
   }
 }
 
-Checkbox.propTypes = {
-  ...Types.ELEMENT_TYPE,
-  value: Types.ARRAY_VALUE_TYPE,
-};
+Checkbox.propTypes = Types.ELEMENT_TYPE;

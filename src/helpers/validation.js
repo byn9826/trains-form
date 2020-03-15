@@ -7,6 +7,7 @@ import {
   CHECKBOX_TYPE,
   RADIO_TYPE,
   SINGLE_SELECT_TYPE,
+  DATE_TYPE,
 } from './constants';
 import { isNumber, isBoolean, isNotEmpty } from './utils';
 
@@ -26,6 +27,8 @@ export const isSelectType = (type) => (
   type === RADIO_TYPE
   || type === SINGLE_SELECT_TYPE
 );
+
+export const isCalendarType = (type) => type === DATE_TYPE;
 
 const isMinMaxType = (type) => isStringType(type) || isNumberType(type) || isArrayType(type);
 

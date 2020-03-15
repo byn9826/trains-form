@@ -9,6 +9,7 @@ const WIDTH_VALUES = {
   note_1: '33.3% width',
   password: '123456',
   checkbox: [1, 2],
+  date: new Date(),
 };
 
 const WIDTH_FIELDS = autoAppendTitleExample([
@@ -75,6 +76,11 @@ const WIDTH_FIELDS = autoAppendTitleExample([
     type: FORM_CONSTANTS.SINGLE_SELECT_TYPE,
     name: 'single_select',
     width: 30,
+  },
+  {
+    type: FORM_CONSTANTS.DATE_TYPE,
+    name: 'date',
+    width: 40,
   },
 ]);
 
@@ -144,6 +150,11 @@ const PLACEHOLDER_FIELDS = autoAppendTitleExample([
     type: FORM_CONSTANTS.SINGLE_SELECT_TYPE,
     name: 'single_select',
     placeholder: 'Please select...',
+  },
+  {
+    type: FORM_CONSTANTS.DATE_TYPE,
+    name: 'date_picker',
+    placeholder: 'Select a date...',
   },
 ]);
 

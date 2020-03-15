@@ -9,6 +9,7 @@ import {
   RADIO_TYPE,
   CHECKBOX_TYPE,
   SINGLE_SELECT_TYPE,
+  DATE_TYPE,
 } from './constants';
 
 export const buildInitialValues = (values, fields) => {
@@ -30,6 +31,7 @@ export const buildInitialValues = (values, fields) => {
         break;
       case RADIO_TYPE:
       case SINGLE_SELECT_TYPE:
+      case DATE_TYPE:
         initValues[field.name] = isDefined(field.default) ? field.default : null;
         break;
       case CHECKBOX_TYPE:
