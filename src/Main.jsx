@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import * as Types from './helpers/types';
-import { EDIT_MODE, SEMANTIC_THEME } from './helpers/constants';
+import { VIEW_MODE, EDIT_MODE, SEMANTIC_THEME } from './helpers/constants';
 import Context from './helpers/context';
 import { fieldValidator, isEmptyErrors } from './helpers/validation';
-import { buildInitialValues } from './helpers/builder';
+import { buildInitialValues, buildErrors } from './helpers/builder';
 import { isFunction, isBoolean } from './helpers/utils';
 import Form from './blocks/Form';
+import Loader from './elements/Loader';
 
 const CONFIGS_DEFAULT = {
   spacing: 20,
@@ -26,6 +27,7 @@ export default function Main({
   options = {},
   configs = {},
   onSubmit = null,
+  isLoading = false,
 }) {
   const spacingConfig = configs.spacing || CONFIGS_DEFAULT.spacing;
   const combinedConfigs = {
@@ -48,20 +50,27 @@ export default function Main({
   };
 
   const initialValues = buildInitialValues(values, fields);
-  const initialErrors = {};
-  if (configs.validateOnInitial) {
-    fields.forEach((field) => {
-      initialErrors[field.name] = fieldValidator(
-        field,
-        initialValues[field.name],
-        combinedConfigs,
-      );
-    });
-  }
+  const initialErrors = combinedConfigs.validateOnInitial
+    ? buildErrors(fields, initialValues, combinedConfigs)
+    : {};
 
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState(initialErrors);
   const [hasSubmitError, setHasSubmitError] = useState(false);
+
+  useEffect(() => {
+    const newValues = buildInitialValues(values, fields);
+    const shouldUpdateValues = fields.find(
+      (field) => newValues[field.name] !== formValues[field.name],
+    );
+    if (shouldUpdateValues) {
+      const newErrors = combinedConfigs.validateOnInitial
+        ? buildErrors(fields, newValues, combinedConfigs)
+        : {};
+      setFormValues(newValues);
+      setFormErrors(newErrors);
+    }
+  }, [values]);
 
   const onChangeValue = (name, value) => {
     const newValues = { ...formValues };
@@ -85,14 +94,7 @@ export default function Main({
     setHasSubmitError(false);
   };
 
-  const getFormErrors = () => {
-    const errors = {};
-    fields.forEach((field) => {
-      const message = fieldValidator(field, formValues[field.name], combinedConfigs);
-      errors[field.name] = message;
-    });
-    return errors;
-  };
+  const getFormErrors = () => buildErrors(fields, formValues, combinedConfigs);
 
   const preSubmit = () => {
     const errors = getFormErrors();
@@ -120,8 +122,9 @@ export default function Main({
 
   const validateFormValues = () => setFormErrors(getFormErrors());
 
+  const displayMode = isLoading ? VIEW_MODE : mode;
   const context = {
-    mode,
+    mode: displayMode,
     fields,
     options,
     configs: combinedConfigs,
@@ -138,6 +141,9 @@ export default function Main({
     <Context.Provider value={context}>
       <div style={{ padding: combinedConfigs.innerSpacing }}>
         <Form />
+        {isLoading && (
+          <Loader theme={combinedConfigs.theme} />
+        )}
       </div>
     </Context.Provider>
   );
@@ -156,4 +162,5 @@ Main.propTypes = {
   options: Types.FORM_OPTIONS_TYPE,
   configs: Types.CONFIGS_TYPE,
   onSubmit: PropTypes.func,
+  isLoading: PropTypes.bool,
 };

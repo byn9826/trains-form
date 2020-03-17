@@ -55,6 +55,8 @@ export const CONFIGS_TYPE = PropTypes.shape({
 
 export const STYLE_TYPE = PropTypes.objectOf(PropTypes.any);
 
+export const THEME_TYPE = PropTypes.oneOf(THEMES);
+
 export const ELEMENT_TYPE = {
   type: PropTypes.oneOf(TYPES),
   field: FIELD_TYPE,
@@ -64,6 +66,6 @@ export const ELEMENT_TYPE = {
   placeholder: PropTypes.string,
   value: VALUE_TYPE,
   options: ELEMENT_OPTIONS_TYPE,
-  theme: PropTypes.oneOf(THEMES),
+  theme: THEME_TYPE,
   onChange: PropTypes.func,
 };

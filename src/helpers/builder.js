@@ -11,6 +11,7 @@ import {
   SINGLE_SELECT_TYPE,
   DATE_TYPE,
 } from './constants';
+import { fieldValidator } from './validation';
 
 export const buildInitialValues = (values, fields) => {
   const initValues = { ...values };
@@ -48,6 +49,18 @@ export const buildInitialValues = (values, fields) => {
     }
   });
   return initValues;
+};
+
+export const buildErrors = (fields, values, configs) => {
+  const errors = {};
+  fields.forEach((field) => {
+    errors[field.name] = fieldValidator(
+      field,
+      values[field.name],
+      configs,
+    );
+  });
+  return errors;
 };
 
 export const buildClassNames = (classNames) => {

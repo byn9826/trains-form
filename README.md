@@ -124,6 +124,12 @@ return (
       <td>'Edit'</td>
     </tr>
     <tr>
+      <td>isLoading</td>
+      <td>Boolean</td>
+      <td>Disable all fields and show loading effect.</td>
+      <td>false</td>
+    </tr>
+    <tr>
       <td>onSubmit</td>
       <td>Function</td>
       <td>
