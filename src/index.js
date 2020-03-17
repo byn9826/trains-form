@@ -4,7 +4,7 @@ import Elements from './elements';
 
 export default useForm;
 
-export const Components = Elements;
+export const FormComponents = Elements;
 
 export const FORM_CONSTANTS = {
   VIEW_MODE: CONSTANTS.VIEW_MODE,

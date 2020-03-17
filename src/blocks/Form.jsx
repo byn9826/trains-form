@@ -1,10 +1,12 @@
 import React, { useContext } from 'react';
-import { SEMANTIC_THEME } from '../helpers/constants';
+import { SEMANTIC_THEME, EDIT_MODE } from '../helpers/constants';
 import Context from '../helpers/context';
+import { buildClassNames } from '../helpers/builder';
 import Field from './Field';
 
 export default function Form() {
   const {
+    mode,
     configs,
     fields,
     actions,
@@ -24,7 +26,9 @@ export default function Form() {
         >
           {fields.map((field) => <Field key={field.name} field={field} />)}
           {
-            configs.allowSubmitButton && (
+            configs.allowSubmitButton
+            && mode === EDIT_MODE
+            && (
               <div style={{ display: 'block', textAlign: 'right' }}>
                 {
                   hasSubmitError && (
@@ -38,7 +42,10 @@ export default function Form() {
                 }
                 <button
                   type="submit"
-                  className="ui primary button"
+                  className={buildClassNames({
+                    'ui primary button': true,
+                    disabled: hasSubmitError,
+                  })}
                 >
                   {configs.submitTitle}
                 </button>
