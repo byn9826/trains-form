@@ -7,9 +7,10 @@ import Note from './Note';
 import Password from './Password';
 import Radio from './Radio';
 import Toggle from './Toggle';
-import Loader from './Loader';
+import Loader from './components/Loader';
+import Button from './components/Button';
 
-export {
+const Elements = {
   Calendar,
   Checkbox,
   Dropdown,
@@ -20,4 +21,7 @@ export {
   Radio,
   Toggle,
   Loader,
+  Button,
 };
+
+export default Elements;

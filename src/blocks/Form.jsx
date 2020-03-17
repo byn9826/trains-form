@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { SEMANTIC_THEME, EDIT_MODE } from '../helpers/constants';
 import Context from '../helpers/context';
-import { buildClassNames } from '../helpers/builder';
 import Field from './Field';
+import Button from '../elements/components/Button';
 
 export default function Form() {
   const {
@@ -40,15 +40,11 @@ export default function Form() {
                     </div>
                   )
                 }
-                <button
-                  type="submit"
-                  className={buildClassNames({
-                    'ui primary button': true,
-                    disabled: hasSubmitError,
-                  })}
-                >
-                  {configs.submitTitle}
-                </button>
+                <Button
+                  theme={configs.theme}
+                  title={configs.submitTitle}
+                  disabled={hasSubmitError}
+                />
               </div>
             )
           }

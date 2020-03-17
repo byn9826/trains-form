@@ -1,6 +1,6 @@
 import React from 'react';
-import { SEMANTIC_THEME } from '../helpers/constants';
-import * as Types from '../helpers/types';
+import { SEMANTIC_THEME } from '../../helpers/constants';
+import * as Types from '../../helpers/types';
 
 export default function Loader({ theme }) {
   switch (theme) {

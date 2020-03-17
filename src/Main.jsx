@@ -7,7 +7,7 @@ import { fieldValidator, isEmptyErrors } from './helpers/validation';
 import { buildInitialValues, buildErrors } from './helpers/builder';
 import { isFunction, isBoolean } from './helpers/utils';
 import Form from './blocks/Form';
-import Loader from './elements/Loader';
+import Loader from './elements/components/Loader';
 
 const CONFIGS_DEFAULT = {
   spacing: 20,
