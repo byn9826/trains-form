@@ -8,7 +8,7 @@ import {
   getMonthName,
   getWeekdayName,
   getDateString,
-} from '../helpers/datetime';
+} from '../helpers/calendar';
 import { getDropdownStyle } from '../helpers/style';
 import Dropdown from './Dropdown';
 
@@ -114,14 +114,14 @@ export default function Calendar({
 
   const isSelectedDate = (dateIndex) => (
     value
-    && displayYear === value.getFullYear()
-    && displayMonth === value.getMonth()
-    && dateIndex === value.getDate()
+    && displayYear === value.getUTCFullYear()
+    && displayMonth === value.getUTCMonth()
+    && dateIndex === value.getUTCDate()
   );
 
   const daysRender = () => {
     const firstDate = new Date(displayYear, displayMonth);
-    const firstDateDay = firstDate.getDay();
+    const firstDateDay = firstDate.getUTCDay();
     const paddingDays = firstDateDay === 7 ? 0 : firstDateDay;
     const totalDays = getDaysInMonth(displayYear, displayMonth);
     const cells = [];

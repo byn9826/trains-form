@@ -150,6 +150,13 @@ const MAX_MIN_FIELDS = autoAppendTitleExample([
     min: 1,
     max: 3,
   },
+  {
+    type: FORM_CONSTANTS.DATE_TYPE,
+    name: 'date',
+    default: new Date('2020-03-15'),
+    min: new Date('2020-03-05'),
+    max: new Date('2020-03-20'),
+  },
 ]);
 
 const MATCH_VALUES = {

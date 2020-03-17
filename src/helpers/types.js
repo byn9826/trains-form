@@ -15,6 +15,10 @@ export const VALUE_TYPE = PropTypes.oneOfType([
 
 export const MODE_TYPE = PropTypes.oneOf(MODES);
 
+export const MIN_MAX_TYPE = PropTypes.oneOfType([
+  PropTypes.number, PropTypes.instanceOf(Date),
+]);
+
 export const FIELD_TYPE = PropTypes.shape({
   type: PropTypes.oneOf(TYPES).isRequired,
   name: PropTypes.string.isRequired,
@@ -23,9 +27,9 @@ export const FIELD_TYPE = PropTypes.shape({
   required: PropTypes.bool,
   placeholder: PropTypes.string,
   default: VALUE_TYPE,
-  max: PropTypes.number,
+  max: MIN_MAX_TYPE,
   maxErrorMessage: PropTypes.string,
-  min: PropTypes.number,
+  min: MIN_MAX_TYPE,
   minErrorMessage: PropTypes.string,
   disabled: PropTypes.bool,
 });

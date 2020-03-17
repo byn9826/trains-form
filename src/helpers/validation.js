@@ -14,7 +14,9 @@ import {
   isBoolean,
   isArray,
   isNotEmpty,
+  isDate,
 } from './utils';
+import { getDateString } from './calendar';
 
 export const isStringType = (type) => (
   type === TEXT_TYPE
@@ -98,6 +100,17 @@ export const fieldValidator = (field, value, configs) => {
     return `Maximum ${field.max} characters allowed.`;
   }
   if (
+    isCalendarType(field.type)
+    && isDate(field.max)
+    && isDate(value)
+    && getDateString(field.max) < getDateString(value)
+  ) {
+    if (field.maxError) {
+      return field.maxError;
+    }
+    return `Date is required to be no later than ${getDateString(field.max)}`;
+  }
+  if (
     isNumber(field.min)
     && isMinMaxType(field.type)
     && (isNotEmpty(value) || field.min === 1)
@@ -113,6 +126,17 @@ export const fieldValidator = (field, value, configs) => {
       return `Minimum ${field.min} selection required.`;
     }
     return `Minimum ${field.min} characters required.`;
+  }
+  if (
+    isCalendarType(field.type)
+    && isDate(field.min)
+    && isDate(value)
+    && getDateString(field.min) > getDateString(value)
+  ) {
+    if (field.minError) {
+      return field.minError;
+    }
+    return `Date is required to be no earlier than ${getDateString(field.min)}`;
   }
   return null;
 };

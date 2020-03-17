@@ -9,7 +9,8 @@ import {
   isArrayType,
   isCalendarType,
 } from '../helpers/validation';
-import { getDateString } from '../helpers/datetime';
+import { getDateString } from '../helpers/calendar';
+import { isDate } from '../helpers/utils';
 
 export default function Message({
   style,
@@ -41,7 +42,7 @@ export default function Message({
       if (matchedOptions.length !== 0) {
         labelValue = matchedOptions.join(', ');
       }
-    } else if (isCalendarType(type)) {
+    } else if (isCalendarType(type) && isDate(value)) {
       labelValue = getDateString(value);
     }
   }

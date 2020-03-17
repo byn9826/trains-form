@@ -20,5 +20,8 @@ export const isNotEmpty = (value) => {
   if (isArray(value) && value.length === 0) {
     return false;
   }
+  if (value instanceof Date && Number.isNaN(value.getTime)) {
+    return false;
+  }
   return true;
 };

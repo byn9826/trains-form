@@ -367,7 +367,7 @@ return (
       </td>
     </tr>
     <tr>
-      <td rowspan="3">
+      <td rowspan="4">
         min
       </td>
       <td rowspan="3">
@@ -376,7 +376,7 @@ return (
       <td>
         Min character required.
       </td>
-      <td rowspan="3"></td>
+      <td rowspan="4"></td>
       <td>
         Text, Password, Note
       </td>
@@ -398,13 +398,24 @@ return (
       </td>
     </tr>
     <tr>
-      <td rowspan="3">
+      <td>
+        Date
+      </td>
+      <td>
+        Min date required.
+      </td>
+      <td>
+        Date
+      </td>
+    </tr>
+    <tr>
+      <td rowspan="4">
         minError
       </td>
-      <td rowspan="3">
+      <td rowspan="4">
         String
       </td>
-      <td rowspan="3">
+      <td rowspan="4">
         Define the content of error message for min validation.
       </td>
       <td>
@@ -431,7 +442,15 @@ return (
       </td>
     </tr>
     <tr>
-      <td rowspan="3">
+      <td>
+        `Date is required to be no earlier than ${field.min}.`
+      </td>
+      <td>
+        Date
+      </td>
+    </tr>
+    <tr>
+      <td rowspan="4">
         max
       </td>
       <td rowspan="3">
@@ -440,7 +459,7 @@ return (
       <td>
         Max character allowed.
       </td>
-      <td rowspan="3"></td>
+      <td rowspan="4"></td>
       <td>
         Text, Password, Note
       </td>
@@ -462,13 +481,24 @@ return (
       </td>
     </tr>
     <tr>
-      <td rowspan="3">
+      <td>
+        Date
+      </td>
+      <td>
+        Max date allowed.
+      </td>
+      <td>
+        Date
+      </td>
+    </tr>
+    <tr>
+      <td rowspan="4">
         maxError
       </td>
-      <td rowspan="3">
+      <td rowspan="4">
         String
       </td>
-      <td rowspan="3">
+      <td rowspan="4">
         Define the content of error message for max validation.
       </td>
       <td>
@@ -492,6 +522,14 @@ return (
       </td>
       <td>
         Checkbox
+      </td>
+    </tr>
+    <tr>
+      <td>
+        `Date is required to be no later than ${field.max}.`
+      </td>
+      <td>
+        Date
       </td>
     </tr>
   </tbody>

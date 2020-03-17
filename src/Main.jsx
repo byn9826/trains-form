@@ -3,9 +3,15 @@ import PropTypes from 'prop-types';
 import * as Types from './helpers/types';
 import { VIEW_MODE, EDIT_MODE, SEMANTIC_THEME } from './helpers/constants';
 import Context from './helpers/context';
-import { fieldValidator, isEmptyErrors } from './helpers/validation';
+import {
+  fieldValidator,
+  isEmptyErrors,
+  isCalendarType,
+  isArrayType,
+} from './helpers/validation';
 import { buildInitialValues, buildErrors } from './helpers/builder';
 import { isFunction, isBoolean } from './helpers/utils';
+import { getDateString } from './helpers/calendar';
 import Form from './blocks/Form';
 import Loader from './elements/components/Loader';
 
@@ -49,27 +55,38 @@ export default function Main({
       : CONFIGS_DEFAULT.viewAsMessage,
   };
 
-  const initialValues = buildInitialValues(values, fields);
-  const initialErrors = combinedConfigs.validateOnInitial
-    ? buildErrors(fields, initialValues, combinedConfigs)
-    : {};
-
-  const [formValues, setFormValues] = useState(initialValues);
-  const [formErrors, setFormErrors] = useState(initialErrors);
+  const [rawValues, setRawValues] = useState({});
+  const [formValues, setFormValues] = useState(buildInitialValues({}, fields));
+  const [formErrors, setFormErrors] = useState({});
   const [hasSubmitError, setHasSubmitError] = useState(false);
 
+  const setFormDetails = () => {
+    const initialValues = buildInitialValues(values, fields);
+    const initialErrors = combinedConfigs.validateOnInitial
+      ? buildErrors(fields, initialValues, combinedConfigs)
+      : {};
+    setFormValues(initialValues);
+    setFormErrors(initialErrors);
+  };
+
   useEffect(() => {
-    const shouldUpdateValues = fields.find(
-      (field) => initialValues[field.name] !== formValues[field.name],
-    );
+    const shouldUpdateValues = fields.find((field) => {
+      const newValue = values[field.name];
+      const oldValue = rawValues[field.name];
+      if (isArrayType(field.type) && newValue && oldValue) {
+        return newValue.length !== oldValue.length
+          || newValue.find((v) => !oldValue.includes(v));
+      }
+      if (isCalendarType(field.type) && newValue && oldValue) {
+        return getDateString(newValue) !== getDateString(oldValue);
+      }
+      return newValue !== oldValue;
+    });
     if (shouldUpdateValues) {
-      const newErrors = combinedConfigs.validateOnInitial
-        ? buildErrors(fields, initialValues, combinedConfigs)
-        : {};
-      setFormValues(initialValues);
-      setFormErrors(newErrors);
+      setFormDetails();
+      setRawValues(values);
     }
-  }, [initialValues]);
+  }, [values]);
 
   const onChangeValue = (name, value) => {
     const newValues = { ...formValues };
@@ -105,22 +122,6 @@ export default function Main({
     }
   };
 
-  const getFormDetails = () => {
-    const errors = getFormErrors();
-    return {
-      isReady: isEmptyErrors(errors),
-      values: formValues,
-      errors,
-    };
-  };
-
-  const resetFormValues = () => {
-    setFormValues(initialValues);
-    setFormErrors(initialErrors);
-  };
-
-  const validateFormValues = () => setFormErrors(getFormErrors());
-
   const context = {
     mode: isLoading ? VIEW_MODE : mode,
     fields,
@@ -146,10 +147,19 @@ export default function Main({
     </Context.Provider>
   );
 
+  const getFormDetails = () => {
+    const errors = getFormErrors();
+    return {
+      isReady: isEmptyErrors(errors),
+      values: formValues,
+      errors,
+    };
+  };
+
   return [formRender, {
     getFormDetails,
-    resetFormValues,
-    validateFormValues,
+    resetFormValues: setFormDetails,
+    validateFormValues: () => setFormErrors(getFormErrors()),
   }];
 }
 
