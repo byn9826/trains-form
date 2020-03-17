@@ -126,7 +126,7 @@ return (
     <tr>
       <td>isLoading</td>
       <td>Boolean</td>
-      <td>Disable all fields and show loading effect.</td>
+      <td>Disable all fields and show loading effect while true.</td>
       <td>false</td>
     </tr>
     <tr>
