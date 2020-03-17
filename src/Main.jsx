@@ -59,18 +59,17 @@ export default function Main({
   const [hasSubmitError, setHasSubmitError] = useState(false);
 
   useEffect(() => {
-    const newValues = buildInitialValues(values, fields);
     const shouldUpdateValues = fields.find(
-      (field) => newValues[field.name] !== formValues[field.name],
+      (field) => initialValues[field.name] !== formValues[field.name],
     );
     if (shouldUpdateValues) {
       const newErrors = combinedConfigs.validateOnInitial
-        ? buildErrors(fields, newValues, combinedConfigs)
+        ? buildErrors(fields, initialValues, combinedConfigs)
         : {};
-      setFormValues(newValues);
+      setFormValues(initialValues);
       setFormErrors(newErrors);
     }
-  }, [values]);
+  }, [initialValues]);
 
   const onChangeValue = (name, value) => {
     const newValues = { ...formValues };
@@ -84,6 +83,8 @@ export default function Main({
     setFormErrors(newErrors);
   };
 
+  const getFormErrors = () => buildErrors(fields, formValues, combinedConfigs);
+
   const onChange = (name, value) => {
     onChangeValue(name, value);
     if (combinedConfigs.validateOnChange) {
@@ -93,8 +94,6 @@ export default function Main({
     }
     setHasSubmitError(false);
   };
-
-  const getFormErrors = () => buildErrors(fields, formValues, combinedConfigs);
 
   const preSubmit = () => {
     const errors = getFormErrors();
@@ -122,9 +121,8 @@ export default function Main({
 
   const validateFormValues = () => setFormErrors(getFormErrors());
 
-  const displayMode = isLoading ? VIEW_MODE : mode;
   const context = {
-    mode: displayMode,
+    mode: isLoading ? VIEW_MODE : mode,
     fields,
     options,
     configs: combinedConfigs,
