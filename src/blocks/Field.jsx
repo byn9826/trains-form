@@ -37,12 +37,12 @@ export default function Field({ field }) {
     paddingRight: configs.innerSpacing,
   };
 
-  const titleRender = (requiredIsBuiltIn = true) => {
+  const titleRender = (required) => {
     if (!field.title) return null;
     return (
       <label>
         {field.title}
-        {!requiredIsBuiltIn && (
+        {required && (
           <span style={{ color: 'red' }}>
             *
           </span>
@@ -72,7 +72,7 @@ export default function Field({ field }) {
     case BOOTSTRAP_THEME:
       return (
         <div className="form-group" style={containerStyle}>
-          {titleRender(false)}
+          {titleRender(field.required)}
           {elementRender()}
           {errorRender()}
         </div>
