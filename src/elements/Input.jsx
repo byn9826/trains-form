@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import * as Types from '../helpers/types';
 import { getFieldClass } from '../helpers/theme';
 
@@ -27,4 +28,7 @@ export default function Input({
   );
 }
 
-Input.propTypes = Types.ELEMENT_TYPE;
+Input.propTypes = {
+  ...Types.ELEMENT_TYPE,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+};
