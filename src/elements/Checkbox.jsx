@@ -1,7 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import * as Types from '../helpers/types';
-import { SEMANTIC_THEME } from '../helpers/constants';
+import { CHECKBOX_TYPE } from '../helpers/constants';
+import CheckGroup from './base/CheckGroup';
 
 export default function Checkbox({
   disabled,
@@ -11,6 +11,7 @@ export default function Checkbox({
   options = [],
   theme,
   onChange,
+  error,
 }) {
   const onClick = (option) => {
     const newValue = value.includes(option.value)
@@ -19,47 +20,24 @@ export default function Checkbox({
     onChange(name, newValue);
   };
 
-  switch (theme) {
-    case SEMANTIC_THEME:
-    default:
-      return (
-        <div
-          className="inline fields"
-          style={{
-            ...style,
-            flexWrap: 'wrap',
-          }}
-        >
-          {
-            options.map((option) => (
-              <div
-                key={option.value}
-                className="field"
-                onClick={() => onClick(option)}
-                onKeyDown={() => onClick(option)}
-                role="button"
-              >
-                <div className="ui checkbox">
-                  <input
-                    type="checkbox"
-                    name={name}
-                    checked={value.includes(option.value)}
-                    className="hidden"
-                    readOnly
-                    tabIndex="0"
-                    disabled={disabled}
-                  />
-                  <label>{option.label}</label>
-                </div>
-              </div>
-            ))
-          }
-        </div>
-      );
-  }
+  const isChecked = (option) => value.includes(option.value);
+
+  return (
+    <CheckGroup
+      type={CHECKBOX_TYPE}
+      disabled={disabled}
+      style={style}
+      name={name}
+      options={options}
+      theme={theme}
+      onClick={onClick}
+      error={error}
+      isChecked={isChecked}
+    />
+  );
 }
 
 Checkbox.propTypes = {
   ...Types.ELEMENT_TYPE,
-  value: PropTypes.array,
+  value: Types.ARRAY_VALUE_TYPE,
 };

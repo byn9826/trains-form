@@ -5,11 +5,17 @@ import {
   THEMES,
 } from './constants';
 
+export const ARRAY_VALUE_TYPE = PropTypes.arrayOf(
+  PropTypes.oneOfType([
+    PropTypes.string, PropTypes.number, PropTypes.bool,
+  ]),
+);
+
 export const VALUE_TYPE = PropTypes.oneOfType([
   PropTypes.string,
   PropTypes.number,
   PropTypes.bool,
-  PropTypes.array,
+  ARRAY_VALUE_TYPE,
   PropTypes.instanceOf(Date),
 ]);
 

@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import * as Types from '../helpers/types';
-import { getRadioClasses } from '../helpers/theme';
+import { RADIO_TYPE } from '../helpers/constants';
+import CheckGroup from './base/CheckGroup';
 
 export default function Radio({
   disabled,
@@ -14,45 +15,21 @@ export default function Radio({
   error,
 }) {
   const onClick = (option) => onChange(name, option.value);
-  const classNames = getRadioClasses(theme, error);
+
+  const isChecked = (option) => option.value === value;
 
   return (
-    <div
-      className={classNames.radioGroup}
-      style={{
-        ...style,
-        flexWrap: 'wrap',
-        display: 'flex',
-        flexDirection: 'row',
-      }}
-    >
-      {
-        options.map((option) => (
-          <div
-            key={option.value}
-            className={classNames.radioContainer}
-            onClick={() => onClick(option)}
-            onKeyDown={() => onClick(option)}
-            role="button"
-          >
-            <div className={classNames.radio}>
-              <input
-                type="radio"
-                name={name}
-                checked={value === option.value}
-                readOnly
-                tabIndex="0"
-                disabled={disabled}
-                className={classNames.radioInput}
-              />
-              <label className={classNames.radioLabel}>
-                {option.label}
-              </label>
-            </div>
-          </div>
-        ))
-      }
-    </div>
+    <CheckGroup
+      type={RADIO_TYPE}
+      disabled={disabled}
+      style={style}
+      name={name}
+      options={options}
+      theme={theme}
+      onClick={onClick}
+      error={error}
+      isChecked={isChecked}
+    />
   );
 }
 

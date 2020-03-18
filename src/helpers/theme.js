@@ -1,4 +1,4 @@
-import { BOOTSTRAP_THEME, SEMANTIC_THEME } from './constants';
+import { BOOTSTRAP_THEME, SEMANTIC_THEME, RADIO_TYPE } from './constants';
 import { buildClassNames } from './builder';
 
 export const getFieldClass = (theme, error) => {
@@ -96,29 +96,32 @@ export const getToggleClasses = (theme) => {
   return classNames;
 };
 
-export const getRadioClasses = (theme, error) => {
+export const getCheckGroupClasses = (type, theme, error) => {
   let classNames;
   switch (theme) {
     case BOOTSTRAP_THEME:
       classNames = {
-        radioGroup: null,
-        radioContainer: null,
-        radio: 'form-check form-check-inline',
-        radioInput: buildClassNames({
+        group: null,
+        container: null,
+        check: 'form-check form-check-inline',
+        input: buildClassNames({
           'form-check-input': true,
           'is-invalid': error,
         }),
-        radioLabel: 'form-check-label',
+        label: 'form-check-label',
       };
       break;
     case SEMANTIC_THEME:
     default:
       classNames = {
-        radioGroup: 'inline fields',
-        radioContainer: 'field',
-        radio: 'ui radio checkbox',
-        radioInput: 'hidden',
-        radioLabel: null,
+        group: 'inline fields',
+        container: 'field',
+        check: buildClassNames({
+          'ui checkbox': true,
+          radio: type === RADIO_TYPE,
+        }),
+        input: 'hidden',
+        label: null,
       };
       break;
   }
