@@ -95,3 +95,29 @@ export const getToggleClasses = (theme) => {
   }
   return classNames;
 };
+
+export const getRadioClasses = (theme) => {
+  let classNames;
+  switch (theme) {
+    case BOOTSTRAP_THEME:
+      classNames = {
+        radioGroup: null,
+        radioContainer: null,
+        radio: 'form-check form-check-inline',
+        radioInput: 'form-check-input',
+        radioLabel: 'form-check-label',
+      };
+      break;
+    case SEMANTIC_THEME:
+    default:
+      classNames = {
+        radioGroup: 'inline fields',
+        radioContainer: 'field',
+        radio: 'ui radio checkbox',
+        radioInput: 'hidden',
+        radioLabel: null,
+      };
+      break;
+  }
+  return classNames;
+};
