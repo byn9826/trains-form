@@ -96,7 +96,7 @@ export const getToggleClasses = (theme) => {
   return classNames;
 };
 
-export const getRadioClasses = (theme) => {
+export const getRadioClasses = (theme, error) => {
   let classNames;
   switch (theme) {
     case BOOTSTRAP_THEME:
@@ -104,7 +104,10 @@ export const getRadioClasses = (theme) => {
         radioGroup: null,
         radioContainer: null,
         radio: 'form-check form-check-inline',
-        radioInput: 'form-check-input',
+        radioInput: buildClassNames({
+          'form-check-input': true,
+          'is-invalid': error,
+        }),
         radioLabel: 'form-check-label',
       };
       break;

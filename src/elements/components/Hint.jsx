@@ -7,7 +7,7 @@ export default function Hint({ theme, title }) {
   return (
     <div
       className={getHintClass(theme)}
-      style={{ marginTop: 2 }}
+      style={{ marginTop: 2, display: 'inline-block' }}
     >
       {title}
     </div>
