@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import * as Types from '../helpers/types';
 import { getRadioClasses } from '../helpers/theme';
 
@@ -10,9 +11,10 @@ export default function Radio({
   options = [],
   theme,
   onChange,
+  error,
 }) {
   const onClick = (option) => onChange(name, option.value);
-  const classNames = getRadioClasses(theme);
+  const classNames = getRadioClasses(theme, error);
 
   return (
     <div
@@ -54,4 +56,9 @@ export default function Radio({
   );
 }
 
-Radio.propTypes = Types.ELEMENT_TYPE;
+Radio.propTypes = {
+  ...Types.ELEMENT_TYPE,
+  value: PropTypes.oneOfType([
+    PropTypes.string, PropTypes.number, PropTypes.bool,
+  ]),
+};

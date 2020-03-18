@@ -1,6 +1,7 @@
+import React from 'react';
 import { storiesOf } from '@storybook/react';
 import useForm, { FORM_CONSTANTS } from '../src/index';
-import { autoAppendTitleExample } from './helpers';
+import { autoAppendTitleExample, useThemeSwitcher } from './helpers';
 
 const OPTIONS = {
   radio: [
@@ -111,16 +112,23 @@ const FIELDS = autoAppendTitleExample([
 
 storiesOf('Validation Config', module)
   .add('Enable validation on initial form', () => {
+    const [theme, themSwitchRender] = useThemeSwitcher();
     const [formRender] = useForm({
       values: INITIAL_VALUES,
       fields: FIELDS,
       options: OPTIONS,
       mode: FORM_CONSTANTS.EDIT_MODE,
+      theme,
       configs: {
         validateOnInitial: true,
       },
     });
-    return formRender();
+    return (
+      <div>
+        {themSwitchRender()}
+        {formRender()}
+      </div>
+    );
   })
   .add('Disable validation on change field', () => {
     const [formRender] = useForm({
