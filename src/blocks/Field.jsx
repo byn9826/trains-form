@@ -12,7 +12,12 @@ import Element from './Element';
 import Hint from '../elements/components/Hint';
 
 export default function Field({ field }) {
-  const { configs, mode, errors } = useContext(Context);
+  const {
+    configs,
+    mode,
+    theme,
+    errors,
+  } = useContext(Context);
   const disabled = mode === VIEW_MODE || field.disabled;
   const error = errors[field.name];
 
@@ -57,13 +62,13 @@ export default function Field({ field }) {
     if (!error) return null;
     return (
       <Hint
-        theme={configs.theme}
+        theme={theme}
         title={error}
       />
     );
   };
 
-  switch (configs.theme) {
+  switch (theme) {
     case BOOTSTRAP_THEME:
       return (
         <div className="form-group" style={containerStyle}>

@@ -17,7 +17,6 @@ import Loader from './elements/components/Loader';
 
 const CONFIGS_DEFAULT = {
   spacing: 20,
-  theme: SEMANTIC_THEME,
   validateOnInitial: false,
   validateOnChange: true,
   viewAsMessage: false,
@@ -28,6 +27,7 @@ const CONFIGS_DEFAULT = {
 
 export default function Main({
   mode = EDIT_MODE,
+  theme = SEMANTIC_THEME,
   fields = [],
   values = {},
   options = {},
@@ -39,7 +39,6 @@ export default function Main({
   const combinedConfigs = {
     spacing: spacingConfig,
     innerSpacing: configs.innerSpacing || (spacingConfig / 2),
-    theme: configs.theme || CONFIGS_DEFAULT.theme,
     submitTitle: configs.submitTitle || CONFIGS_DEFAULT.submitTitle,
     submitError: configs.submitError || CONFIGS_DEFAULT.submitError,
     requiredError: configs.requiredError || CONFIGS_DEFAULT.requiredError,
@@ -124,6 +123,7 @@ export default function Main({
 
   const context = {
     mode: isLoading ? VIEW_MODE : mode,
+    theme,
     fields,
     options,
     configs: combinedConfigs,
@@ -140,9 +140,7 @@ export default function Main({
     <Context.Provider value={context}>
       <div style={{ padding: combinedConfigs.innerSpacing }}>
         <Form />
-        {isLoading && (
-          <Loader theme={combinedConfigs.theme} />
-        )}
+        {isLoading && <Loader theme={theme} />}
       </div>
     </Context.Provider>
   );
@@ -165,6 +163,7 @@ export default function Main({
 
 Main.propTypes = {
   mode: Types.MODE_TYPE,
+  theme: Types.THEME_TYPE,
   fields: Types.FIELDS_TYPE,
   values: Types.VALUES_TYPE,
   options: Types.FORM_OPTIONS_TYPE,

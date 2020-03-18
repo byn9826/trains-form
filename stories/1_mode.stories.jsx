@@ -82,11 +82,11 @@ storiesOf('Mode', module)
   .add('View', () => {
     const [theme, themSwitchRender] = useThemeSwitcher();
     const [formRender] = useForm({
+      theme,
       values: VALUES,
       fields: FIELDS,
       options: OPTIONS,
       mode: FORM_CONSTANTS.VIEW_MODE,
-      configs: { theme },
     });
     return (
       <div>
@@ -102,12 +102,12 @@ storiesOf('Mode', module)
         ...VALUES,
         message: 'Examples of how to build a form for viewing as messages',
       },
+      theme,
       fields: FIELDS,
       options: OPTIONS,
       mode: FORM_CONSTANTS.VIEW_MODE,
       configs: {
         viewAsMessage: true,
-        theme,
       },
     });
     return (
@@ -127,7 +127,7 @@ storiesOf('Mode', module)
       fields: FIELDS,
       options: OPTIONS,
       mode: FORM_CONSTANTS.EDIT_MODE,
-      configs: { theme },
+      theme,
     });
     return (
       <div>

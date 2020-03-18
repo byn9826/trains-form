@@ -18,10 +18,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 ## Features
 1. Render complex form by simple configs.
 2. Easily switch between view and edit mode.
-3. Built-in configurable validations.
-4. Configurable error messages.
-5. Built-in date picker.
-6. Minimal dependencies, small bundle size.
+3. Works with Semantic UI, Bootstrap.
+4. Built-in configurable validations.
+5. Configurable error messages.
+6. Built-in date picker.
+7. Minimal dependencies, small bundle size.
 ## How to use
 [Detailed demos & examples](https://byn9826.github.io/trains-forms)
 ### Simple Example
@@ -128,6 +129,12 @@ return (
       <td>'Edit'</td>
     </tr>
     <tr>
+      <td>Theme</td>
+      <td>'Semantic'/'Bootstrap'</td>
+      <td>Determine overall styles used for form.</td>
+      <td>'Semantic'</td>
+    </tr>
+    <tr>
       <td>isLoading</td>
       <td>Boolean</td>
       <td>Disable all fields and show loading effect while true.</td>
@@ -155,12 +162,6 @@ return (
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>theme</td>
-      <td>'Semantic'</td>
-      <td>Determine overall styles used for form.</td>
-      <td>'Semantic'</td>
-    </tr>
     <tr>
       <td>spacing</td>
       <td>Number</td>

@@ -204,7 +204,7 @@ storiesOf('Field Validation', module)
       fields: REQUIRED_FIELDS,
       options: OPTIONS,
       mode: FORM_CONSTANTS.EDIT_MODE,
-      configs: { theme },
+      theme,
     });
     return (
       <div>

@@ -7,6 +7,7 @@ import Button from '../elements/components/Button';
 export default function Form() {
   const {
     mode,
+    theme,
     configs,
     fields,
     actions,
@@ -15,7 +16,7 @@ export default function Form() {
 
   let className;
 
-  switch (configs.theme) {
+  switch (theme) {
     case BOOTSTRAP_THEME:
       className = null;
       break;
@@ -50,7 +51,7 @@ export default function Form() {
               )
             }
             <Button
-              theme={configs.theme}
+              theme={theme}
               title={configs.submitTitle}
               disabled={hasSubmitError}
             />
