@@ -1,6 +1,7 @@
+import React from 'react';
 import { storiesOf } from '@storybook/react';
 import useForm, { FORM_CONSTANTS } from '../src/index';
-import { autoAppendTitleExample } from './helpers';
+import { autoAppendTitleExample, useThemeSwitcher } from './helpers';
 
 const REQUIRED_VALUES = {
   message: 'Examples of how to define required fields',
@@ -197,13 +198,20 @@ const MATCH_FIELDS = autoAppendTitleExample([
 
 storiesOf('Field Validation', module)
   .add('Required', () => {
+    const [theme, themSwitchRender] = useThemeSwitcher();
     const [formRender] = useForm({
       values: REQUIRED_VALUES,
       fields: REQUIRED_FIELDS,
       options: OPTIONS,
       mode: FORM_CONSTANTS.EDIT_MODE,
+      configs: { theme },
     });
-    return formRender();
+    return (
+      <div>
+        {themSwitchRender()}
+        {formRender()}
+      </div>
+    );
   })
   .add('Min & Max', () => {
     const [formRender] = useForm({

@@ -28,6 +28,7 @@ export default function Element({ field, disabled }) {
   const {
     configs,
     values,
+    errors,
     options,
     actions,
   } = useContext(Context);
@@ -66,6 +67,7 @@ export default function Element({ field, disabled }) {
       style={{
         marginTop: field.label ? configs.innerSpacing / 2 : 'auto',
       }}
+      error={errors[field.name]}
     />
   );
 }

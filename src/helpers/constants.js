@@ -26,4 +26,5 @@ export const TYPES = [
 ];
 
 export const SEMANTIC_THEME = 'Semantic';
-export const THEMES = [SEMANTIC_THEME];
+export const BOOTSTRAP_THEME = 'Bootstrap';
+export const THEMES = [SEMANTIC_THEME, BOOTSTRAP_THEME];
