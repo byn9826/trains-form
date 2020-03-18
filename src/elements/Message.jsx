@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Types from '../helpers/types';
-import { SEMANTIC_THEME, MESSAGE_TYPE } from '../helpers/constants';
+import { SEMANTIC_THEME, MESSAGE_TYPE, BOOTSTRAP_THEME } from '../helpers/constants';
 import {
   isStringType,
   isNumberType,
@@ -18,39 +18,47 @@ export default function Message({
   options,
   theme,
   type,
+  disabled,
 }) {
-  let labelValue = value;
-  const isDefaultValue = type === MESSAGE_TYPE
+  let labelValue;
+  if (
+    type === MESSAGE_TYPE
     || isStringType(type)
-    || isNumberType(type);
-  if (!isDefaultValue) {
-    if (isBooleanType(type)) {
-      labelValue = value ? 'True' : 'False';
-    } else if (isSelectType(type)) {
-      const matchedOption = options.find((option) => option.value === value);
-      if (matchedOption) {
-        labelValue = matchedOption.label;
-      }
-    } else if (isArrayType(type)) {
-      const matchedOptions = [];
-      options.forEach((option) => {
-        if (!value.includes(option.value)) {
-          return;
-        }
-        matchedOptions.push(option.label);
-      });
-      if (matchedOptions.length !== 0) {
-        labelValue = matchedOptions.join(', ');
-      }
-    } else if (isCalendarType(type) && isDate(value)) {
-      labelValue = getDateString(value);
-    }
+    || isNumberType(type)
+  ) {
+    labelValue = value;
+  } else if (isBooleanType(type)) {
+    labelValue = value ? 'True' : 'False';
+  } else if (isSelectType(type)) {
+    const matchedOption = options.find((option) => option.value === value);
+    labelValue = matchedOption ? matchedOption.label : '';
+  } else if (isArrayType(type)) {
+    const matchedOptions = [];
+    options.forEach((option) => {
+      if (!value.includes(option.value)) return;
+      matchedOptions.push(option.label);
+    });
+    labelValue = matchedOptions.join(', ');
+  } else if (isCalendarType(type)) {
+    labelValue = isDate(value) ? getDateString(value) : '';
   }
+
+  let className;
   switch (theme) {
+    case BOOTSTRAP_THEME:
+      className = disabled ? 'text-muted' : null;
+      break;
     case SEMANTIC_THEME:
     default:
-      return <p style={style}>{labelValue}</p>;
+      className = null;
+      break;
   }
+
+  return (
+    <p style={style} className={className}>
+      {labelValue}
+    </p>
+  );
 }
 
 Message.propTypes = Types.ELEMENT_TYPE;

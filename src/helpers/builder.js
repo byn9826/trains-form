@@ -16,9 +16,7 @@ import { fieldValidator } from './validation';
 export const buildInitialValues = (values, fields) => {
   const initValues = { ...values };
   fields.forEach((field) => {
-    if (isDefined(initValues[field.name])) {
-      return;
-    }
+    if (isDefined(initValues[field.name])) return;
     switch (field.type) {
       case TEXT_TYPE:
       case PASSWORD_TYPE:
