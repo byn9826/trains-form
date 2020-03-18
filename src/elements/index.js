@@ -9,6 +9,7 @@ import Radio from './Radio';
 import Toggle from './Toggle';
 import Loader from './components/Loader';
 import Button from './components/Button';
+import Hint from './components/Hint';
 
 const Elements = {
   Calendar,
@@ -22,6 +23,7 @@ const Elements = {
   Toggle,
   Loader,
   Button,
+  Hint,
 };
 
 export default Elements;

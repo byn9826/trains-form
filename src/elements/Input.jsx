@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Types from '../helpers/types';
-import { SEMANTIC_THEME } from '../helpers/constants';
+import { getFieldClass } from '../helpers/theme';
 
 export default function Input({
   type,
@@ -11,22 +11,20 @@ export default function Input({
   value,
   theme,
   onChange,
+  error,
 }) {
-  switch (theme) {
-    case SEMANTIC_THEME:
-    default:
-      return (
-        <input
-          type={type.toLowerCase()}
-          style={style}
-          disabled={disabled}
-          name={name}
-          value={value}
-          placeholder={placeholder}
-          onChange={(e) => onChange(name, e.target.value)}
-        />
-      );
-  }
+  return (
+    <input
+      type={type.toLowerCase()}
+      className={getFieldClass(theme, error)}
+      style={style}
+      disabled={disabled}
+      name={name}
+      value={value}
+      placeholder={placeholder}
+      onChange={(e) => onChange(name, e.target.value)}
+    />
+  );
 }
 
 Input.propTypes = Types.ELEMENT_TYPE;

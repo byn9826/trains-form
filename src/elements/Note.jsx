@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import * as Types from '../helpers/types';
-import { SEMANTIC_THEME, BOOTSTRAP_THEME } from '../helpers/constants';
-import { buildClassNames } from '../helpers/builder';
+import { getFieldClass } from '../helpers/theme';
 
 export default function Note({
   disabled,
@@ -14,24 +13,9 @@ export default function Note({
   onChange,
   error,
 }) {
-  let className;
-
-  switch (theme) {
-    case BOOTSTRAP_THEME:
-      className = buildClassNames({
-        'form-control': true,
-        'is-invalid': error,
-      });
-      break;
-    case SEMANTIC_THEME:
-    default:
-      className = null;
-      break;
-  }
-
   return (
     <textarea
-      className={className}
+      className={getFieldClass(theme, error)}
       rows="5"
       style={style}
       disabled={disabled}
