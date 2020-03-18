@@ -73,3 +73,25 @@ export const getFormClass = (theme) => {
   }
   return className;
 };
+
+export const getToggleClasses = (theme) => {
+  let classNames;
+  switch (theme) {
+    case BOOTSTRAP_THEME:
+      classNames = {
+        toggle: 'custom-control custom-switch',
+        toggleInput: 'custom-control-input',
+        toggleLabel: 'custom-control-label',
+      };
+      break;
+    case SEMANTIC_THEME:
+    default:
+      classNames = {
+        toggle: 'ui toggle checkbox',
+        toggleInput: null,
+        toggleLabel: null,
+      };
+      break;
+  }
+  return classNames;
+};

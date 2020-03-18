@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import * as Types from '../helpers/types';
-import { SEMANTIC_THEME } from '../helpers/constants';
+import { getToggleClasses } from '../helpers/theme';
 
 export default function Toggle({
   disabled,
@@ -12,23 +12,36 @@ export default function Toggle({
   theme,
   onChange,
 }) {
-  switch (theme) {
-    case SEMANTIC_THEME:
-    default:
-      return (
-        <div className="ui toggle checkbox" style={style}>
-          <input
-            tabIndex={0}
-            type="checkbox"
-            disabled={disabled}
-            name={name}
-            checked={value}
-            onChange={() => onChange(name, !value)}
-          />
-          <label>{placeholder}</label>
-        </div>
-      );
-  }
+  const classNames = getToggleClasses(theme);
+
+  const onToggle = (e) => {
+    e.stopPropagation();
+    if (disabled) return;
+    onChange(name, !value);
+  };
+
+  return (
+    <div
+      className={classNames.toggle}
+      style={style}
+      onClick={onToggle}
+      onKeyDown={onToggle}
+      role="button"
+    >
+      <input
+        className={classNames.toggleInput}
+        tabIndex={0}
+        type="checkbox"
+        disabled={disabled}
+        name={name}
+        checked={value}
+        onChange={onToggle}
+      />
+      <label className={classNames.toggleLabel}>
+        {placeholder}
+      </label>
+    </div>
+  );
 }
 
 Toggle.propTypes = {
