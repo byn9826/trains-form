@@ -31,6 +31,7 @@ export default function Element({ field, disabled }) {
     errors,
     options,
     actions,
+    theme,
   } = useContext(Context);
 
   const elements = {
@@ -57,7 +58,7 @@ export default function Element({ field, disabled }) {
     <TargetElement
       field={field}
       disabled={disabled}
-      theme={configs.theme}
+      theme={theme}
       value={values[field.name]}
       options={options[field.name]}
       name={field.name}

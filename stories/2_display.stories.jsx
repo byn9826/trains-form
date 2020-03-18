@@ -167,7 +167,7 @@ storiesOf('Display', module)
       fields: WIDTH_FIELDS,
       options: OPTIONS,
       mode: FORM_CONSTANTS.EDIT_MODE,
-      configs: { theme },
+      theme,
     });
     return (
       <div>
@@ -183,7 +183,7 @@ storiesOf('Display', module)
       fields: PLACEHOLDER_FIELDS,
       options: OPTIONS,
       mode: FORM_CONSTANTS.EDIT_MODE,
-      configs: { theme },
+      theme,
     });
     return (
       <div>

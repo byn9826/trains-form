@@ -47,7 +47,6 @@ export const FORM_OPTIONS_TYPE = PropTypes.objectOf(ELEMENT_OPTIONS_TYPE);
 export const CONFIGS_TYPE = PropTypes.shape({
   spacing: PropTypes.number,
   innerSpacing: PropTypes.number,
-  theme: PropTypes.oneOf(THEMES),
   allowSubmitButton: PropTypes.bool,
   validateOnInitial: PropTypes.bool,
   validateOnChange: PropTypes.bool,

@@ -86,7 +86,7 @@ storiesOf('Value', module)
       fields: FIELDS,
       options: OPTIONS,
       mode: FORM_CONSTANTS.EDIT_MODE,
-      configs: { theme },
+      theme,
     });
     return (
       <div>
@@ -108,7 +108,7 @@ storiesOf('Value', module)
       })),
       options: OPTIONS,
       mode: FORM_CONSTANTS.EDIT_MODE,
-      configs: { theme },
+      theme,
     });
     return (
       <div>
