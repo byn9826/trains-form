@@ -1,22 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { SEMANTIC_THEME, BOOTSTRAP_THEME } from '../../helpers/constants';
 import * as Types from '../../helpers/types';
+import { getHintClass } from '../../helpers/theme';
 
 export default function Hint({ theme, title }) {
-  let className;
-  switch (theme) {
-    case BOOTSTRAP_THEME:
-      className = 'invalid-feedback';
-      break;
-    case SEMANTIC_THEME:
-    default:
-      className = 'ui pointing red basic label';
-      break;
-  }
   return (
     <div
-      className={className}
+      className={getHintClass(theme)}
       style={{ marginTop: 2 }}
     >
       {title}
