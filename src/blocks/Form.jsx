@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
-import { SEMANTIC_THEME, EDIT_MODE, BOOTSTRAP_THEME } from '../helpers/constants';
+import { EDIT_MODE } from '../helpers/constants';
+import { getFormClass } from '../helpers/theme';
 import Context from '../helpers/context';
 import Field from './Field';
 import Button from '../elements/components/Button';
@@ -14,21 +15,9 @@ export default function Form() {
     hasSubmitError,
   } = useContext(Context);
 
-  let className;
-
-  switch (theme) {
-    case BOOTSTRAP_THEME:
-      className = null;
-      break;
-    case SEMANTIC_THEME:
-    default:
-      className = 'ui form';
-      break;
-  }
-
   return (
     <form
-      className={className}
+      className={getFormClass(theme)}
       onSubmit={(e) => {
         e.preventDefault();
         actions.preSubmit();

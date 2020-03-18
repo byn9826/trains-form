@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Types from '../helpers/types';
-import { SEMANTIC_THEME, MESSAGE_TYPE, BOOTSTRAP_THEME } from '../helpers/constants';
+import { MESSAGE_TYPE } from '../helpers/constants';
 import {
   isStringType,
   isNumberType,
@@ -11,6 +11,7 @@ import {
 } from '../helpers/validation';
 import { getDateString } from '../helpers/calendar';
 import { isDate } from '../helpers/utils';
+import { getMessageClass } from '../helpers/theme';
 
 export default function Message({
   style,
@@ -43,19 +44,11 @@ export default function Message({
     labelValue = isDate(value) ? getDateString(value) : '';
   }
 
-  let className;
-  switch (theme) {
-    case BOOTSTRAP_THEME:
-      className = disabled ? 'text-muted' : null;
-      break;
-    case SEMANTIC_THEME:
-    default:
-      className = null;
-      break;
-  }
-
   return (
-    <p style={style} className={className}>
+    <p
+      style={style}
+      className={getMessageClass(theme, disabled)}
+    >
       {labelValue}
     </p>
   );

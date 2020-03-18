@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { storiesOf } from '@storybook/react';
 import useForm, { FORM_CONSTANTS } from '../src/index';
-import { autoAppendTitleExample } from './helpers';
+import { autoAppendTitleExample, useThemeSwitcher } from './helpers';
 
 const VALUES = {
   message: 'Examples of how to build a form for viewing',
@@ -80,6 +80,7 @@ const OPTIONS = {
 
 storiesOf('Effect', module)
   .add('isLoading', () => {
+    const [theme, themSwitchRender] = useThemeSwitcher();
     const [isLoading, setIsLoading] = useState(true);
     const [values, setValues] = useState({});
     useEffect(() => {
@@ -97,6 +98,12 @@ storiesOf('Effect', module)
       options: OPTIONS,
       mode: FORM_CONSTANTS.EDIT_MODE,
       isLoading,
+      theme,
     });
-    return formRender();
+    return (
+      <div>
+        {themSwitchRender()}
+        {formRender()}
+      </div>
+    );
   });
