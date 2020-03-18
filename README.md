@@ -7,9 +7,13 @@ All in one React dynamic form builder, make form easier.
 ```
 npm install trains-forms --save;
 
-// Import css file of the theme you want to use
+// For theme: Semantic UI
 npm install semantic-ui-css --save;
 import 'semantic-ui-css/semantic.min.css';
+
+// For theme: Bootstrap
+npm install bootstrap --save;
+import 'bootstrap/dist/css/bootstrap.min.css';
 ```
 ## Features
 1. Render complex form by simple configs.

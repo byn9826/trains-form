@@ -3,18 +3,20 @@ import * as Types from '../helpers/types';
 import {
   VIEW_MODE,
   SEMANTIC_THEME,
+  BOOTSTRAP_THEME,
 } from '../helpers/constants';
 import Context from '../helpers/context';
 import { isNumber } from '../helpers/utils';
 import { buildClassNames } from '../helpers/builder';
 import Element from './Element';
+import Hint from '../elements/components/Hint';
 
 export default function Field({ field }) {
   const { configs, mode, errors } = useContext(Context);
   const disabled = mode === VIEW_MODE || field.disabled;
   const error = errors[field.name];
 
-  const containerStyle = isNumber(field.width) && field.width < 100 ? {
+  let containerStyle = isNumber(field.width) && field.width < 100 ? {
     display: 'inline-block',
     width: `${field.width}%`,
     verticalAlign: 'top',
@@ -22,8 +24,54 @@ export default function Field({ field }) {
     display: 'block',
     width: '100%',
   };
+  containerStyle = {
+    ...containerStyle,
+    marginTop: configs.innerSpacing,
+    marginBottom: configs.innerSpacing,
+    paddingLeft: configs.innerSpacing,
+    paddingRight: configs.innerSpacing,
+  };
+
+  const titleRender = (requiredIsBuiltIn = true) => {
+    if (!field.title) return null;
+    return (
+      <label>
+        {field.title}
+        {!requiredIsBuiltIn && (
+          <span style={{ color: 'red' }}>
+            *
+          </span>
+        )}
+      </label>
+    );
+  };
+
+  const elementRender = () => (
+    <Element
+      field={field}
+      disabled={disabled}
+    />
+  );
+
+  const errorRender = () => {
+    if (!error) return null;
+    return (
+      <Hint
+        theme={configs.theme}
+        title={error}
+      />
+    );
+  };
 
   switch (configs.theme) {
+    case BOOTSTRAP_THEME:
+      return (
+        <div className="form-group" style={containerStyle}>
+          {titleRender(false)}
+          {elementRender()}
+          {errorRender()}
+        </div>
+      );
     case SEMANTIC_THEME:
     default:
       return (
@@ -32,15 +80,9 @@ export default function Field({ field }) {
             field: true,
             required: field.required,
           })}
-          style={{
-            ...containerStyle,
-            marginTop: configs.innerSpacing,
-            marginBottom: configs.innerSpacing,
-            paddingLeft: configs.innerSpacing,
-            paddingRight: configs.innerSpacing,
-          }}
+          style={containerStyle}
         >
-          {field.title && <label>{field.title}</label>}
+          {titleRender()}
           <div
             className={buildClassNames({
               field: true,
@@ -48,18 +90,9 @@ export default function Field({ field }) {
               error,
             })}
           >
-            <Element
-              field={field}
-              disabled={disabled}
-            />
+            {elementRender()}
           </div>
-          {
-            error && (
-              <div className="ui pointing red basic label" style={{ marginTop: 0 }}>
-                {error}
-              </div>
-            )
-          }
+          {errorRender()}
         </div>
       );
   }

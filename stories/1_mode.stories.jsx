@@ -1,6 +1,7 @@
+import React from 'react';
 import { storiesOf } from '@storybook/react';
 import useForm, { FORM_CONSTANTS } from '../src/index';
-import { autoAppendTitleExample } from './helpers';
+import { autoAppendTitleExample, useThemeSwitcher } from './helpers';
 
 const VALUES = {
   message: 'Examples of how to build a form for viewing',
@@ -79,15 +80,23 @@ const OPTIONS = {
 
 storiesOf('Mode', module)
   .add('View', () => {
+    const [theme, themSwitchRender] = useThemeSwitcher();
     const [formRender] = useForm({
       values: VALUES,
       fields: FIELDS,
       options: OPTIONS,
       mode: FORM_CONSTANTS.VIEW_MODE,
+      configs: { theme },
     });
-    return formRender();
+    return (
+      <div>
+        {themSwitchRender()}
+        {formRender()}
+      </div>
+    );
   })
   .add('View as message', () => {
+    const [theme, themSwitchRender] = useThemeSwitcher();
     const [formRender] = useForm({
       values: {
         ...VALUES,
@@ -98,11 +107,18 @@ storiesOf('Mode', module)
       mode: FORM_CONSTANTS.VIEW_MODE,
       configs: {
         viewAsMessage: true,
+        theme,
       },
     });
-    return formRender();
+    return (
+      <div>
+        {themSwitchRender()}
+        {formRender()}
+      </div>
+    );
   })
   .add('Edit', () => {
+    const [theme, themSwitchRender] = useThemeSwitcher();
     const [formRender] = useForm({
       values: {
         ...VALUES,
@@ -111,6 +127,12 @@ storiesOf('Mode', module)
       fields: FIELDS,
       options: OPTIONS,
       mode: FORM_CONSTANTS.EDIT_MODE,
+      configs: { theme },
     });
-    return formRender();
+    return (
+      <div>
+        {themSwitchRender()}
+        {formRender()}
+      </div>
+    );
   });

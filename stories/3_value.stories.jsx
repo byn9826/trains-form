@@ -1,6 +1,7 @@
+import React from 'react';
 import { storiesOf } from '@storybook/react';
 import useForm, { FORM_CONSTANTS } from '../src/index';
-import { autoAppendTitleExample } from './helpers';
+import { autoAppendTitleExample, useThemeSwitcher } from './helpers';
 
 const VALUES = {
   text_2: 'Default value will be ignored if its init value is not empty',
@@ -79,15 +80,23 @@ const OPTIONS = {
 
 storiesOf('Value', module)
   .add('Default', () => {
+    const [theme, themSwitchRender] = useThemeSwitcher();
     const [formRender] = useForm({
       values: VALUES,
       fields: FIELDS,
       options: OPTIONS,
       mode: FORM_CONSTANTS.EDIT_MODE,
+      configs: { theme },
     });
-    return formRender();
+    return (
+      <div>
+        {themSwitchRender()}
+        {formRender()}
+      </div>
+    );
   })
   .add('Disabled', () => {
+    const [theme, themSwitchRender] = useThemeSwitcher();
     const [formRender] = useForm({
       values: VALUES,
       fields: FIELDS.map((field) => ({
@@ -99,6 +108,12 @@ storiesOf('Value', module)
       })),
       options: OPTIONS,
       mode: FORM_CONSTANTS.EDIT_MODE,
+      configs: { theme },
     });
-    return formRender();
+    return (
+      <div>
+        {themSwitchRender()}
+        {formRender()}
+      </div>
+    );
   });

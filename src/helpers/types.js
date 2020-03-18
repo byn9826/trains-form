@@ -72,4 +72,5 @@ export const ELEMENT_TYPE = {
   options: ELEMENT_OPTIONS_TYPE,
   theme: THEME_TYPE,
   onChange: PropTypes.func,
+  error: PropTypes.string,
 };

@@ -1,6 +1,7 @@
+import React from 'react';
 import { storiesOf } from '@storybook/react';
 import useForm, { FORM_CONSTANTS } from '../src/index';
-import { autoAppendTitleExample } from './helpers';
+import { autoAppendTitleExample, useThemeSwitcher } from './helpers';
 
 const WIDTH_VALUES = {
   message: 'Examples of how to define width of fields',
@@ -160,20 +161,34 @@ const PLACEHOLDER_FIELDS = autoAppendTitleExample([
 
 storiesOf('Display', module)
   .add('Width', () => {
+    const [theme, themSwitchRender] = useThemeSwitcher();
     const [formRender] = useForm({
       values: WIDTH_VALUES,
       fields: WIDTH_FIELDS,
       options: OPTIONS,
       mode: FORM_CONSTANTS.EDIT_MODE,
+      configs: { theme },
     });
-    return formRender();
+    return (
+      <div>
+        {themSwitchRender()}
+        {formRender()}
+      </div>
+    );
   })
   .add('Placeholder', () => {
+    const [theme, themSwitchRender] = useThemeSwitcher();
     const [formRender] = useForm({
       values: PLACEHOLDER_VALUES,
       fields: PLACEHOLDER_FIELDS,
       options: OPTIONS,
       mode: FORM_CONSTANTS.EDIT_MODE,
+      configs: { theme },
     });
-    return formRender();
+    return (
+      <div>
+        {themSwitchRender()}
+        {formRender()}
+      </div>
+    );
   });
