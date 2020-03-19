@@ -29,5 +29,6 @@ module.exports = {
     'jsx-a11y/interactive-supports-focus': 0,
     'no-alert': 0,
     'react/forbid-prop-types': 0,
+    'react/button-has-type': 0,
   },
 };

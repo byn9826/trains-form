@@ -40,6 +40,7 @@ export default function Form() {
               )
             }
             <Button
+              type="submit"
               theme={theme}
               title={configs.submitTitle}
               disabled={hasSubmitError}

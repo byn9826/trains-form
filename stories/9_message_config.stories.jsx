@@ -1,6 +1,7 @@
+import React from 'react';
 import { storiesOf } from '@storybook/react';
 import useForm, { FORM_CONSTANTS } from '../src/index';
-import { autoAppendTitleExample } from './helpers';
+import { autoAppendTitleExample, useThemeSwitcher } from './helpers';
 
 const VALUES = {
   message: 'Example of how to define messages for required error globally and locally',
@@ -41,6 +42,7 @@ storiesOf('Message Config', module)
     return formRender();
   })
   .add('Customize messages for submit button', () => {
+    const [theme, themSwitchRender] = useThemeSwitcher();
     const [formRender] = useForm({
       values: {
         ...VALUES,
@@ -50,9 +52,15 @@ storiesOf('Message Config', module)
       mode: FORM_CONSTANTS.EDIT_MODE,
       onSubmit: (values) => window.confirm(`Success! Values: ${JSON.stringify(values)}`),
       configs: {
-        submitTitle: 'Customized Submit Button title',
-        submitError: 'Customized Submit Button error',
+        submitTitle: 'Customized Submit Button Title',
+        submitError: 'Customized Submit Button Error',
       },
+      theme,
     });
-    return formRender();
+    return (
+      <div>
+        {themSwitchRender()}
+        {formRender()}
+      </div>
+    );
   });

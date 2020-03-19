@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import * as Types from '../helpers/types';
 import {
   SEMANTIC_THEME,
@@ -68,4 +69,7 @@ export default function Password({
   }
 }
 
-Password.propTypes = Types.ELEMENT_TYPE;
+Password.propTypes = {
+  ...Types.ELEMENT_TYPE,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+};
