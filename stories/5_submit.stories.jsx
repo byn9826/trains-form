@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import useForm, { FORM_CONSTANTS } from '../src/index';
-import { autoAppendTitleExample } from './helpers';
+import useForm, { FORM_CONSTANTS, FormComponents } from '../src/index';
+import { autoAppendTitleExample, useThemeSwitcher } from './helpers';
 
 const VALUES = {
   message: 'Examples of how to use built-in submit button',
@@ -90,16 +90,24 @@ export const OPTIONS = {
 
 storiesOf('Submit', module)
   .add('Built-in Submit Button', () => {
+    const [theme, themSwitchRender] = useThemeSwitcher();
     const [formRender] = useForm({
       values: VALUES,
       fields: FIELDS,
       options: OPTIONS,
       mode: FORM_CONSTANTS.EDIT_MODE,
+      theme,
       onSubmit: (values) => window.confirm(`Success! Values: ${JSON.stringify(values)}`),
     });
-    return formRender();
+    return (
+      <div>
+        {themSwitchRender()}
+        {formRender()}
+      </div>
+    );
   })
   .add('getFormDetails Action', () => {
+    const [theme, themSwitchRender] = useThemeSwitcher();
     const [formRender, { getFormDetails }] = useForm({
       values: {
         ...VALUES,
@@ -108,13 +116,15 @@ storiesOf('Submit', module)
       fields: FIELDS,
       options: OPTIONS,
       mode: FORM_CONSTANTS.EDIT_MODE,
+      theme,
     });
     return (
       <div>
+        {themSwitchRender()}
         {formRender()}
-        <button
-          className="ui primary button"
+        <FormComponents.Button
           type="button"
+          theme={theme}
           onClick={() => {
             const formDetails = getFormDetails();
             window.confirm(`All inputs are valid: ${formDetails.isReady}`);
@@ -124,9 +134,8 @@ storiesOf('Submit', module)
           style={{
             marginLeft: 20,
           }}
-        >
-          Get Form Details
-        </button>
+          title="Get Form Details"
+        />
       </div>
     );
   });

@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import useForm, { FORM_CONSTANTS } from '../src/index';
-import { autoAppendTitleExample } from './helpers';
+import useForm, { FORM_CONSTANTS, FormComponents } from '../src/index';
+import { autoAppendTitleExample, useThemeSwitcher } from './helpers';
 
 const VALUES = {
   message: 'Examples of how to use validateFormValues action',
@@ -90,29 +90,31 @@ export const OPTIONS = {
 
 storiesOf('Form Action', module)
   .add('validateFormValues Action', () => {
+    const [theme, themSwitchRender] = useThemeSwitcher();
     const [formRender, { validateFormValues }] = useForm({
       values: VALUES,
       fields: FIELDS,
       options: OPTIONS,
       mode: FORM_CONSTANTS.EDIT_MODE,
+      theme,
     });
     return (
       <div>
+        {themSwitchRender()}
         {formRender()}
-        <button
-          className="ui primary button"
-          type="button"
+        <FormComponents.Button
+          title="Trigger validation on all fields"
           onClick={validateFormValues}
           style={{
             marginLeft: 20,
           }}
-        >
-          Trigger validation on all fields
-        </button>
+          theme={theme}
+        />
       </div>
     );
   })
   .add('resetFormValues Action', () => {
+    const [theme, themSwitchRender] = useThemeSwitcher();
     const [formRender, { resetFormValues }] = useForm({
       values: {
         ...VALUES,
@@ -121,20 +123,20 @@ storiesOf('Form Action', module)
       fields: FIELDS,
       options: OPTIONS,
       mode: FORM_CONSTANTS.EDIT_MODE,
+      theme,
     });
     return (
       <div>
+        {themSwitchRender()}
         {formRender()}
-        <button
-          className="ui primary button"
-          type="button"
+        <FormComponents.Button
+          title="Reset to initial values"
+          theme={theme}
           onClick={resetFormValues}
           style={{
             marginLeft: 20,
           }}
-        >
-          Reset to initial values
-        </button>
+        />
       </div>
     );
   });

@@ -18,6 +18,23 @@ export const getFieldClass = (theme, error) => {
   return className;
 };
 
+export const getButtonClass = (theme, disabled) => {
+  let className;
+  switch (theme) {
+    case BOOTSTRAP_THEME:
+      className = 'btn btn-primary';
+      break;
+    case SEMANTIC_THEME:
+    default:
+      className = buildClassNames({
+        'ui primary button': true,
+        disabled,
+      });
+      break;
+  }
+  return className;
+};
+
 export const getLoaderClass = (theme) => {
   let className;
   switch (theme) {
