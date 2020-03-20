@@ -12,7 +12,7 @@ const THEME_OPTIONS = FORM_CONSTANTS.THEMES.map((theme) => ({
 }));
 
 export function useThemeSwitcher() {
-  const [theme, setTheme] = useState(FORM_CONSTANTS.SEMANTIC_THEME);
+  const [theme, setTheme] = useState(FORM_CONSTANTS.BOOTSTRAP_THEME);
 
   const themeSwitcherRender = () => (
     <FormComponents.Radio

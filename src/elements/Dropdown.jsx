@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import * as Types from '../helpers/types';
-import { SEMANTIC_THEME } from '../helpers/constants';
-import { buildClassNames } from '../helpers/builder';
+import { SEMANTIC_THEME, BOOTSTRAP_THEME } from '../helpers/constants';
 import { getDropdownStyle } from '../helpers/style';
+import { getDropdownClasses } from '../helpers/theme';
+import SemanticIcon from './special/SemanticIcon';
 
 export default function Dropdown({
   disabled,
@@ -15,6 +17,8 @@ export default function Dropdown({
   onChange,
   allowClear = true,
 }) {
+  const classNames = getDropdownClasses(theme, disabled);
+
   const [showDropdown, setShowDropdown] = useState(false);
   const selectedValue = options.find((option) => option.value === value);
 
@@ -29,22 +33,48 @@ export default function Dropdown({
   };
   const onClickIcon = (e) => {
     e.stopPropagation();
-    if (selectedValue) {
+    if (allowClear && selectedValue) {
       onChange(name, null);
     } else {
-      onClickField();
+      setShowDropdown(!showDropdown);
     }
   };
 
+  const iconRender = () => {
+    if (allowClear && selectedValue) {
+      return theme === SEMANTIC_THEME ? (
+        <SemanticIcon
+          iconName="close"
+          onClickIcon={onClickIcon}
+        />
+      ) : (
+        <span
+          role="button"
+          onClick={onClickIcon}
+          onKeyDown={onClickIcon}
+          style={{ fontSize: 16, fontWeight: 'bold' }}
+        >
+          ×
+        </span>
+      );
+    }
+    return theme === SEMANTIC_THEME && (
+      <i
+        className="icon dropdown"
+        onClick={onClickIcon}
+        onKeyDown={onClickIcon}
+        role="button"
+      />
+    );
+  };
+
   switch (theme) {
+    case BOOTSTRAP_THEME:
     case SEMANTIC_THEME:
     default:
       return (
         <div
-          className={buildClassNames({
-            'ui selection dropdown': true,
-            disabled,
-          })}
+          className={classNames.group}
           onClick={onClickField}
           onKeyDown={onClickField}
           role="button"
@@ -54,39 +84,29 @@ export default function Dropdown({
           }}
         >
           {selectedValue && (
-            <div className="text">
+            <div className={classNames.text}>
               {selectedValue.label}
             </div>
           )}
           {placeholder && !selectedValue && (
-            <div className="default text">
+            <div className={classNames.placeholder}>
               {placeholder}
             </div>
           )}
           {
-            allowClear && !disabled && (
-              <i
-                className={buildClassNames({
-                  icon: true,
-                  dropdown: !selectedValue,
-                  close: selectedValue,
-                })}
-                onClick={onClickIcon}
-                onKeyDown={onClickIcon}
-                role="button"
-              />
-            )
+            !disabled && iconRender()
           }
           <div
-            className="menu"
+            className={classNames.menu}
             style={{
               display: showDropdown ? 'block' : 'none',
+              width: '100%',
             }}
           >
             {
               options.map((option) => (
                 <div
-                  className="item"
+                  className={classNames.item}
                   key={option.value}
                   onClick={(e) => onClickOption(e, option)}
                   onKeyDown={(e) => onClickOption(e, option)}
@@ -102,4 +122,9 @@ export default function Dropdown({
   }
 }
 
-Dropdown.propTypes = Types.ELEMENT_TYPE;
+Dropdown.propTypes = {
+  ...Types.ELEMENT_TYPE,
+  value: PropTypes.oneOfType([
+    PropTypes.string, PropTypes.number, PropTypes.bool,
+  ]),
+};

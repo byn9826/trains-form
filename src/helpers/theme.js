@@ -144,3 +144,32 @@ export const getCheckGroupClasses = (type, theme, error) => {
   }
   return classNames;
 };
+
+export const getDropdownClasses = (theme, disabled) => {
+  let classNames;
+  switch (theme) {
+    case BOOTSTRAP_THEME:
+      classNames = {
+        group: 'btn btn-outline-secondary dropdown',
+        menu: 'dropdown-menu',
+        item: 'dropdown-item',
+        text: 'text-capitalize',
+        placeholder: 'text-muted',
+      };
+      break;
+    case SEMANTIC_THEME:
+    default:
+      classNames = {
+        group: buildClassNames({
+          'ui selection dropdown': true,
+          disabled,
+        }),
+        menu: 'menu',
+        item: 'item',
+        text: 'text',
+        placeholder: 'default text',
+      };
+      break;
+  }
+  return classNames;
+};

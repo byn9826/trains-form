@@ -11,6 +11,7 @@ import {
 } from '../helpers/calendar';
 import { getDropdownStyle } from '../helpers/style';
 import Dropdown from './Dropdown';
+import SemanticIcon from './special/SemanticIcon';
 
 const PAD_STYLE = {
   width: '14%',
@@ -191,15 +192,9 @@ export default function Calendar({
                   !value && !placeholder && <div />
                 }
                 {!disabled && (
-                  <i
-                    className={buildClassNames({
-                      icon: true,
-                      'calendar outline': !value,
-                      close: value,
-                    })}
-                    onClick={onClickIcon}
-                    onKeyDown={onClickIcon}
-                    role="button"
+                  <SemanticIcon
+                    iconName={value ? 'close' : 'calendar outline'}
+                    onClickIcon={onClickIcon}
                   />
                 )}
               </>

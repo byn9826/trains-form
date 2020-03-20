@@ -5,4 +5,5 @@ export const getDropdownStyle = (isPopupOpen) => ({
   paddingRight: 10,
   zIndex: isPopupOpen ? 999 : 'unset',
   minWidth: 80,
+  minHeight: 38,
 });
