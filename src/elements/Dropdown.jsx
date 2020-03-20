@@ -4,7 +4,7 @@ import * as Types from '../helpers/types';
 import { SEMANTIC_THEME, BOOTSTRAP_THEME } from '../helpers/constants';
 import { getDropdownStyle } from '../helpers/style';
 import { getDropdownClasses } from '../helpers/theme';
-import SemanticIcon from './special/SemanticIcon';
+import TextIcon, { TEXT_ICONS } from './special/TextIcon';
 
 export default function Dropdown({
   disabled,
@@ -42,34 +42,6 @@ export default function Dropdown({
     }
   };
 
-  const iconRender = () => {
-    if (allowClear && selectedValue) {
-      return theme === SEMANTIC_THEME ? (
-        <SemanticIcon
-          iconName="close"
-          onClickIcon={onClickIcon}
-        />
-      ) : (
-        <span
-          role="button"
-          onClick={onClickIcon}
-          onKeyDown={onClickIcon}
-          style={{ fontSize: 16, fontWeight: 'bold' }}
-        >
-          ×
-        </span>
-      );
-    }
-    return theme === SEMANTIC_THEME && (
-      <i
-        className="icon dropdown"
-        onClick={onClickIcon}
-        onKeyDown={onClickIcon}
-        role="button"
-      />
-    );
-  };
-
   switch (theme) {
     case BOOTSTRAP_THEME:
     case SEMANTIC_THEME:
@@ -96,8 +68,18 @@ export default function Dropdown({
               {placeholder}
             </div>
           )}
+          {!selectedValue && !placeholder && <div />}
           {
-            !disabled && iconRender()
+            !disabled && (
+              <TextIcon
+                iconName={
+                  allowClear && selectedValue
+                    ? TEXT_ICONS.CLOSE
+                    : TEXT_ICONS.DROPDOWN
+                }
+                onClickIcon={onClickIcon}
+              />
+            )
           }
           <div
             className={classNames.menu}

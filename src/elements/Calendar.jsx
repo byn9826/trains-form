@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import * as Types from '../helpers/types';
-import { SEMANTIC_THEME } from '../helpers/constants';
-import { buildClassNames } from '../helpers/builder';
 import {
   getDaysInMonth,
   getMonthName,
@@ -10,8 +8,9 @@ import {
   getDateString,
 } from '../helpers/calendar';
 import { getDropdownStyle } from '../helpers/style';
+import { getDropdownClasses } from '../helpers/theme';
 import Dropdown from './Dropdown';
-import SemanticIcon from './special/SemanticIcon';
+import TextIcon, { TEXT_ICONS } from './special/TextIcon';
 
 const PAD_STYLE = {
   width: '14%',
@@ -24,16 +23,6 @@ const CELL_STYLE = {
   cursor: 'pointer',
 };
 
-const ARROW_STYLE = {
-  cursor: 'pointer',
-};
-
-const YEAR_STYLE = {
-  margin: 0,
-  padding: 0,
-  fontWeight: 'bold',
-};
-
 export default function Calendar({
   disabled,
   style,
@@ -42,12 +31,18 @@ export default function Calendar({
   theme,
   placeholder,
   onChange,
+  error,
 }) {
+  const classes = getDropdownClasses(theme, disabled, error);
+
   const initialDate = value || new Date();
   const [showPopup, setShowPopup] = useState(false);
   const [displayYear, setDisplayYear] = useState(initialDate.getFullYear());
   const [displayMonth, setDisplayMonth] = useState(initialDate.getMonth());
-  const onClickField = () => setShowPopup(true);
+  const onClickField = () => {
+    if (disabled) return;
+    setShowPopup(true);
+  };
 
   const onClickPrevious = (e) => {
     e.stopPropagation();
@@ -156,113 +151,111 @@ export default function Calendar({
     return cells;
   };
 
-  switch (theme) {
-    case SEMANTIC_THEME:
-    default:
-      return (
-        <div
-          className={buildClassNames({
-            'ui selection dropdown': true,
-            disabled,
-          })}
-          onClick={onClickField}
-          onKeyDown={onClickField}
-          role="button"
+  return (
+    <div
+      className={classes.group}
+      onClick={onClickField}
+      onKeyDown={onClickField}
+      role="button"
+      disabled={disabled}
+      style={{
+        ...style,
+        ...getDropdownStyle(showPopup, disabled),
+      }}
+    >
+      {
+        !showPopup && (
+          <>
+            {value && (
+              <div className={classes.text}>
+                {getDateString(value)}
+              </div>
+            )}
+            {placeholder && !value && (
+              <div className={classes.placeholder}>
+                {placeholder}
+              </div>
+            )}
+            {
+              !value && !placeholder && <div />
+            }
+            {!disabled && (
+              <TextIcon
+                iconName={value ? TEXT_ICONS.CLOSE : TEXT_ICONS.DROPDOWN}
+                onClickIcon={onClickIcon}
+              />
+            )}
+          </>
+        )
+      }
+      <div
+        style={{
+          display: showPopup ? 'block' : 'none',
+          paddingTop: 10,
+          overflow: 'visible',
+          maxHeight: 'unset',
+          width: '100%',
+        }}
+        role="button"
+        onClick={onClickPopup}
+        onKeyDown={onClickPopup}
+        className={classes.popup}
+      >
+        <header
           style={{
-            ...style,
-            ...getDropdownStyle(showPopup),
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            padding: '0 5%',
+            flexWrap: 'wrap',
           }}
         >
-          {
-            !showPopup && (
-              <>
-                {value && (
-                  <div className="text">
-                    {getDateString(value)}
-                  </div>
-                )}
-                {placeholder && !value && (
-                  <div className="default text">
-                    {placeholder}
-                  </div>
-                )}
-                {
-                  !value && !placeholder && <div />
-                }
-                {!disabled && (
-                  <SemanticIcon
-                    iconName={value ? 'close' : 'calendar outline'}
-                    onClickIcon={onClickIcon}
-                  />
-                )}
-              </>
-            )
-          }
           <div
             style={{
-              display: showPopup ? 'block' : 'none',
-              paddingTop: 10,
-              overflow: 'visible',
-              maxHeight: 'unset',
-              width: '100%',
+              display: 'flex',
+              alignItems: 'center',
             }}
-            role="button"
-            onClick={onClickPopup}
-            onKeyDown={onClickPopup}
           >
-            <header
+            <TextIcon
+              onClickIcon={(e) => onClickPrevious(e)}
+              iconName={TEXT_ICONS.ARROW_LEFT}
+              size={30}
+            />
+            <p
               style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                padding: '0 5%',
-                flexWrap: 'wrap',
+                marginLeft: 10,
+                marginRight: 10,
+                marginTop: 0,
+                marginBottom: 0,
+                padding: 0,
+                fontWeight: 'bold',
               }}
             >
-              <div
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                }}
-              >
-                <i
-                  className="icon angle left"
-                  onClick={(e) => onClickPrevious(e)}
-                  onKeyDown={(e) => onClickPrevious(e)}
-                  role="button"
-                  style={ARROW_STYLE}
-                />
-                <p
-                  style={YEAR_STYLE}
-                >
-                  {displayYear}
-                </p>
-                <i
-                  className="icon angle right"
-                  onClick={(e) => onClickNext(e)}
-                  onKeyDown={(e) => onClickNext(e)}
-                  role="button"
-                  style={ARROW_STYLE}
-                />
-              </div>
-              {monthSelectorRender()}
-            </header>
-            <div
-              style={{
-                display: 'flex',
-                flexWrap: 'wrap',
-                paddingTop: 10,
-                paddingLeft: '4.1%',
-                paddingRight: '4.1%',
-              }}
-            >
-              {weekdaysRender()}
-              {daysRender()}
-            </div>
+              {displayYear}
+            </p>
+            <TextIcon
+              onClickIcon={(e) => onClickNext(e)}
+              iconName={TEXT_ICONS.ARROW_RIGHT}
+              size={30}
+            />
           </div>
+          {monthSelectorRender()}
+        </header>
+        <div
+          style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            paddingTop: 10,
+            paddingLeft: '4.1%',
+            paddingRight: '4.1%',
+          }}
+        >
+          {weekdaysRender()}
+          {daysRender()}
         </div>
-      );
-  }
+      </div>
+    </div>
+  );
 }
 
 Calendar.propTypes = {
