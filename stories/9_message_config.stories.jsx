@@ -31,6 +31,7 @@ const FIELDS = autoAppendTitleExample([
 
 storiesOf('Message Config', module)
   .add('Customize messages for required error', () => {
+    const [theme, themSwitchRender] = useThemeSwitcher();
     const [formRender] = useForm({
       values: VALUES,
       fields: FIELDS,
@@ -38,8 +39,14 @@ storiesOf('Message Config', module)
       configs: {
         requiredError: 'A customized global message on required error',
       },
+      theme,
     });
-    return formRender();
+    return (
+      <div>
+        {themSwitchRender()}
+        {formRender()}
+      </div>
+    );
   })
   .add('Customize messages for submit button', () => {
     const [theme, themSwitchRender] = useThemeSwitcher();

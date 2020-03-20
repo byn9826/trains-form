@@ -7,7 +7,9 @@
     "Form Builder",
     "React Form",
     "Form Validation",
-    "Date Picker"
+    "Date Picker",
+    "Bootstrap",
+    "Semantic UI"
   ],
   "main": "dist/index.js",
   "scripts": {

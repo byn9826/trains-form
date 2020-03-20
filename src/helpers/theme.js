@@ -145,12 +145,15 @@ export const getCheckGroupClasses = (type, theme, error) => {
   return classNames;
 };
 
-export const getDropdownClasses = (theme, disabled) => {
+export const getDropdownClasses = (theme, disabled, error) => {
   let classNames;
   switch (theme) {
     case BOOTSTRAP_THEME:
       classNames = {
-        group: 'btn btn-outline-secondary dropdown',
+        group: buildClassNames({
+          'form-control dropdown': true,
+          'is-invalid': error,
+        }),
         menu: 'dropdown-menu',
         item: 'dropdown-item',
         text: 'text-capitalize',

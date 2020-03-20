@@ -16,8 +16,9 @@ export default function Dropdown({
   placeholder,
   onChange,
   allowClear = true,
+  error,
 }) {
-  const classNames = getDropdownClasses(theme, disabled);
+  const classNames = getDropdownClasses(theme, disabled, error);
 
   const [showDropdown, setShowDropdown] = useState(false);
   const selectedValue = options.find((option) => option.value === value);
@@ -29,6 +30,7 @@ export default function Dropdown({
   };
   const onClickField = (e) => {
     e.stopPropagation();
+    if (disabled) return;
     setShowDropdown(!showDropdown);
   };
   const onClickIcon = (e) => {
@@ -80,8 +82,9 @@ export default function Dropdown({
           role="button"
           style={{
             ...style,
-            ...getDropdownStyle(showDropdown),
+            ...getDropdownStyle(showDropdown, disabled),
           }}
+          disabled={disabled}
         >
           {selectedValue && (
             <div className={classNames.text}>
