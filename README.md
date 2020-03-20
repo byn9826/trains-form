@@ -11,16 +11,16 @@ npm install trains-forms --save;
 npm install semantic-ui-css --save;
 import 'semantic-ui-css/semantic.min.css';
 
-// For theme: Bootstrap
+// For theme: Bootstrap@4
 npm install bootstrap --save;
 import 'bootstrap/dist/css/bootstrap.min.css';
 ```
 ## Features
 1. Render complex form by simple configs.
 2. Easily switch between view and edit mode.
-3. Works with Semantic UI, Bootstrap.
+3. Built-in support for Semantic UI, Bootstrap.
 4. Built-in configurable validations.
-5. Configurable error messages.
+5. Built-in configurable error messages.
 6. Built-in date picker.
 7. Minimal dependencies, small bundle size.
 ## How to use

@@ -154,9 +154,9 @@ const MAX_MIN_FIELDS = autoAppendTitleExample([
   {
     type: FORM_CONSTANTS.DATE_TYPE,
     name: 'date',
-    default: new Date('2020-03-15'),
-    min: new Date('2020-03-05'),
-    max: new Date('2020-03-20'),
+    default: new Date(2020, 4, 15),
+    min: new Date(2020, 4, 5),
+    max: new Date(2020, 4, 20),
   },
 ]);
 
@@ -214,19 +214,33 @@ storiesOf('Field Validation', module)
     );
   })
   .add('Min & Max', () => {
+    const [theme, themSwitchRender] = useThemeSwitcher();
     const [formRender] = useForm({
       values: MAX_MIN_VALUES,
       fields: MAX_MIN_FIELDS,
       options: OPTIONS,
       mode: FORM_CONSTANTS.EDIT_MODE,
+      theme,
     });
-    return formRender();
+    return (
+      <div>
+        {themSwitchRender()}
+        {formRender()}
+      </div>
+    );
   })
   .add('Regular Expression', () => {
+    const [theme, themSwitchRender] = useThemeSwitcher();
     const [formRender] = useForm({
       values: MATCH_VALUES,
       fields: MATCH_FIELDS,
       mode: FORM_CONSTANTS.EDIT_MODE,
+      theme,
     });
-    return formRender();
+    return (
+      <div>
+        {themSwitchRender()}
+        {formRender()}
+      </div>
+    );
   });

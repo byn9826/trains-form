@@ -44,11 +44,9 @@ export default function Calendar({
   onChange,
 }) {
   const initialDate = value || new Date();
-
   const [showPopup, setShowPopup] = useState(false);
   const [displayYear, setDisplayYear] = useState(initialDate.getFullYear());
   const [displayMonth, setDisplayMonth] = useState(initialDate.getMonth());
-
   const onClickField = () => setShowPopup(true);
 
   const onClickPrevious = (e) => {
@@ -103,7 +101,7 @@ export default function Calendar({
 
   const weekdaysRender = () => {
     const weekdays = [];
-    for (let i = 1; i <= 7; i += 1) {
+    for (let i = 0; i <= 6; i += 1) {
       weekdays.push(
         <div key={i} style={PAD_STYLE}>
           {getWeekdayName(i)}
@@ -115,14 +113,14 @@ export default function Calendar({
 
   const isSelectedDate = (dateIndex) => (
     value
-    && displayYear === value.getUTCFullYear()
-    && displayMonth === value.getUTCMonth()
-    && dateIndex === value.getUTCDate()
+    && displayYear === value.getFullYear()
+    && displayMonth === value.getMonth()
+    && dateIndex === value.getDate()
   );
 
   const daysRender = () => {
     const firstDate = new Date(displayYear, displayMonth);
-    const firstDateDay = firstDate.getUTCDay();
+    const firstDateDay = firstDate.getDay();
     const paddingDays = firstDateDay === 7 ? 0 : firstDateDay;
     const totalDays = getDaysInMonth(displayYear, displayMonth);
     const cells = [];

@@ -131,14 +131,21 @@ storiesOf('Validation Config', module)
     );
   })
   .add('Disable validation on change field', () => {
+    const [theme, themSwitchRender] = useThemeSwitcher();
     const [formRender] = useForm({
       values: DISABLE_VALUES,
       fields: FIELDS,
       options: OPTIONS,
       mode: FORM_CONSTANTS.EDIT_MODE,
+      theme,
       configs: {
         validateOnChange: false,
       },
     });
-    return formRender();
+    return (
+      <div>
+        {themSwitchRender()}
+        {formRender()}
+      </div>
+    );
   });
