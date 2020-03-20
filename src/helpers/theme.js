@@ -158,6 +158,7 @@ export const getDropdownClasses = (theme, disabled, error) => {
         item: 'dropdown-item',
         text: 'text-capitalize',
         placeholder: 'text-muted',
+        popup: 'dropdown-menu',
       };
       break;
     case SEMANTIC_THEME:
@@ -171,6 +172,7 @@ export const getDropdownClasses = (theme, disabled, error) => {
         item: 'item',
         text: 'text',
         placeholder: 'default text',
+        popup: null,
       };
       break;
   }
