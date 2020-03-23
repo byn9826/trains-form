@@ -1,3 +1,5 @@
+export const isString = (value) => typeof value === 'string';
+
 export const isNumber = (value) => typeof value === 'number';
 
 export const isBoolean = (value) => typeof value === 'boolean';
@@ -10,18 +12,6 @@ export const isDate = (value) => value instanceof Date && !Number.isNaN(value.ge
 
 export const isDefined = (value) => typeof value !== 'undefined';
 
-export const isNotEmpty = (value) => {
-  if (value === undefined || value === null) {
-    return false;
-  }
-  if (typeof value === 'string' && value.trim() === '') {
-    return false;
-  }
-  if (isArray(value) && value.length === 0) {
-    return false;
-  }
-  if (value instanceof Date && Number.isNaN(value.getTime)) {
-    return false;
-  }
-  return true;
-};
+export const isRegx = (value) => value instanceof RegExp;
+
+export const isBasic = (value) => isString(value) || isNumber(value) || isBoolean(value);

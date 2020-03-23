@@ -10,11 +10,13 @@ import {
   DATE_TYPE,
 } from './constants';
 import {
+  isString,
   isNumber,
-  isBoolean,
-  isArray,
-  isNotEmpty,
   isDate,
+  isRegx,
+  isArray,
+  isBoolean,
+  isBasic,
 } from './utils';
 import { getDateString } from './calendar';
 
@@ -30,26 +32,40 @@ export const isArrayType = (type) => type === CHECKBOX_TYPE;
 
 export const isBooleanType = (type) => type === TOGGLE_TYPE;
 
-export const isSelectType = (type) => (
-  type === RADIO_TYPE
-  || type === SINGLE_SELECT_TYPE
-);
+export const isSelectType = (type) => type === RADIO_TYPE || type === SINGLE_SELECT_TYPE;
 
 export const isCalendarType = (type) => type === DATE_TYPE;
 
-const isMinMaxType = (type) => isStringType(type) || isNumberType(type) || isArrayType(type);
+const isMinMaxNumberType = (type) => (
+  isStringType(type)
+  || isNumberType(type)
+  || isArrayType(type)
+);
 
-const requiredIsValid = (field, value) => {
-  if (field.type === TOGGLE_TYPE) {
-    return isBoolean(value);
+const isNotEmpty = (type, value) => {
+  if (
+    (isStringType(type) || isNumberType(type))
+    && isString(value)
+    && value.trim() !== ''
+  ) {
+    return true;
   }
-  if (field.type === CHECKBOX_TYPE) {
-    return isArray(value) && value.length !== 0;
+  if (isArrayType(type) && isArray(value) && value.length !== 0) {
+    return true;
   }
-  return isNotEmpty(value);
+  if (isBooleanType(type) && isBoolean(value)) {
+    return true;
+  }
+  if (isSelectType(type) && isBasic(value)) {
+    return true;
+  }
+  if (isCalendarType(type) && isDate(value)) {
+    return true;
+  }
+  return false;
 };
 
-const maxIsValid = (field, value) => {
+const maxNumberIsValid = (field, value) => {
   if (isStringType(field.type) || isArrayType(field.type)) {
     return value.length <= field.max;
   }
@@ -59,7 +75,7 @@ const maxIsValid = (field, value) => {
   return true;
 };
 
-const minIsValid = (field, value) => {
+const minNumberIsValid = (field, value) => {
   if (isStringType(field.type) || isArrayType(field.type)) {
     return value.length >= field.min;
   }
@@ -72,21 +88,23 @@ const minIsValid = (field, value) => {
 export const isEmptyErrors = (errors) => !Object.values(errors).find((error) => error);
 
 export const fieldValidator = (field, value, configs) => {
-  if (field.required && !requiredIsValid(field, value)) {
+  const isEmpty = !isNotEmpty(field.type, value);
+  if (field.required && isEmpty) {
     return field.requiredError || configs.requiredError;
   }
   if (
-    field.match
+    !isEmpty
+    && isRegx(field.match)
     && isStringType(field.type)
     && !value.match(field.match)
   ) {
     return field.matchError || `Regx: ${field.match}`;
   }
   if (
-    isNumber(field.max)
-    && isMinMaxType(field.type)
-    && isNotEmpty(value)
-    && !maxIsValid(field, value)
+    !isEmpty
+    && isNumber(field.max)
+    && isMinMaxNumberType(field.type)
+    && !maxNumberIsValid(field, value)
   ) {
     if (field.maxError) {
       return field.maxError;
@@ -100,10 +118,10 @@ export const fieldValidator = (field, value, configs) => {
     return `Maximum ${field.max} characters allowed.`;
   }
   if (
-    isCalendarType(field.type)
+    !isEmpty
     && isDate(field.max)
-    && isDate(value)
-    && getDateString(field.max) < getDateString(value)
+    && isCalendarType(field.type)
+    && field.max < value
   ) {
     if (field.maxError) {
       return field.maxError;
@@ -111,10 +129,10 @@ export const fieldValidator = (field, value, configs) => {
     return `Date is required to be no later than ${getDateString(field.max)}`;
   }
   if (
-    isNumber(field.min)
-    && isMinMaxType(field.type)
-    && (isNotEmpty(value) || field.min === 1)
-    && !minIsValid(field, value)
+    (!isEmpty || field.min === 1)
+    && isNumber(field.min)
+    && isMinMaxNumberType(field.type)
+    && !minNumberIsValid(field, value)
   ) {
     if (field.minError) {
       return field.minError;
@@ -128,10 +146,10 @@ export const fieldValidator = (field, value, configs) => {
     return `Minimum ${field.min} characters required.`;
   }
   if (
-    isCalendarType(field.type)
+    !isEmpty
     && isDate(field.min)
-    && isDate(value)
-    && getDateString(field.min) > getDateString(value)
+    && isCalendarType(field.type)
+    && field.min > value
   ) {
     if (field.minError) {
       return field.minError;
