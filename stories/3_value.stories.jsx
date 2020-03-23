@@ -78,9 +78,11 @@ const OPTIONS = {
   ],
 };
 
+const fileName = '3_value';
+
 storiesOf('Value', module)
   .add('Default', () => {
-    const [theme, themSwitchRender] = useThemeSwitcher();
+    const [theme, themSwitchRender] = useThemeSwitcher({ fileName });
     const [formRender] = useForm({
       values: VALUES,
       fields: FIELDS,
@@ -96,7 +98,7 @@ storiesOf('Value', module)
     );
   })
   .add('Disabled', () => {
-    const [theme, themSwitchRender] = useThemeSwitcher();
+    const [theme, themSwitchRender] = useThemeSwitcher({ fileName });
     const [formRender] = useForm({
       values: VALUES,
       fields: FIELDS.map((field) => ({

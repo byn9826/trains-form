@@ -78,9 +78,11 @@ const OPTIONS = {
   ],
 };
 
+const fileName = '7_effect';
+
 storiesOf('Effect', module)
   .add('isLoading', () => {
-    const [theme, themSwitchRender] = useThemeSwitcher();
+    const [theme, themSwitchRender] = useThemeSwitcher({ fileName });
     const [isLoading, setIsLoading] = useState(true);
     const [values, setValues] = useState({});
     useEffect(() => {

@@ -78,9 +78,11 @@ const OPTIONS = {
   ],
 };
 
+const fileName = '1_mode';
+
 storiesOf('Mode', module)
   .add('View', () => {
-    const [theme, themSwitchRender] = useThemeSwitcher();
+    const [theme, themSwitchRender] = useThemeSwitcher({ fileName });
     const [formRender] = useForm({
       theme,
       values: VALUES,
@@ -96,7 +98,7 @@ storiesOf('Mode', module)
     );
   })
   .add('View as message', () => {
-    const [theme, themSwitchRender] = useThemeSwitcher();
+    const [theme, themSwitchRender] = useThemeSwitcher({ fileName });
     const [formRender] = useForm({
       values: {
         ...VALUES,
@@ -118,7 +120,7 @@ storiesOf('Mode', module)
     );
   })
   .add('Edit', () => {
-    const [theme, themSwitchRender] = useThemeSwitcher();
+    const [theme, themSwitchRender] = useThemeSwitcher({ fileName });
     const [formRender] = useForm({
       values: {
         ...VALUES,

@@ -110,9 +110,11 @@ const FIELDS = autoAppendTitleExample([
   },
 ]);
 
+const fileName = '8_validation_config';
+
 storiesOf('Validation Config', module)
   .add('Enable validation on initial form', () => {
-    const [theme, themSwitchRender] = useThemeSwitcher();
+    const [theme, themSwitchRender] = useThemeSwitcher({ fileName });
     const [formRender] = useForm({
       values: INITIAL_VALUES,
       fields: FIELDS,
@@ -131,7 +133,7 @@ storiesOf('Validation Config', module)
     );
   })
   .add('Disable validation on change field', () => {
-    const [theme, themSwitchRender] = useThemeSwitcher();
+    const [theme, themSwitchRender] = useThemeSwitcher({ fileName });
     const [formRender] = useForm({
       values: DISABLE_VALUES,
       fields: FIELDS,

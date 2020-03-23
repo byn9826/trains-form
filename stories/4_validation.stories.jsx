@@ -196,9 +196,11 @@ const MATCH_FIELDS = autoAppendTitleExample([
   },
 ]);
 
+const fileName = '4_validation';
+
 storiesOf('Field Validation', module)
   .add('Required', () => {
-    const [theme, themSwitchRender] = useThemeSwitcher();
+    const [theme, themSwitchRender] = useThemeSwitcher({ fileName });
     const [formRender] = useForm({
       values: REQUIRED_VALUES,
       fields: REQUIRED_FIELDS,
@@ -214,7 +216,7 @@ storiesOf('Field Validation', module)
     );
   })
   .add('Min & Max', () => {
-    const [theme, themSwitchRender] = useThemeSwitcher();
+    const [theme, themSwitchRender] = useThemeSwitcher({ fileName });
     const [formRender] = useForm({
       values: MAX_MIN_VALUES,
       fields: MAX_MIN_FIELDS,
@@ -230,7 +232,7 @@ storiesOf('Field Validation', module)
     );
   })
   .add('Regular Expression', () => {
-    const [theme, themSwitchRender] = useThemeSwitcher();
+    const [theme, themSwitchRender] = useThemeSwitcher({ fileName });
     const [formRender] = useForm({
       values: MATCH_VALUES,
       fields: MATCH_FIELDS,

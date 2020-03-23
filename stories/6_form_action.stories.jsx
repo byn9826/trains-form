@@ -87,10 +87,11 @@ export const OPTIONS = {
   ],
 };
 
+const fileName = '6_form_action';
 
 storiesOf('Form Action', module)
   .add('validateFormValues Action', () => {
-    const [theme, themSwitchRender] = useThemeSwitcher();
+    const [theme, themSwitchRender] = useThemeSwitcher({ fileName });
     const [formRender, { validateFormValues }] = useForm({
       values: VALUES,
       fields: FIELDS,
@@ -114,7 +115,7 @@ storiesOf('Form Action', module)
     );
   })
   .add('resetFormValues Action', () => {
-    const [theme, themSwitchRender] = useThemeSwitcher();
+    const [theme, themSwitchRender] = useThemeSwitcher({ fileName });
     const [formRender, { resetFormValues }] = useForm({
       values: {
         ...VALUES,

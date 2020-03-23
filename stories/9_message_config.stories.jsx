@@ -29,9 +29,11 @@ const FIELDS = autoAppendTitleExample([
   },
 ]);
 
+const fileName = '9_message_config';
+
 storiesOf('Message Config', module)
   .add('Customize messages for required error', () => {
-    const [theme, themSwitchRender] = useThemeSwitcher();
+    const [theme, themSwitchRender] = useThemeSwitcher({ fileName });
     const [formRender] = useForm({
       values: VALUES,
       fields: FIELDS,
@@ -49,7 +51,7 @@ storiesOf('Message Config', module)
     );
   })
   .add('Customize messages for submit button', () => {
-    const [theme, themSwitchRender] = useThemeSwitcher();
+    const [theme, themSwitchRender] = useThemeSwitcher({ fileName });
     const [formRender] = useForm({
       values: {
         ...VALUES,

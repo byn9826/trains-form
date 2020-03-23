@@ -87,10 +87,11 @@ export const OPTIONS = {
   ],
 };
 
+const fileName = '5_submit';
 
 storiesOf('Submit', module)
   .add('Built-in Submit Button', () => {
-    const [theme, themSwitchRender] = useThemeSwitcher();
+    const [theme, themSwitchRender] = useThemeSwitcher({ fileName });
     const [formRender] = useForm({
       values: VALUES,
       fields: FIELDS,
@@ -107,7 +108,7 @@ storiesOf('Submit', module)
     );
   })
   .add('getFormDetails Action', () => {
-    const [theme, themSwitchRender] = useThemeSwitcher();
+    const [theme, themSwitchRender] = useThemeSwitcher({ fileName });
     const [formRender, { getFormDetails }] = useForm({
       values: {
         ...VALUES,
