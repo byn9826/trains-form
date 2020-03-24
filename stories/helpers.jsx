@@ -20,7 +20,7 @@ export function useThemeSwitcher({ fileName }) {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        padding: '5px 5%',
+        padding: '5px 2%',
       }}
     >
       <FormComponents.Radio
