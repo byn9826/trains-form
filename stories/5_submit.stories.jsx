@@ -1,6 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import useForm, { FORM_CONSTANTS, FormComponents } from '../src/index';
+import useForm, { FORM_CONSTANTS } from '../src/index';
+import Elements from '../src/elements';
 import { autoAppendTitleExample, useThemeSwitcher } from './helpers';
 
 const VALUES = {
@@ -123,7 +124,7 @@ storiesOf('Submit', module)
       <div>
         {themSwitchRender()}
         {formRender()}
-        <FormComponents.Button
+        <Elements.Button
           type="button"
           theme={theme}
           onClick={() => {
