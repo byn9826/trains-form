@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { EDIT_MODE } from '../helpers/constants';
-import { getFormClass } from '../helpers/theme';
+import { getFormClass, getAlertClass } from '../helpers/theme';
 import Context from '../helpers/context';
 import Field from './Field';
 import Button from '../elements/components/Button';
@@ -32,8 +32,12 @@ export default function Form() {
             {
               hasSubmitError && (
                 <div
-                  className="ui negative message compact"
-                  style={{ marginRight: 10 }}
+                  className={getAlertClass(theme)}
+                  style={{
+                    marginRight: 10,
+                    display: 'inline-block',
+                  }}
+                  role="alert"
                 >
                   <p>{configs.submitError}</p>
                 </div>

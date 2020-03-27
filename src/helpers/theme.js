@@ -1,6 +1,20 @@
 import { BOOTSTRAP_THEME, SEMANTIC_THEME, RADIO_TYPE } from './constants';
 import { buildClassNames } from './builder';
 
+export const getAlertClass = (theme) => {
+  let className;
+  switch (theme) {
+    case BOOTSTRAP_THEME:
+      className = 'alert alert-danger';
+      break;
+    case SEMANTIC_THEME:
+    default:
+      className = 'ui negative message compact';
+      break;
+  }
+  return className;
+};
+
 export const getFieldClass = (theme, error) => {
   let className;
   switch (theme) {
