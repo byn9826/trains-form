@@ -255,7 +255,7 @@ return (
         100
       </td>
       <td>
-        Message, Text, Number, Password, Note, Toggle, Radio, Checkbox, SingleSelect, Date
+        Message, Text, Number, Integer, Password, Note, Toggle, Radio, Checkbox, SingleSelect, Date
       </td>
     </tr>
     <tr>
@@ -270,7 +270,7 @@ return (
       </td>
       <td></td>
       <td>
-        Text, Number, Password, Note, Toggle, SingleSelect
+        Text, Number, Integer, Password, Note, Toggle, SingleSelect
       </td>
     </tr>
     <tr>
@@ -285,7 +285,7 @@ return (
       </td>
       <td></td>
       <td>
-        Message, Text, Number, Note, Toggle, Radio, Checkbox, SingleSelect, Date
+        Message, Text, Number, Integer, Note, Toggle, Radio, Checkbox, SingleSelect, Date
       </td>
     </tr>
     <tr>
@@ -302,7 +302,7 @@ return (
         false
       </td>
       <td>
-        Message, Text, Number, Password, Note, Toggle, Radio, Checkbox, SingleSelect, Date
+        Message, Text, Number, Integer, Password, Note, Toggle, Radio, Checkbox, SingleSelect, Date
       </td>
     </tr>
     <tr>
@@ -319,7 +319,7 @@ return (
         false
       </td>
       <td>
-        Message, Text, Number, Password, Note, Toggle, Radio, Checkbox, SingleSelect, Date
+        Message, Text, Number, Integer, Password, Note, Toggle, Radio, Checkbox, SingleSelect, Date
       </td>
     </tr>
     <tr>
@@ -336,7 +336,7 @@ return (
         (Same as Form Configs requiredError)
       </td>
       <td>
-        Message, Text, Number, Password, Note, Toggle, Radio, Checkbox, SingleSelect, Date
+        Message, Text, Number, Integer, Password, Note, Toggle, Radio, Checkbox, SingleSelect, Date
       </td>
     </tr>
     <tr>
@@ -391,7 +391,7 @@ return (
         Min number required.
       </td>
       <td>
-        Number
+        Number, Integer
       </td>
     </tr>
     <tr>
@@ -435,7 +435,7 @@ return (
         `Number is required to be no less than ${field.min}.`
       </td>
       <td>
-        Number
+        Number, Integer
       </td>
     </tr>
     <tr>
@@ -474,7 +474,7 @@ return (
         Max number allowed.
       </td>
       <td>
-        Number
+        Number, Integer
       </td>
     </tr>
     <tr>
@@ -518,7 +518,7 @@ return (
         `Number is required to be no greater than ${field.max}.`
       </td>
       <td>
-        Number
+        Number, Integer
       </td>
     </tr>
     <tr>

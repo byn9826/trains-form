@@ -11,6 +11,10 @@ export const ARRAY_VALUE_TYPE = PropTypes.arrayOf(
   ]),
 );
 
+export const PLACEHOLDER_TYPE = PropTypes.oneOfType([
+  PropTypes.string, PropTypes.number,
+]);
+
 export const VALUE_TYPE = PropTypes.oneOfType([
   PropTypes.string,
   PropTypes.number,
@@ -31,7 +35,7 @@ export const FIELD_TYPE = PropTypes.shape({
   title: PropTypes.string,
   width: PropTypes.number,
   required: PropTypes.bool,
-  placeholder: PropTypes.string,
+  placeholder: PLACEHOLDER_TYPE,
   default: VALUE_TYPE,
   max: MIN_MAX_TYPE,
   maxErrorMessage: PropTypes.string,
@@ -72,7 +76,7 @@ export const ELEMENT_TYPE = {
   style: STYLE_TYPE,
   disabled: PropTypes.bool,
   name: PropTypes.string,
-  placeholder: PropTypes.string,
+  placeholder: PLACEHOLDER_TYPE,
   value: VALUE_TYPE,
   options: ELEMENT_OPTIONS_TYPE,
   theme: THEME_TYPE,

@@ -5,7 +5,8 @@ import { autoAppendTitleExample, useThemeSwitcher } from './helpers';
 
 const VALUES = {
   message: 'Examples of how to build a form for viewing',
-  number: 123456,
+  number: 1234.56,
+  integer: 123,
   text: 'Init value for Text type field',
   radio: 1,
   password: '12345',
@@ -29,6 +30,10 @@ const FIELDS = autoAppendTitleExample([
   {
     type: FORM_CONSTANTS.NUMBER_TYPE,
     name: 'number',
+  },
+  {
+    type: FORM_CONSTANTS.INTEGER_TYPE,
+    name: 'integer',
   },
   {
     type: FORM_CONSTANTS.PASSWORD_TYPE,

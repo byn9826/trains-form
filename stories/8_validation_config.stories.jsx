@@ -29,6 +29,7 @@ const INITIAL_VALUES = {
   text_2: 'Max 20 characters allowed',
   note: 'Customize max/min error messages apply to validateOnInitial as well',
   number: 100,
+  integer: 98,
 };
 
 const DISABLE_VALUES = {
@@ -36,7 +37,8 @@ const DISABLE_VALUES = {
   text_1: 'Min 15 characters',
   text_2: 'Max 20 characters',
   note: 'Customize max/min error messages',
-  number: 99,
+  number: 100,
+  integer: 98,
 };
 
 const FIELDS = autoAppendTitleExample([
@@ -66,6 +68,13 @@ const FIELDS = autoAppendTitleExample([
   {
     type: FORM_CONSTANTS.NUMBER_TYPE,
     name: 'number',
+    min: 99,
+    max: 99,
+    width: 50,
+  },
+  {
+    type: FORM_CONSTANTS.INTEGER_TYPE,
+    name: 'integer',
     min: 99,
     max: 99,
     width: 50,

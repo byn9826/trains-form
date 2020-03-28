@@ -30,6 +30,12 @@ export const FIELDS = autoAppendTitleExample([
     min: 10,
   },
   {
+    type: FORM_CONSTANTS.INTEGER_TYPE,
+    name: 'integer',
+    required: true,
+    max: 10,
+  },
+  {
     type: FORM_CONSTANTS.PASSWORD_TYPE,
     name: 'password',
     required: true,

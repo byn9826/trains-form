@@ -2,6 +2,7 @@ import {
   TEXT_TYPE,
   NOTE_TYPE,
   NUMBER_TYPE,
+  INTEGER_TYPE,
   PASSWORD_TYPE,
   TOGGLE_TYPE,
   CHECKBOX_TYPE,
@@ -26,7 +27,7 @@ export const isStringType = (type) => (
   || type === PASSWORD_TYPE
 );
 
-export const isNumberType = (type) => type === NUMBER_TYPE;
+export const isNumberType = (type) => type === NUMBER_TYPE || type === INTEGER_TYPE;
 
 export const isArrayType = (type) => type === CHECKBOX_TYPE;
 
@@ -45,8 +46,7 @@ const isMinMaxNumberType = (type) => (
 const isNotEmpty = (type, value) => {
   if (
     (isStringType(type) || isNumberType(type))
-    && isString(value)
-    && value.trim() !== ''
+    && (isNumber(value) || (isString(value) && value.trim() !== ''))
   ) {
     return true;
   }

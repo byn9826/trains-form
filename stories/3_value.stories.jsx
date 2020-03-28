@@ -29,6 +29,11 @@ const FIELDS = autoAppendTitleExample([
     default: '123',
   },
   {
+    type: FORM_CONSTANTS.INTEGER_TYPE,
+    name: 'integer',
+    default: 12345,
+  },
+  {
     type: FORM_CONSTANTS.TOGGLE_TYPE,
     name: 'toggle',
     default: true,

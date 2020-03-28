@@ -39,6 +39,11 @@ const WIDTH_FIELDS = autoAppendTitleExample([
     width: 40,
   },
   {
+    type: FORM_CONSTANTS.INTEGER_TYPE,
+    name: 'integer',
+    width: 100,
+  },
+  {
     type: FORM_CONSTANTS.PASSWORD_TYPE,
     name: 'password',
     width: 35,
@@ -134,6 +139,12 @@ const PLACEHOLDER_FIELDS = autoAppendTitleExample([
     type: FORM_CONSTANTS.NUMBER_TYPE,
     name: 'number',
     placeholder: 'Placeholder for Numbers',
+    width: 50,
+  },
+  {
+    type: FORM_CONSTANTS.INTEGER_TYPE,
+    name: 'integer',
+    placeholder: 12345,
     width: 50,
   },
   {

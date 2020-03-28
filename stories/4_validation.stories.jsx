@@ -39,6 +39,12 @@ const REQUIRED_FIELDS = autoAppendTitleExample([
     width: 50,
   },
   {
+    type: FORM_CONSTANTS.INTEGER_TYPE,
+    name: 'integer',
+    required: true,
+    width: 50,
+  },
+  {
     type: FORM_CONSTANTS.TOGGLE_TYPE,
     name: 'toggle',
     required: true,
@@ -133,6 +139,13 @@ const MAX_MIN_FIELDS = autoAppendTitleExample([
   {
     type: FORM_CONSTANTS.NUMBER_TYPE,
     name: 'number',
+    min: 99,
+    max: 99,
+    width: 50,
+  },
+  {
+    type: FORM_CONSTANTS.INTEGER_TYPE,
+    name: 'integer',
     min: 99,
     max: 99,
     width: 50,

@@ -4,6 +4,7 @@ import * as Types from '../helpers/types';
 import {
   TEXT_TYPE,
   NUMBER_TYPE,
+  INTEGER_TYPE,
   PASSWORD_TYPE,
   NOTE_TYPE,
   MESSAGE_TYPE,
@@ -15,6 +16,7 @@ import {
 } from '../helpers/constants';
 import Context from '../helpers/context';
 import Input from '../elements/Input';
+import Integer from '../elements/Integer';
 import Password from '../elements/Password';
 import Note from '../elements/Note';
 import Toggle from '../elements/Toggle';
@@ -37,6 +39,7 @@ export default function Element({ field, disabled }) {
   const elements = {
     [TEXT_TYPE]: Input,
     [NUMBER_TYPE]: Input,
+    [INTEGER_TYPE]: Integer,
     [NOTE_TYPE]: Note,
     [PASSWORD_TYPE]: Password,
     [TOGGLE_TYPE]: Toggle,

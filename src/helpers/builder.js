@@ -1,15 +1,16 @@
-import { isDefined, isDate, isArray } from './utils';
 import {
-  TEXT_TYPE,
-  NOTE_TYPE,
-  NUMBER_TYPE,
-  PASSWORD_TYPE,
+  isDefined,
+  isDate,
+  isArray,
+  isNumber,
+} from './utils';
+import {
   TOGGLE_TYPE,
-  MESSAGE_TYPE,
   RADIO_TYPE,
   CHECKBOX_TYPE,
   SINGLE_SELECT_TYPE,
   DATE_TYPE,
+  INTEGER_TYPE,
 } from './constants';
 import { fieldValidator } from './validation';
 
@@ -18,13 +19,6 @@ export const buildInitialValues = (values, fields) => {
   fields.forEach((field) => {
     if (isDefined(initValues[field.name])) return;
     switch (field.type) {
-      case TEXT_TYPE:
-      case PASSWORD_TYPE:
-      case NOTE_TYPE:
-      case NUMBER_TYPE:
-      case MESSAGE_TYPE:
-        initValues[field.name] = isDefined(field.default) ? field.default : '';
-        break;
       case TOGGLE_TYPE:
         initValues[field.name] = isDefined(field.default) ? Boolean(field.default) : false;
         break;
@@ -42,7 +36,11 @@ export const buildInitialValues = (values, fields) => {
           ? field.default
           : null;
         break;
+      case INTEGER_TYPE:
+        initValues[field.name] = isDefined(field.default) && isNumber(field.default) ? parseInt(field.default, 10) : '';
+        break;
       default:
+        initValues[field.name] = isDefined(field.default) ? field.default : '';
         break;
     }
   });
