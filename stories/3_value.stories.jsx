@@ -59,6 +59,11 @@ const FIELDS = autoAppendTitleExample([
     default: 2,
   },
   {
+    type: FORM_CONSTANTS.SWITCH_TYPE,
+    name: 'switch',
+    default: 1,
+  },
+  {
     type: FORM_CONSTANTS.DATE_TYPE,
     name: 'date_picker',
     default: new Date(),
@@ -77,6 +82,11 @@ const OPTIONS = {
     { label: 'Option C', value: 2 },
   ],
   single_select: [
+    { label: 'Option A', value: 0 },
+    { label: 'Option B', value: 1 },
+    { label: 'Option C', value: 2 },
+  ],
+  switch: [
     { label: 'Option A', value: 0 },
     { label: 'Option B', value: 1 },
     { label: 'Option C', value: 2 },

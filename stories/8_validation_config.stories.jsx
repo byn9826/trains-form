@@ -21,6 +21,11 @@ const OPTIONS = {
     { label: 'Option B', value: 1 },
     { label: 'Option C', value: 2 },
   ],
+  switch: [
+    { label: 'Option A', value: 0 },
+    { label: 'Option B', value: 1 },
+    { label: 'Option C', value: 2 },
+  ],
 };
 
 const INITIAL_VALUES = {
@@ -39,6 +44,7 @@ const DISABLE_VALUES = {
   note: 'Customize max/min error messages',
   number: 100,
   integer: 98,
+  switch: 1,
 };
 
 const FIELDS = autoAppendTitleExample([
@@ -97,6 +103,12 @@ const FIELDS = autoAppendTitleExample([
   {
     type: FORM_CONSTANTS.RADIO_TYPE,
     name: 'radio',
+    required: true,
+    width: 50,
+  },
+  {
+    type: FORM_CONSTANTS.SWITCH_TYPE,
+    name: 'switch',
     required: true,
     width: 50,
   },

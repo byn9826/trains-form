@@ -9,6 +9,7 @@ import {
   RADIO_TYPE,
   SINGLE_SELECT_TYPE,
   DATE_TYPE,
+  SWITCH_TYPE,
 } from './constants';
 import {
   isString,
@@ -33,7 +34,11 @@ export const isArrayType = (type) => type === CHECKBOX_TYPE;
 
 export const isBooleanType = (type) => type === TOGGLE_TYPE;
 
-export const isSelectType = (type) => type === RADIO_TYPE || type === SINGLE_SELECT_TYPE;
+export const isSelectType = (type) => (
+  type === RADIO_TYPE
+  || type === SINGLE_SELECT_TYPE
+  || type === SWITCH_TYPE
+);
 
 export const isCalendarType = (type) => type === DATE_TYPE;
 

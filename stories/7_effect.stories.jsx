@@ -16,6 +16,7 @@ const VALUES = {
   single_select: 1,
   radio_1: 0,
   date_picker: new Date(),
+  switch: 0,
 };
 
 const FIELDS = autoAppendTitleExample([
@@ -56,6 +57,10 @@ const FIELDS = autoAppendTitleExample([
     name: 'checkbox_1',
   },
   {
+    type: FORM_CONSTANTS.SWITCH_TYPE,
+    name: 'switch',
+  },
+  {
     type: FORM_CONSTANTS.SINGLE_SELECT_TYPE,
     name: 'single_select',
   },
@@ -77,6 +82,11 @@ const OPTIONS = {
     { label: 'Option C', value: 2 },
   ],
   single_select: [
+    { label: 'Option A', value: 0 },
+    { label: 'Option B', value: 1 },
+    { label: 'Option C', value: 2 },
+  ],
+  switch: [
     { label: 'Option A', value: 0 },
     { label: 'Option B', value: 1 },
     { label: 'Option C', value: 2 },

@@ -84,6 +84,11 @@ const WIDTH_FIELDS = autoAppendTitleExample([
     width: 30,
   },
   {
+    type: FORM_CONSTANTS.SWITCH_TYPE,
+    name: 'switch',
+    width: 40,
+  },
+  {
     type: FORM_CONSTANTS.DATE_TYPE,
     name: 'date',
     width: 40,
@@ -111,6 +116,11 @@ const OPTIONS = {
     { label: 'Option C', value: 2 },
     { label: 'Option D', value: 3 },
     { label: 'Option E', value: 4 },
+  ],
+  switch: [
+    { label: 'Option A', value: 0 },
+    { label: 'Option B', value: 1 },
+    { label: 'Option C', value: 2 },
   ],
 };
 

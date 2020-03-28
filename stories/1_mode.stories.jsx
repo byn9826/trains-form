@@ -14,6 +14,7 @@ const VALUES = {
   note: 'a textarea field',
   checkbox_1: [1, 2],
   single_select: 1,
+  switch: 2,
   radio_1: 0,
   date_picker: new Date(),
 };
@@ -60,6 +61,10 @@ const FIELDS = autoAppendTitleExample([
     name: 'single_select',
   },
   {
+    type: FORM_CONSTANTS.SWITCH_TYPE,
+    name: 'switch',
+  },
+  {
     type: FORM_CONSTANTS.DATE_TYPE,
     name: 'date_picker',
   },
@@ -77,6 +82,11 @@ const OPTIONS = {
     { label: 'Option C', value: 2 },
   ],
   single_select: [
+    { label: 'Option A', value: 0 },
+    { label: 'Option B', value: 1 },
+    { label: 'Option C', value: 2 },
+  ],
+  switch: [
     { label: 'Option A', value: 0 },
     { label: 'Option B', value: 1 },
     { label: 'Option C', value: 2 },

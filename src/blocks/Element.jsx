@@ -13,6 +13,7 @@ import {
   CHECKBOX_TYPE,
   SINGLE_SELECT_TYPE,
   DATE_TYPE,
+  SWITCH_TYPE,
 } from '../helpers/constants';
 import Context from '../helpers/context';
 import Input from '../elements/Input';
@@ -21,6 +22,7 @@ import Password from '../elements/Password';
 import Note from '../elements/Note';
 import Toggle from '../elements/Toggle';
 import Message from '../elements/Message';
+import Switch from '../elements/Switch';
 import Radio from '../elements/Radio';
 import Dropdown from '../elements/Dropdown';
 import Checkbox from '../elements/Checkbox';
@@ -45,6 +47,7 @@ export default function Element({ field, disabled }) {
     [TOGGLE_TYPE]: Toggle,
     [RADIO_TYPE]: Radio,
     [CHECKBOX_TYPE]: Checkbox,
+    [SWITCH_TYPE]: Switch,
     [SINGLE_SELECT_TYPE]: Dropdown,
     [MESSAGE_TYPE]: Message,
     [DATE_TYPE]: Calendar,

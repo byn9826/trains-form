@@ -1,6 +1,41 @@
 import { BOOTSTRAP_THEME, SEMANTIC_THEME, RADIO_TYPE } from './constants';
 import { buildClassNames } from './builder';
 
+export const getSwitchGroupClass = (theme) => {
+  let className;
+  switch (theme) {
+    case BOOTSTRAP_THEME:
+      className = 'btn-group';
+      break;
+    case SEMANTIC_THEME:
+    default:
+      className = 'ui buttons';
+      break;
+  }
+  return className;
+};
+
+export const getSwitchItemClass = (theme, isSelected) => {
+  let className;
+  switch (theme) {
+    case BOOTSTRAP_THEME:
+      className = buildClassNames({
+        btn: true,
+        'btn-secondary': !isSelected,
+        'btn-primary': isSelected,
+      });
+      break;
+    case SEMANTIC_THEME:
+    default:
+      className = buildClassNames({
+        'ui button': true,
+        blue: isSelected,
+      });
+      break;
+  }
+  return className;
+};
+
 export const getAlertClass = (theme) => {
   let className;
   switch (theme) {

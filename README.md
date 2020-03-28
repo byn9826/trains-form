@@ -255,7 +255,7 @@ return (
         100
       </td>
       <td>
-        Message, Text, Number, Integer, Password, Note, Toggle, Radio, Checkbox, SingleSelect, Date
+        Message, Text, Number, Integer, Password, Note, Toggle, Radio, Checkbox, SingleSelect, Switch, Date
       </td>
     </tr>
     <tr>
@@ -285,7 +285,7 @@ return (
       </td>
       <td></td>
       <td>
-        Message, Text, Number, Integer, Note, Toggle, Radio, Checkbox, SingleSelect, Date
+        Message, Text, Number, Integer, Note, Toggle, Radio, Checkbox, SingleSelect, Switch, Date
       </td>
     </tr>
     <tr>
@@ -302,7 +302,7 @@ return (
         false
       </td>
       <td>
-        Message, Text, Number, Integer, Password, Note, Toggle, Radio, Checkbox, SingleSelect, Date
+        Message, Text, Number, Integer, Password, Note, Toggle, Radio, Checkbox, SingleSelect, Switch, Date
       </td>
     </tr>
     <tr>
@@ -319,7 +319,7 @@ return (
         false
       </td>
       <td>
-        Message, Text, Number, Integer, Password, Note, Toggle, Radio, Checkbox, SingleSelect, Date
+        Message, Text, Number, Integer, Password, Note, Toggle, Radio, Checkbox, SingleSelect, Switch, Date
       </td>
     </tr>
     <tr>
@@ -336,7 +336,7 @@ return (
         (Same as Form Configs requiredError)
       </td>
       <td>
-        Message, Text, Number, Integer, Password, Note, Toggle, Radio, Checkbox, SingleSelect, Date
+        Message, Text, Number, Integer, Password, Note, Toggle, Radio, Checkbox, SingleSelect, Switch, Date
       </td>
     </tr>
     <tr>

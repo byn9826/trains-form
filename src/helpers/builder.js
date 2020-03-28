@@ -11,6 +11,7 @@ import {
   SINGLE_SELECT_TYPE,
   DATE_TYPE,
   INTEGER_TYPE,
+  SWITCH_TYPE,
 } from './constants';
 import { fieldValidator } from './validation';
 
@@ -22,6 +23,7 @@ export const buildInitialValues = (values, fields) => {
       case TOGGLE_TYPE:
         initValues[field.name] = isDefined(field.default) ? Boolean(field.default) : false;
         break;
+      case SWITCH_TYPE:
       case RADIO_TYPE:
       case SINGLE_SELECT_TYPE:
         initValues[field.name] = isDefined(field.default) ? field.default : null;
