@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import * as Types from '../helpers/types';
-import { getFieldClass } from '../helpers/theme';
+import * as Types from '../../helpers/types';
+import { getFieldClass } from '../../helpers/theme';
 
-export default function Note({
+export default function Input({
+  type,
   disabled,
   style,
   name,
@@ -14,9 +15,9 @@ export default function Note({
   error,
 }) {
   return (
-    <textarea
+    <input
+      type={type.toLowerCase()}
       className={getFieldClass(theme, error)}
-      rows="5"
       style={style}
       disabled={disabled}
       name={name}
@@ -27,7 +28,7 @@ export default function Note({
   );
 }
 
-Note.propTypes = {
+Input.propTypes = {
   ...Types.ELEMENT_TYPE,
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };

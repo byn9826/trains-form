@@ -4,7 +4,7 @@ import { VIEW_MODE, EDIT_MODE } from '../helpers/constants';
 import { getFormClass, getAlertClass } from '../helpers/theme';
 import * as Types from '../helpers/types';
 import Field from './Field';
-import Button from '../elements/components/Button';
+import Items from '../elements/items';
 
 export default function Form({
   theme,
@@ -59,7 +59,7 @@ export default function Form({
                 </div>
               )
             }
-            <Button
+            <Items.Button
               type="submit"
               theme={theme}
               title={configs.submitTitle}

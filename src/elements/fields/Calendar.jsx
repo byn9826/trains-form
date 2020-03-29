@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import * as Types from '../helpers/types';
+import * as Types from '../../helpers/types';
 import {
   getDaysInMonth,
   getMonthName,
   getWeekdayName,
   getDateString,
-} from '../helpers/calendar';
-import { getDropdownStyle } from '../helpers/style';
-import { getDropdownClasses } from '../helpers/theme';
+} from '../../helpers/calendar';
+import { getDropdownStyle } from '../../helpers/style';
+import { getDropdownClasses } from '../../helpers/theme';
+import { TEXT_ICONS } from '../../helpers/constants';
 import Dropdown from './Dropdown';
-import TextIcon, { TEXT_ICONS } from './special/TextIcon';
+import Specials from '../specials';
 
 const PAD_STYLE = {
   width: '14%',
@@ -180,7 +181,7 @@ export default function Calendar({
               !value && !placeholder && <div />
             }
             {!disabled && (
-              <TextIcon
+              <Specials.TextIcon
                 iconName={value ? TEXT_ICONS.CLOSE : TEXT_ICONS.DROPDOWN}
                 onClickIcon={onClickIcon}
               />
@@ -216,7 +217,7 @@ export default function Calendar({
               alignItems: 'center',
             }}
           >
-            <TextIcon
+            <Specials.TextIcon
               onClickIcon={(e) => onClickPrevious(e)}
               iconName={TEXT_ICONS.ARROW_LEFT}
               size={30}
@@ -233,7 +234,7 @@ export default function Calendar({
             >
               {displayYear}
             </p>
-            <TextIcon
+            <Specials.TextIcon
               onClickIcon={(e) => onClickNext(e)}
               iconName={TEXT_ICONS.ARROW_RIGHT}
               size={30}

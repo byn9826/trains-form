@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import * as Types from '../helpers/types';
-import { RADIO_TYPE } from '../helpers/constants';
-import CheckGroup from './base/CheckGroup';
+import * as Types from '../../helpers/types';
+import { RADIO_TYPE } from '../../helpers/constants';
+import Specials from '../specials';
 
 export default function Radio({
   disabled,
@@ -19,7 +19,7 @@ export default function Radio({
   const isChecked = (option) => option.value === value;
 
   return (
-    <CheckGroup
+    <Specials.CheckGroup
       type={RADIO_TYPE}
       disabled={disabled}
       style={style}

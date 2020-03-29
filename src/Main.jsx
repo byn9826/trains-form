@@ -12,7 +12,7 @@ import { buildInitialValues, buildErrors } from './helpers/builder';
 import { isFunction, isBoolean } from './helpers/utils';
 import { getDateString } from './helpers/calendar';
 import Form from './blocks/Form';
-import Loader from './elements/components/Loader';
+import Items from './elements/items';
 
 const CONFIGS_DEFAULT = {
   spacing: 20,
@@ -134,7 +134,7 @@ export default function Main({
         configs={combinedConfigs}
         hasSubmitError={hasSubmitError}
       />
-      {isLoading && <Loader theme={theme} />}
+      {isLoading && <Items.Loader theme={theme} />}
     </div>
   );
 

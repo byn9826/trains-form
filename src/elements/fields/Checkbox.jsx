@@ -1,7 +1,7 @@
 import React from 'react';
-import * as Types from '../helpers/types';
-import { CHECKBOX_TYPE } from '../helpers/constants';
-import CheckGroup from './base/CheckGroup';
+import * as Types from '../../helpers/types';
+import { CHECKBOX_TYPE } from '../../helpers/constants';
+import Specials from '../specials';
 
 export default function Checkbox({
   disabled,
@@ -23,7 +23,7 @@ export default function Checkbox({
   const isChecked = (option) => value.includes(option.value);
 
   return (
-    <CheckGroup
+    <Specials.CheckGroup
       type={CHECKBOX_TYPE}
       disabled={disabled}
       style={style}

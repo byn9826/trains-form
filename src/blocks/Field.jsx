@@ -19,9 +19,8 @@ import {
 } from '../helpers/constants';
 import { isNumber } from '../helpers/utils';
 import { buildClassNames } from '../helpers/builder';
-import Elements from '../elements';
-import Title from '../elements/base/Title';
-import Hint from '../elements/base/Hint';
+import Fields from '../elements/fields';
+import Specials from '../elements/specials';
 
 export default function Field({
   field,
@@ -55,7 +54,7 @@ export default function Field({
   const fieldError = field.type === MESSAGE_TYPE ? null : error;
 
   const titleRender = (required) => (
-    <Title
+    <Specials.Title
       title={field.title}
       required={required}
     />
@@ -63,23 +62,23 @@ export default function Field({
 
   const elementRender = () => {
     const elements = {
-      [TEXT_TYPE]: Elements.Input,
-      [NUMBER_TYPE]: Elements.Input,
-      [INTEGER_TYPE]: Elements.Integer,
-      [NOTE_TYPE]: Elements.Note,
-      [PASSWORD_TYPE]: Elements.Password,
-      [TOGGLE_TYPE]: Elements.Toggle,
-      [RADIO_TYPE]: Elements.Radio,
-      [CHECKBOX_TYPE]: Elements.Checkbox,
-      [SWITCH_TYPE]: Elements.Switch,
-      [SINGLE_SELECT_TYPE]: Elements.Dropdown,
-      [MESSAGE_TYPE]: Elements.Message,
-      [DATE_TYPE]: Elements.Calendar,
+      [TEXT_TYPE]: Fields.Input,
+      [NUMBER_TYPE]: Fields.Input,
+      [INTEGER_TYPE]: Fields.Integer,
+      [NOTE_TYPE]: Fields.Note,
+      [PASSWORD_TYPE]: Fields.Password,
+      [TOGGLE_TYPE]: Fields.Toggle,
+      [RADIO_TYPE]: Fields.Radio,
+      [CHECKBOX_TYPE]: Fields.Checkbox,
+      [SWITCH_TYPE]: Fields.Switch,
+      [SINGLE_SELECT_TYPE]: Fields.Dropdown,
+      [MESSAGE_TYPE]: Fields.Message,
+      [DATE_TYPE]: Fields.Calendar,
     };
 
     const matchedElement = elements[field.type];
     const Element = viewAsMessage || !matchedElement
-      ? Elements.Message
+      ? Fields.Message
       : matchedElement;
 
     return (
@@ -102,7 +101,7 @@ export default function Field({
   };
 
   const errorRender = () => (
-    <Hint
+    <Specials.Hint
       theme={theme}
       title={fieldError}
     />

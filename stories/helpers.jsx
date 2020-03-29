@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { FORM_CONSTANTS } from '../src';
-import Elements from '../src/elements';
+import { FORM_CONSTANTS, FormComponents } from '../src';
 
 export const autoAppendTitleExample = (fields) => fields.map((field) => ({
   ...field,
@@ -24,14 +23,14 @@ export function useThemeSwitcher({ fileName }) {
         padding: '5px 2%',
       }}
     >
-      <Elements.Radio
+      <FormComponents.Radio
         name="theme"
         value={theme}
         theme={theme}
         options={THEME_OPTIONS}
         onChange={(name, value) => setTheme(value)}
       />
-      <Elements.Button
+      <FormComponents.Button
         theme={theme}
         title="Link to Source Code"
         onClick={() => {

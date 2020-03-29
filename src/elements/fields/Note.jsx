@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import * as Types from '../../helpers/types';
 import { getFieldClass } from '../../helpers/theme';
 
-export default function InputBase({
-  type,
+export default function Note({
   disabled,
   style,
   name,
@@ -15,9 +14,9 @@ export default function InputBase({
   error,
 }) {
   return (
-    <input
-      type={type.toLowerCase()}
+    <textarea
       className={getFieldClass(theme, error)}
+      rows="5"
       style={style}
       disabled={disabled}
       name={name}
@@ -28,7 +27,7 @@ export default function InputBase({
   );
 }
 
-InputBase.propTypes = {
+Note.propTypes = {
   ...Types.ELEMENT_TYPE,
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  value: PropTypes.string,
 };

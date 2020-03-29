@@ -1,12 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-export const TEXT_ICONS = {
-  CLOSE: 'close',
-  DROPDOWN: 'dropdown',
-  ARROW_LEFT: 'arrow_left',
-  ARROW_RIGHT: 'arrow_right',
-};
+import { TEXT_ICONS } from '../../helpers/constants';
 
 export default function TextIcon({ iconName, onClickIcon, size = 16 }) {
   let content;

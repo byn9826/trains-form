@@ -32,3 +32,10 @@ export const TYPES = [
 export const SEMANTIC_THEME = 'Semantic';
 export const BOOTSTRAP_THEME = 'Bootstrap';
 export const THEMES = [SEMANTIC_THEME, BOOTSTRAP_THEME];
+
+export const TEXT_ICONS = {
+  CLOSE: 'close',
+  DROPDOWN: 'dropdown',
+  ARROW_LEFT: 'arrow_left',
+  ARROW_RIGHT: 'arrow_right',
+};

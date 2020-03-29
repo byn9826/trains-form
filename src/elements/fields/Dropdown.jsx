@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import * as Types from '../helpers/types';
-import { SEMANTIC_THEME, BOOTSTRAP_THEME } from '../helpers/constants';
-import { getDropdownStyle } from '../helpers/style';
-import { getDropdownClasses } from '../helpers/theme';
-import TextIcon, { TEXT_ICONS } from './special/TextIcon';
+import * as Types from '../../helpers/types';
+import { SEMANTIC_THEME, BOOTSTRAP_THEME, TEXT_ICONS } from '../../helpers/constants';
+import { getDropdownStyle } from '../../helpers/style';
+import { getDropdownClasses } from '../../helpers/theme';
+import Specials from '../specials';
 
 export default function Dropdown({
   disabled,
@@ -71,7 +71,7 @@ export default function Dropdown({
           {!selectedValue && !placeholder && <div />}
           {
             !disabled && (
-              <TextIcon
+              <Specials.TextIcon
                 iconName={
                   allowClear && selectedValue
                     ? TEXT_ICONS.CLOSE

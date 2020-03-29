@@ -1,7 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import useForm, { FORM_CONSTANTS } from '../src/index';
-import Elements from '../src/elements';
+import useForm, { FORM_CONSTANTS, FormComponents } from '../src/index';
 import { autoAppendTitleExample, useThemeSwitcher } from './helpers';
 
 const VALUES = {
@@ -120,7 +119,7 @@ storiesOf('Form Action', module)
       <div>
         {themSwitchRender()}
         {formRender()}
-        <Elements.Button
+        <FormComponents.Button
           title="Trigger validation on all fields"
           onClick={validateFormValues}
           style={{
@@ -147,7 +146,7 @@ storiesOf('Form Action', module)
       <div>
         {themSwitchRender()}
         {formRender()}
-        <Elements.Button
+        <FormComponents.Button
           title="Reset to initial values"
           theme={theme}
           onClick={resetFormValues}

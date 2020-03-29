@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import * as Types from '../helpers/types';
-import { getToggleClasses } from '../helpers/theme';
+import * as Types from '../../helpers/types';
+import { getToggleClasses } from '../../helpers/theme';
 
 export default function Toggle({
   disabled,

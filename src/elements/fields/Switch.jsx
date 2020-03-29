@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import * as Types from '../helpers/types';
-import { getSwitchGroupClass, getSwitchItemClass } from '../helpers/theme';
+import * as Types from '../../helpers/types';
+import { getSwitchGroupClass, getSwitchItemClass } from '../../helpers/theme';
 
 export default function Switch({
   disabled,

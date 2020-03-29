@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import * as Types from '../helpers/types';
+import * as Types from '../../helpers/types';
 import {
   SEMANTIC_THEME,
   PASSWORD_TYPE,
   TEXT_TYPE,
   BOOTSTRAP_THEME,
-} from '../helpers/constants';
-import { buildClassNames } from '../helpers/builder';
-import InputBase from './base/InputBase';
+} from '../../helpers/constants';
+import { buildClassNames } from '../../helpers/builder';
+import Input from './Input';
 
 export default function Password({
   disabled,
@@ -27,7 +27,7 @@ export default function Password({
   const [isVisible, setIsVisible] = useState(false);
 
   const inputRender = (themeStyle = {}) => (
-    <InputBase
+    <Input
       type={isVisible ? TEXT_TYPE : PASSWORD_TYPE}
       disabled={disabled}
       style={{

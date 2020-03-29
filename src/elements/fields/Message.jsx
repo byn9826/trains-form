@@ -1,6 +1,6 @@
 import React from 'react';
-import * as Types from '../helpers/types';
-import { MESSAGE_TYPE } from '../helpers/constants';
+import * as Types from '../../helpers/types';
+import { MESSAGE_TYPE } from '../../helpers/constants';
 import {
   isStringType,
   isNumberType,
@@ -8,10 +8,10 @@ import {
   isBooleanType,
   isArrayType,
   isCalendarType,
-} from '../helpers/validation';
-import { getDateString } from '../helpers/calendar';
-import { isDate } from '../helpers/utils';
-import { getMessageClass } from '../helpers/theme';
+} from '../../helpers/validation';
+import { getDateString } from '../../helpers/calendar';
+import { isDate } from '../../helpers/utils';
+import { getMessageClass } from '../../helpers/theme';
 
 export default function Message({
   style,
