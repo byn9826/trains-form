@@ -4,6 +4,7 @@ import * as Types from '../../helpers/types';
 import { getHintClass } from '../../helpers/theme';
 
 export default function Hint({ theme, title }) {
+  if (!title) return null;
   return (
     <div
       className={getHintClass(theme)}

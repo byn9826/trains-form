@@ -9,7 +9,8 @@ import Context from '../helpers/context';
 import { isNumber } from '../helpers/utils';
 import { buildClassNames } from '../helpers/builder';
 import Element from './Element';
-import Hint from '../elements/components/Hint';
+import Title from '../elements/base/Title';
+import Hint from '../elements/base/Hint';
 
 export default function Field({ field }) {
   const {
@@ -37,19 +38,12 @@ export default function Field({ field }) {
     paddingRight: configs.innerSpacing,
   };
 
-  const titleRender = (required) => {
-    if (!field.title) return null;
-    return (
-      <label>
-        {field.title}
-        {required && (
-          <span style={{ color: 'red' }}>
-            *
-          </span>
-        )}
-      </label>
-    );
-  };
+  const titleRender = (required) => (
+    <Title
+      title={field.title}
+      required={required}
+    />
+  );
 
   const elementRender = () => (
     <Element
@@ -58,15 +52,12 @@ export default function Field({ field }) {
     />
   );
 
-  const errorRender = () => {
-    if (!error) return null;
-    return (
-      <Hint
-        theme={theme}
-        title={error}
-      />
-    );
-  };
+  const errorRender = () => (
+    <Hint
+      theme={theme}
+      title={error}
+    />
+  );
 
   switch (theme) {
     case BOOTSTRAP_THEME:
