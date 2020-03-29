@@ -8,7 +8,7 @@ import {
   BOOTSTRAP_THEME,
 } from '../helpers/constants';
 import { buildClassNames } from '../helpers/builder';
-import Input from './Input';
+import InputBase from './base/InputBase';
 
 export default function Password({
   disabled,
@@ -27,7 +27,7 @@ export default function Password({
   const [isVisible, setIsVisible] = useState(false);
 
   const inputRender = (themeStyle = {}) => (
-    <Input
+    <InputBase
       type={isVisible ? TEXT_TYPE : PASSWORD_TYPE}
       disabled={disabled}
       style={{

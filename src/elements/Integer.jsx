@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { TEXT_TYPE } from '../helpers/constants';
 import * as Types from '../helpers/types';
-import Input from './Input';
+import InputBase from './base/InputBase';
 
 export default function Integer({
   disabled,
@@ -22,7 +22,7 @@ export default function Integer({
   };
 
   return (
-    <Input
+    <InputBase
       type={TEXT_TYPE}
       disabled={disabled}
       style={style}

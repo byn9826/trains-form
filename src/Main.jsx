@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import * as Types from './helpers/types';
 import { VIEW_MODE, EDIT_MODE, SEMANTIC_THEME } from './helpers/constants';
-import Context from './helpers/context';
 import {
   fieldValidator,
   isEmptyErrors,
@@ -121,28 +120,22 @@ export default function Main({
     }
   };
 
-  const context = {
-    mode: isLoading ? VIEW_MODE : mode,
-    theme,
-    fields,
-    options,
-    configs: combinedConfigs,
-    values: formValues,
-    errors: formErrors,
-    actions: {
-      onChange,
-      preSubmit,
-    },
-    hasSubmitError,
-  };
-
   const formRender = () => (
-    <Context.Provider value={context}>
-      <div style={{ padding: combinedConfigs.innerSpacing }}>
-        <Form />
-        {isLoading && <Loader theme={theme} />}
-      </div>
-    </Context.Provider>
+    <div style={{ padding: combinedConfigs.innerSpacing }}>
+      <Form
+        theme={theme}
+        mode={isLoading ? VIEW_MODE : mode}
+        options={options}
+        fields={fields}
+        values={formValues}
+        errors={formErrors}
+        onChange={onChange}
+        preSubmit={preSubmit}
+        configs={combinedConfigs}
+        hasSubmitError={hasSubmitError}
+      />
+      {isLoading && <Loader theme={theme} />}
+    </div>
   );
 
   const getFormDetails = () => {

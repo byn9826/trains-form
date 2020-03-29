@@ -6,12 +6,12 @@ import {
 } from './utils';
 import {
   TOGGLE_TYPE,
+  SWITCH_TYPE,
   RADIO_TYPE,
-  CHECKBOX_TYPE,
   SINGLE_SELECT_TYPE,
+  CHECKBOX_TYPE,
   DATE_TYPE,
   INTEGER_TYPE,
-  SWITCH_TYPE,
 } from './constants';
 import { fieldValidator } from './validation';
 
