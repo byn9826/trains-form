@@ -52,6 +52,8 @@ export default function Field({
     ...style,
   };
 
+  const fieldError = field.type === MESSAGE_TYPE ? null : error;
+
   const titleRender = (required) => (
     <Title
       title={field.title}
@@ -94,7 +96,7 @@ export default function Field({
         style={{
           marginTop: field.label ? space / 2 : 'auto',
         }}
-        error={error}
+        error={fieldError}
       />
     );
   };
@@ -102,7 +104,7 @@ export default function Field({
   const errorRender = () => (
     <Hint
       theme={theme}
-      title={error}
+      title={fieldError}
     />
   );
 
@@ -130,7 +132,7 @@ export default function Field({
             className={buildClassNames({
               field: true,
               disabled,
-              error,
+              error: fieldError,
             })}
           >
             {elementRender()}
