@@ -93,11 +93,11 @@ const OPTIONS = {
   ],
 };
 
-const fileName = '7_effect';
+const fileName = '07_effect';
 
 storiesOf('Effect', module)
   .add('isLoading', () => {
-    const [theme, themSwitchRender] = useThemeSwitcher({ fileName });
+    const [theme, themSwitcherRender] = useThemeSwitcher({ fileName });
     const [isLoading, setIsLoading] = useState(true);
     const [values, setValues] = useState({});
     useEffect(() => {
@@ -119,7 +119,7 @@ storiesOf('Effect', module)
     });
     return (
       <div>
-        {themSwitchRender()}
+        {themSwitcherRender()}
         {formRender()}
       </div>
     );

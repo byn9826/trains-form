@@ -29,11 +29,11 @@ const FIELDS = autoAppendTitleExample([
   },
 ]);
 
-const fileName = '9_message_config';
+const fileName = '09_message_config';
 
 storiesOf('Message Config', module)
   .add('Customize messages for required error', () => {
-    const [theme, themSwitchRender] = useThemeSwitcher({ fileName });
+    const [theme, themSwitcherRender] = useThemeSwitcher({ fileName });
     const [formRender] = useForm({
       values: VALUES,
       fields: FIELDS,
@@ -45,13 +45,13 @@ storiesOf('Message Config', module)
     });
     return (
       <div>
-        {themSwitchRender()}
+        {themSwitcherRender()}
         {formRender()}
       </div>
     );
   })
   .add('Customize messages for submit button', () => {
-    const [theme, themSwitchRender] = useThemeSwitcher({ fileName });
+    const [theme, themSwitcherRender] = useThemeSwitcher({ fileName });
     const [formRender] = useForm({
       values: {
         ...VALUES,
@@ -68,7 +68,7 @@ storiesOf('Message Config', module)
     });
     return (
       <div>
-        {themSwitchRender()}
+        {themSwitcherRender()}
         {formRender()}
       </div>
     );

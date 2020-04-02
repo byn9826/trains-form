@@ -220,11 +220,11 @@ const MATCH_FIELDS = autoAppendTitleExample([
   },
 ]);
 
-const fileName = '4_validation';
+const fileName = '04_validation';
 
 storiesOf('Field Validation', module)
   .add('Required', () => {
-    const [theme, themSwitchRender] = useThemeSwitcher({ fileName });
+    const [theme, themSwitcherRender] = useThemeSwitcher({ fileName });
     const [formRender] = useForm({
       values: REQUIRED_VALUES,
       fields: REQUIRED_FIELDS,
@@ -234,13 +234,13 @@ storiesOf('Field Validation', module)
     });
     return (
       <div>
-        {themSwitchRender()}
+        {themSwitcherRender()}
         {formRender()}
       </div>
     );
   })
   .add('Min & Max', () => {
-    const [theme, themSwitchRender] = useThemeSwitcher({ fileName });
+    const [theme, themSwitcherRender] = useThemeSwitcher({ fileName });
     const [formRender] = useForm({
       values: MAX_MIN_VALUES,
       fields: MAX_MIN_FIELDS,
@@ -250,13 +250,13 @@ storiesOf('Field Validation', module)
     });
     return (
       <div>
-        {themSwitchRender()}
+        {themSwitcherRender()}
         {formRender()}
       </div>
     );
   })
   .add('Regular Expression', () => {
-    const [theme, themSwitchRender] = useThemeSwitcher({ fileName });
+    const [theme, themSwitcherRender] = useThemeSwitcher({ fileName });
     const [formRender] = useForm({
       values: MATCH_VALUES,
       fields: MATCH_FIELDS,
@@ -265,7 +265,7 @@ storiesOf('Field Validation', module)
     });
     return (
       <div>
-        {themSwitchRender()}
+        {themSwitcherRender()}
         {formRender()}
       </div>
     );

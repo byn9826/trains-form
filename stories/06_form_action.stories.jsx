@@ -103,11 +103,11 @@ export const OPTIONS = {
   ],
 };
 
-const fileName = '6_form_action';
+const fileName = '06_form_action';
 
 storiesOf('Form Action', module)
   .add('validateFormValues Action', () => {
-    const [theme, themSwitchRender] = useThemeSwitcher({ fileName });
+    const [theme, themSwitcherRender] = useThemeSwitcher({ fileName });
     const [formRender, { validateFormValues }] = useForm({
       values: VALUES,
       fields: FIELDS,
@@ -117,7 +117,7 @@ storiesOf('Form Action', module)
     });
     return (
       <div>
-        {themSwitchRender()}
+        {themSwitcherRender()}
         {formRender()}
         <FormComponents.Button
           title="Trigger validation on all fields"
@@ -131,7 +131,7 @@ storiesOf('Form Action', module)
     );
   })
   .add('resetFormValues Action', () => {
-    const [theme, themSwitchRender] = useThemeSwitcher({ fileName });
+    const [theme, themSwitcherRender] = useThemeSwitcher({ fileName });
     const [formRender, { resetFormValues }] = useForm({
       values: {
         ...VALUES,
@@ -144,7 +144,7 @@ storiesOf('Form Action', module)
     });
     return (
       <div>
-        {themSwitchRender()}
+        {themSwitcherRender()}
         {formRender()}
         <FormComponents.Button
           title="Reset to initial values"

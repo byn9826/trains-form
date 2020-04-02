@@ -1,76 +1,86 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import useForm, { FORM_CONSTANTS } from '../src/index';
+import useForm, { FORM_CONSTANTS, FormComponents } from '../src/index';
 import { autoAppendTitleExample, useThemeSwitcher } from './helpers';
 
 const VALUES = {
-  message: 'Examples of how to build a form for viewing',
-  number: 1234.56,
-  integer: 123,
+  message: 'Examples of how to use built-in submit button',
+  number: 1,
   text: 'Init value for Text type field',
   radio: 1,
-  password: '12345',
-  toggle: true,
-  note: 'a textarea field',
-  checkbox_1: [1, 2],
-  single_select: 1,
-  switch: 2,
-  radio_1: 0,
-  date_picker: new Date(),
 };
 
-const FIELDS = autoAppendTitleExample([
+export const FIELDS = autoAppendTitleExample([
   {
     type: FORM_CONSTANTS.MESSAGE_TYPE,
     name: 'message',
+    required: true,
   },
   {
     type: FORM_CONSTANTS.TEXT_TYPE,
     name: 'text',
+    required: true,
+    max: 16,
   },
   {
     type: FORM_CONSTANTS.NUMBER_TYPE,
     name: 'number',
+    required: true,
+    min: 10,
   },
   {
     type: FORM_CONSTANTS.INTEGER_TYPE,
     name: 'integer',
+    required: true,
+    max: 10,
   },
   {
     type: FORM_CONSTANTS.PASSWORD_TYPE,
     name: 'password',
+    required: true,
+    min: 6,
+    max: 6,
   },
   {
     type: FORM_CONSTANTS.NOTE_TYPE,
     name: 'note',
+    required: true,
+    max: 12,
   },
   {
     type: FORM_CONSTANTS.TOGGLE_TYPE,
     name: 'toggle',
-  },
-  {
-    type: FORM_CONSTANTS.RADIO_TYPE,
-    name: 'radio_1',
-  },
-  {
-    type: FORM_CONSTANTS.CHECKBOX_TYPE,
-    name: 'checkbox_1',
-  },
-  {
-    type: FORM_CONSTANTS.SINGLE_SELECT_TYPE,
-    name: 'single_select',
+    required: true,
   },
   {
     type: FORM_CONSTANTS.SWITCH_TYPE,
     name: 'switch',
+    required: true,
+  },
+  {
+    type: FORM_CONSTANTS.RADIO_TYPE,
+    name: 'radio_1',
+    required: true,
+  },
+  {
+    type: FORM_CONSTANTS.CHECKBOX_TYPE,
+    name: 'checkbox_1',
+    required: true,
+    min: 2,
+  },
+  {
+    type: FORM_CONSTANTS.SINGLE_SELECT_TYPE,
+    name: 'single_select',
+    required: true,
   },
   {
     type: FORM_CONSTANTS.DATE_TYPE,
-    name: 'date_picker',
+    name: 'date',
+    required: true,
   },
 ]);
 
-const OPTIONS = {
+export const OPTIONS = {
   radio_1: [
     { label: 'Option A', value: 0 },
     { label: 'Option B', value: 1 },
@@ -93,53 +103,32 @@ const OPTIONS = {
   ],
 };
 
-const fileName = '1_mode';
+const fileName = '05_submit';
 
-storiesOf('Mode', module)
-  .add('View', () => {
-    const [theme, themSwitchRender] = useThemeSwitcher({ fileName });
+storiesOf('Submit', module)
+  .add('Built-in Submit Button', () => {
+    const [theme, themSwitcherRender] = useThemeSwitcher({ fileName });
     const [formRender] = useForm({
-      theme,
       values: VALUES,
       fields: FIELDS,
       options: OPTIONS,
-      mode: FORM_CONSTANTS.VIEW_MODE,
-    });
-    return (
-      <div>
-        {themSwitchRender()}
-        {formRender()}
-      </div>
-    );
-  })
-  .add('View as message', () => {
-    const [theme, themSwitchRender] = useThemeSwitcher({ fileName });
-    const [formRender] = useForm({
-      values: {
-        ...VALUES,
-        message: 'Examples of how to build a form for viewing as messages',
-      },
+      mode: FORM_CONSTANTS.EDIT_MODE,
       theme,
-      fields: FIELDS,
-      options: OPTIONS,
-      mode: FORM_CONSTANTS.VIEW_MODE,
-      configs: {
-        viewAsMessage: true,
-      },
+      onSubmit: (values) => window.confirm(`Success! Values: ${JSON.stringify(values)}`),
     });
     return (
       <div>
-        {themSwitchRender()}
+        {themSwitcherRender()}
         {formRender()}
       </div>
     );
   })
-  .add('Edit', () => {
-    const [theme, themSwitchRender] = useThemeSwitcher({ fileName });
-    const [formRender] = useForm({
+  .add('getFormDetails Action', () => {
+    const [theme, themSwitcherRender] = useThemeSwitcher({ fileName });
+    const [formRender, { getFormDetails }] = useForm({
       values: {
         ...VALUES,
-        message: 'Examples of how to build a form for editing',
+        message: 'Examples of how to use getFormDetails action',
       },
       fields: FIELDS,
       options: OPTIONS,
@@ -148,8 +137,22 @@ storiesOf('Mode', module)
     });
     return (
       <div>
-        {themSwitchRender()}
+        {themSwitcherRender()}
         {formRender()}
+        <FormComponents.Button
+          type="button"
+          theme={theme}
+          onClick={() => {
+            const formDetails = getFormDetails();
+            window.confirm(`All inputs are valid: ${formDetails.isReady}`);
+            window.confirm(`Field Values: ${JSON.stringify(formDetails.values)}`);
+            window.confirm(`Field Errors: ${JSON.stringify(formDetails.errors)}`);
+          }}
+          style={{
+            marginLeft: 20,
+          }}
+          title="Get Form Details"
+        />
       </div>
     );
   });

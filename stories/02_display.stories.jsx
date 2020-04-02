@@ -180,11 +180,11 @@ const PLACEHOLDER_FIELDS = autoAppendTitleExample([
   },
 ]);
 
-const fileName = '2_display';
+const fileName = '02_display';
 
 storiesOf('Display', module)
   .add('Width', () => {
-    const [theme, themSwitchRender] = useThemeSwitcher({ fileName });
+    const [theme, themSwitcherRender] = useThemeSwitcher({ fileName });
     const [formRender] = useForm({
       values: WIDTH_VALUES,
       fields: WIDTH_FIELDS,
@@ -194,13 +194,13 @@ storiesOf('Display', module)
     });
     return (
       <div>
-        {themSwitchRender()}
+        {themSwitcherRender()}
         {formRender()}
       </div>
     );
   })
   .add('Placeholder', () => {
-    const [theme, themSwitchRender] = useThemeSwitcher({ fileName });
+    const [theme, themSwitcherRender] = useThemeSwitcher({ fileName });
     const [formRender] = useForm({
       values: PLACEHOLDER_VALUES,
       fields: PLACEHOLDER_FIELDS,
@@ -210,7 +210,7 @@ storiesOf('Display', module)
     });
     return (
       <div>
-        {themSwitchRender()}
+        {themSwitcherRender()}
         {formRender()}
       </div>
     );

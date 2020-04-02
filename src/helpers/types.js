@@ -31,7 +31,7 @@ export const MIN_MAX_TYPE = PropTypes.oneOfType([
 
 export const FIELD_TYPE = PropTypes.shape({
   type: PropTypes.oneOf(TYPES).isRequired,
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
   title: PropTypes.string,
   width: PropTypes.number,
   required: PropTypes.bool,
