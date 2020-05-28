@@ -23,6 +23,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 5. Built-in configurable error messages.
 6. Built-in date picker.
 7. Minimal dependencies, small bundle size.
+8. Take advantage of standalone field components.
 ## How to use
 [Detailed demos & examples](https://byn9826.github.io/trains-forms)
 ### Simple Example
@@ -255,7 +256,7 @@ return (
         100
       </td>
       <td>
-        Message, Text, Number, Integer, Password, Note, Toggle, Radio, Checkbox, SingleSelect, Switch, Date
+        Message, Text, Number, Integer, Quantity, Password, Note, Toggle, Radio, Checkbox, SingleSelect, Switch, Date
       </td>
     </tr>
     <tr>
@@ -285,7 +286,7 @@ return (
       </td>
       <td></td>
       <td>
-        Message, Text, Number, Integer, Note, Toggle, Radio, Checkbox, SingleSelect, Switch, Date
+        Message, Text, Number, Integer, Quantity, Note, Toggle, Radio, Checkbox, SingleSelect, Switch, Date
       </td>
     </tr>
     <tr>
@@ -302,7 +303,7 @@ return (
         false
       </td>
       <td>
-        Message, Text, Number, Integer, Password, Note, Toggle, Radio, Checkbox, SingleSelect, Switch, Date
+        Message, Text, Number, Integer, Quantity, Password, Note, Toggle, Radio, Checkbox, SingleSelect, Switch, Date
       </td>
     </tr>
     <tr>
@@ -319,7 +320,7 @@ return (
         false
       </td>
       <td>
-        Message, Text, Number, Integer, Password, Note, Toggle, Radio, Checkbox, SingleSelect, Switch, Date
+        Message, Text, Number, Integer, Quantity, Password, Note, Toggle, Radio, Checkbox, SingleSelect, Switch, Date
       </td>
     </tr>
     <tr>
@@ -336,7 +337,7 @@ return (
         (Same as Form Configs requiredError)
       </td>
       <td>
-        Message, Text, Number, Integer, Password, Note, Toggle, Radio, Checkbox, SingleSelect, Switch, Date
+        Message, Text, Number, Integer, Quantity, Password, Note, Toggle, Radio, Checkbox, SingleSelect, Switch, Date
       </td>
     </tr>
     <tr>
@@ -391,7 +392,7 @@ return (
         Min number required.
       </td>
       <td>
-        Number, Integer
+        Number, Integer, Quantity
       </td>
     </tr>
     <tr>
@@ -435,7 +436,7 @@ return (
         `Number is required to be no less than ${field.min}.`
       </td>
       <td>
-        Number, Integer
+        Number, Integer, Quantity
       </td>
     </tr>
     <tr>
@@ -474,7 +475,7 @@ return (
         Max number allowed.
       </td>
       <td>
-        Number, Integer
+        Number, Integer, Quantity
       </td>
     </tr>
     <tr>
@@ -518,7 +519,7 @@ return (
         `Number is required to be no greater than ${field.max}.`
       </td>
       <td>
-        Number, Integer
+        Number, Integer, Quantity
       </td>
     </tr>
     <tr>

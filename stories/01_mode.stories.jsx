@@ -37,6 +37,10 @@ const FIELDS = autoAppendTitleExample([
     name: 'integer',
   },
   {
+    type: FORM_CONSTANTS.QUANTITY_TYPE,
+    name: 'quantity',
+  },
+  {
     type: FORM_CONSTANTS.PASSWORD_TYPE,
     name: 'password',
   },

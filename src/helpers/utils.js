@@ -15,3 +15,8 @@ export const isDefined = (value) => typeof value !== 'undefined';
 export const isRegx = (value) => value instanceof RegExp;
 
 export const isBasic = (value) => isString(value) || isNumber(value) || isBoolean(value);
+
+export const getIntegerInput = (value) => {
+  const intArray = value.match(/[0-9]/g);
+  return intArray ? intArray.join('') : '';
+};

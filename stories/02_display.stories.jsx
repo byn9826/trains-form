@@ -9,6 +9,7 @@ const WIDTH_VALUES = {
   text_3: '60% width',
   note_1: '33.3% width',
   password: '123456',
+  quantity: 5,
   checkbox: [1, 2],
   date: new Date(),
 };
@@ -41,7 +42,12 @@ const WIDTH_FIELDS = autoAppendTitleExample([
   {
     type: FORM_CONSTANTS.INTEGER_TYPE,
     name: 'integer',
-    width: 100,
+    width: 50,
+  },
+  {
+    type: FORM_CONSTANTS.QUANTITY_TYPE,
+    name: 'quantity',
+    width: 50,
   },
   {
     type: FORM_CONSTANTS.PASSWORD_TYPE,

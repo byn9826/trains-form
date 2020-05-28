@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { TEXT_TYPE } from '../../helpers/constants';
+import { getIntegerInput } from '../../helpers/utils';
 import * as Types from '../../helpers/types';
 import Input from './Input';
 
@@ -16,9 +17,8 @@ export default function Integer({
 }) {
   const onChangeValue = (fieldName, fieldValue) => {
     const isNegative = fieldValue.substr(0, 1) === '-';
-    const intArray = fieldValue.match(/[0-9]/g);
-    const intString = intArray ? intArray.join('') : '';
-    onChange(fieldName, `${isNegative ? '-' : ''}${intString}`);
+    const intValue = getIntegerInput(fieldValue);
+    onChange(fieldName, `${isNegative ? '-' : ''}${intValue}`);
   };
 
   return (

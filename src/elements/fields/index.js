@@ -3,6 +3,7 @@ import Checkbox from './Checkbox';
 import Dropdown from './Dropdown';
 import Input from './Input';
 import Integer from './Integer';
+import Quantity from './Quantity';
 import Message from './Message';
 import Note from './Note';
 import Password from './Password';
@@ -15,6 +16,7 @@ export default {
   Checkbox,
   Dropdown,
   Input,
+  Quantity,
   Integer,
   Message,
   Note,

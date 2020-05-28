@@ -6,6 +6,7 @@ import {
   BOOTSTRAP_THEME,
   TEXT_TYPE,
   NUMBER_TYPE,
+  QUANTITY_TYPE,
   INTEGER_TYPE,
   NOTE_TYPE,
   PASSWORD_TYPE,
@@ -64,6 +65,7 @@ export default function Field({
     const elements = {
       [TEXT_TYPE]: Fields.Input,
       [NUMBER_TYPE]: Fields.Input,
+      [QUANTITY_TYPE]: Fields.Quantity,
       [INTEGER_TYPE]: Fields.Integer,
       [NOTE_TYPE]: Fields.Note,
       [PASSWORD_TYPE]: Fields.Password,

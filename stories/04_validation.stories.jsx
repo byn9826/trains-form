@@ -39,6 +39,12 @@ const REQUIRED_FIELDS = autoAppendTitleExample([
     width: 50,
   },
   {
+    type: FORM_CONSTANTS.QUANTITY_TYPE,
+    name: 'quantity',
+    required: true,
+    width: 50,
+  },
+  {
     type: FORM_CONSTANTS.INTEGER_TYPE,
     name: 'integer',
     required: true,
@@ -121,6 +127,7 @@ const MAX_MIN_VALUES = {
   text_2: 'Max 20 characters',
   note: 'Customize max/min error messages',
   number: 99,
+  quantity: 2,
 };
 
 const MAX_MIN_FIELDS = autoAppendTitleExample([
@@ -152,6 +159,13 @@ const MAX_MIN_FIELDS = autoAppendTitleExample([
     name: 'number',
     min: 99,
     max: 99,
+    width: 50,
+  },
+  {
+    type: FORM_CONSTANTS.QUANTITY_TYPE,
+    name: 'quantity',
+    min: 2,
+    max: 2,
     width: 50,
   },
   {

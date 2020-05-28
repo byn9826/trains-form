@@ -3,6 +3,7 @@ import {
   NOTE_TYPE,
   NUMBER_TYPE,
   INTEGER_TYPE,
+  QUANTITY_TYPE,
   PASSWORD_TYPE,
   TOGGLE_TYPE,
   CHECKBOX_TYPE,
@@ -28,7 +29,11 @@ export const isStringType = (type) => (
   || type === PASSWORD_TYPE
 );
 
-export const isNumberType = (type) => type === NUMBER_TYPE || type === INTEGER_TYPE;
+export const isNumberType = (type) => (
+  type === NUMBER_TYPE
+  || type === INTEGER_TYPE
+  || type === QUANTITY_TYPE
+);
 
 export const isArrayType = (type) => type === CHECKBOX_TYPE;
 

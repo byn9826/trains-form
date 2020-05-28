@@ -86,6 +86,13 @@ const FIELDS = autoAppendTitleExample([
     width: 50,
   },
   {
+    type: FORM_CONSTANTS.QUANTITY_TYPE,
+    name: 'quantity',
+    default: 9,
+    min: 10,
+    width: 50,
+  },
+  {
     type: FORM_CONSTANTS.TOGGLE_TYPE,
     name: 'toggle',
     required: true,
