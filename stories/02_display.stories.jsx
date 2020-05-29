@@ -99,6 +99,11 @@ const WIDTH_FIELDS = autoAppendTitleExample([
     name: 'date',
     width: 40,
   },
+  {
+    type: FORM_CONSTANTS.EMAIL_TYPE,
+    name: 'email',
+    width: 30,
+  }
 ]);
 
 const OPTIONS = {
@@ -184,6 +189,11 @@ const PLACEHOLDER_FIELDS = autoAppendTitleExample([
     name: 'date_picker',
     placeholder: 'Select a date...',
   },
+  {
+    type: FORM_CONSTANTS.EMAIL_TYPE,
+    name: 'email',
+    placeholder: 'Enter your email here',
+  }
 ]);
 
 const fileName = '02_display';

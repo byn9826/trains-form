@@ -94,6 +94,11 @@ const REQUIRED_FIELDS = autoAppendTitleExample([
     width: 50,
     default: new Date(),
   },
+  {
+    type: FORM_CONSTANTS.EMAIL_TYPE,
+    name: 'email',
+    required: true,
+  },
 ]);
 
 const OPTIONS = {
@@ -195,6 +200,11 @@ const MAX_MIN_FIELDS = autoAppendTitleExample([
     default: new Date(2020, 4, 15),
     min: new Date(2020, 4, 5),
     max: new Date(2020, 4, 20),
+  },
+  {
+    type: FORM_CONSTANTS.EMAIL_TYPE,
+    name: 'email',
+    max: 20,
   },
 ]);
 

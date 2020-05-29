@@ -256,7 +256,7 @@ return (
         100
       </td>
       <td>
-        Message, Text, Number, Integer, Quantity, Password, Note, Toggle, Radio, Checkbox, SingleSelect, Switch, Date
+        Message, Text, Email, Number, Integer, Quantity, Password, Note, Toggle, Radio, Checkbox, SingleSelect, Switch, Date
       </td>
     </tr>
     <tr>
@@ -271,7 +271,7 @@ return (
       </td>
       <td></td>
       <td>
-        Text, Number, Integer, Password, Note, Toggle, SingleSelect
+        Text, Email, Number, Integer, Password, Note, Toggle, SingleSelect
       </td>
     </tr>
     <tr>
@@ -286,7 +286,7 @@ return (
       </td>
       <td></td>
       <td>
-        Message, Text, Number, Integer, Quantity, Note, Toggle, Radio, Checkbox, SingleSelect, Switch, Date
+        Message, Text, Email, Number, Integer, Quantity, Note, Toggle, Radio, Checkbox, SingleSelect, Switch, Date
       </td>
     </tr>
     <tr>
@@ -303,7 +303,7 @@ return (
         false
       </td>
       <td>
-        Message, Text, Number, Integer, Quantity, Password, Note, Toggle, Radio, Checkbox, SingleSelect, Switch, Date
+        Message, Text, Email, Number, Integer, Quantity, Password, Note, Toggle, Radio, Checkbox, SingleSelect, Switch, Date
       </td>
     </tr>
     <tr>
@@ -320,7 +320,7 @@ return (
         false
       </td>
       <td>
-        Message, Text, Number, Integer, Quantity, Password, Note, Toggle, Radio, Checkbox, SingleSelect, Switch, Date
+        Message, Text, Email, Number, Integer, Quantity, Password, Note, Toggle, Radio, Checkbox, SingleSelect, Switch, Date
       </td>
     </tr>
     <tr>
@@ -337,7 +337,7 @@ return (
         (Same as Form Configs requiredError)
       </td>
       <td>
-        Message, Text, Number, Integer, Quantity, Password, Note, Toggle, Radio, Checkbox, SingleSelect, Switch, Date
+        Message, Text, Email, Number, Integer, Quantity, Password, Note, Toggle, Radio, Checkbox, SingleSelect, Switch, Date
       </td>
     </tr>
     <tr>
@@ -369,7 +369,7 @@ return (
         `Regx: ${field.match}`
       </td>
       <td>
-        Text, Password, Note
+        Text, Email, Password, Note
       </td>
     </tr>
     <tr>
@@ -384,7 +384,7 @@ return (
       </td>
       <td rowspan="4"></td>
       <td>
-        Text, Password, Note
+        Text, Email, Password, Note
       </td>
     </tr>
     <tr>
@@ -428,7 +428,7 @@ return (
         `Minimum ${field.min} characters required.`
       </td>
       <td>
-        Text, Password, Note
+        Text, Email, Password, Note
       </td>
     </tr>
     <tr>
@@ -467,7 +467,7 @@ return (
       </td>
       <td rowspan="4"></td>
       <td>
-        Text, Password, Note
+        Text, Email, Password, Note
       </td>
     </tr>
     <tr>
@@ -511,7 +511,7 @@ return (
         `Maximum ${field.max} characters allowed.`
       </td>
       <td>
-        Text, Password, Note
+        Text, Email, Password, Note
       </td>
     </tr>
     <tr>

@@ -17,6 +17,7 @@ import {
   SINGLE_SELECT_TYPE,
   MESSAGE_TYPE,
   DATE_TYPE,
+  EMAIL_TYPE,
 } from '../helpers/constants';
 import { isNumber } from '../helpers/utils';
 import { buildClassNames } from '../helpers/builder';
@@ -67,6 +68,7 @@ export default function Field({
       [NUMBER_TYPE]: Fields.Input,
       [QUANTITY_TYPE]: Fields.Quantity,
       [INTEGER_TYPE]: Fields.Integer,
+      [EMAIL_TYPE]: Fields.Input,
       [NOTE_TYPE]: Fields.Note,
       [PASSWORD_TYPE]: Fields.Password,
       [TOGGLE_TYPE]: Fields.Toggle,

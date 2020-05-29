@@ -13,8 +13,21 @@ import {
   DATE_TYPE,
   INTEGER_TYPE,
   QUANTITY_TYPE,
+  EMAIL_TYPE,
+  EMAIL_REGX,
 } from './constants';
 import { fieldValidator } from './validation';
+
+export const buildFormFields = (fields) => fields.map((field) => {
+  if (field.type === EMAIL_TYPE) {
+    return {
+      matchError: 'Email format required!',
+      ...field,
+      match: EMAIL_REGX,
+    };
+  }
+  return field;
+});
 
 export const buildInitialValues = (values, fields) => {
   const initValues = { ...values };

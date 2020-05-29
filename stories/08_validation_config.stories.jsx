@@ -136,6 +136,11 @@ const FIELDS = autoAppendTitleExample([
     name: 'date',
     required: true,
   },
+  {
+    type: FORM_CONSTANTS.EMAIL_TYPE,
+    name: 'email',
+    default: 'wrong@format',
+  },
 ]);
 
 const fileName = '08_validation_config';

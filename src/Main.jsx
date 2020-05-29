@@ -8,7 +8,7 @@ import {
   isCalendarType,
   isArrayType,
 } from './helpers/validation';
-import { buildInitialValues, buildErrors } from './helpers/builder';
+import { buildInitialValues, buildErrors, buildFormFields } from './helpers/builder';
 import { isFunction, isBoolean } from './helpers/utils';
 import { getDateString } from './helpers/calendar';
 import Form from './blocks/Form';
@@ -53,22 +53,24 @@ export default function Main({
       : CONFIGS_DEFAULT.viewAsMessage,
   };
 
+  const formFields = buildFormFields(fields);
+
   const [rawValues, setRawValues] = useState({});
-  const [formValues, setFormValues] = useState(buildInitialValues({}, fields));
+  const [formValues, setFormValues] = useState(buildInitialValues({}, formFields));
   const [formErrors, setFormErrors] = useState({});
   const [hasSubmitError, setHasSubmitError] = useState(false);
 
   const setFormDetails = () => {
-    const initialValues = buildInitialValues(values, fields);
+    const initialValues = buildInitialValues(values, formFields);
     const initialErrors = combinedConfigs.validateOnInitial
-      ? buildErrors(fields, initialValues, combinedConfigs)
+      ? buildErrors(formFields, initialValues, combinedConfigs)
       : {};
     setFormValues(initialValues);
     setFormErrors(initialErrors);
   };
 
   useEffect(() => {
-    const shouldUpdateValues = fields.find((field) => {
+    const shouldUpdateValues = formFields.find((field) => {
       const newValue = values[field.name];
       const oldValue = rawValues[field.name];
       if (isArrayType(field.type) && newValue && oldValue) {
@@ -98,12 +100,12 @@ export default function Main({
     setFormErrors(newErrors);
   };
 
-  const getFormErrors = () => buildErrors(fields, formValues, combinedConfigs);
+  const getFormErrors = () => buildErrors(formFields, formValues, combinedConfigs);
 
   const onChange = (name, value) => {
     onChangeValue(name, value);
     if (combinedConfigs.validateOnChange) {
-      const targetField = fields.find((field) => field.name === name);
+      const targetField = formFields.find((field) => field.name === name);
       const message = fieldValidator(targetField, value, combinedConfigs);
       onChangeError(name, message);
     }
@@ -126,7 +128,7 @@ export default function Main({
         theme={theme}
         mode={isLoading ? VIEW_MODE : mode}
         options={options}
-        fields={fields}
+        fields={formFields}
         values={formValues}
         errors={formErrors}
         onChange={onChange}

@@ -3,10 +3,11 @@ export const EDIT_MODE = 'Edit';
 export const MODES = [VIEW_MODE, EDIT_MODE];
 
 export const TEXT_TYPE = 'Text';
+export const PASSWORD_TYPE = 'Password';
+export const EMAIL_TYPE = 'Email';
 export const NUMBER_TYPE = 'Number';
 export const INTEGER_TYPE = 'Integer';
 export const QUANTITY_TYPE = 'Quantity';
-export const PASSWORD_TYPE = 'Password';
 export const NOTE_TYPE = 'Note';
 export const MESSAGE_TYPE = 'Message';
 export const TOGGLE_TYPE = 'Toggle';
@@ -18,6 +19,7 @@ export const DATE_TYPE = 'Date';
 export const TYPES = [
   MESSAGE_TYPE,
   TEXT_TYPE,
+  EMAIL_TYPE,
   NUMBER_TYPE,
   INTEGER_TYPE,
   QUANTITY_TYPE,
@@ -41,3 +43,5 @@ export const TEXT_ICONS = {
   ARROW_LEFT: 'arrow_left',
   ARROW_RIGHT: 'arrow_right',
 };
+
+export const EMAIL_REGX = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

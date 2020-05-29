@@ -72,7 +72,14 @@ const FIELDS = autoAppendTitleExample([
     type: FORM_CONSTANTS.DATE_TYPE,
     name: 'date_picker',
     default: new Date(),
+    width: 50,
   },
+  {
+    type: FORM_CONSTANTS.EMAIL_TYPE,
+    name: 'email',
+    default: 'default@email.com',
+    width: 50,
+  }
 ]);
 
 const OPTIONS = {

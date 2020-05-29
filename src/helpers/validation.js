@@ -11,6 +11,7 @@ import {
   SINGLE_SELECT_TYPE,
   DATE_TYPE,
   SWITCH_TYPE,
+  EMAIL_TYPE,
 } from './constants';
 import {
   isString,
@@ -27,6 +28,7 @@ export const isStringType = (type) => (
   type === TEXT_TYPE
   || type === NOTE_TYPE
   || type === PASSWORD_TYPE
+  || type === EMAIL_TYPE
 );
 
 export const isNumberType = (type) => (

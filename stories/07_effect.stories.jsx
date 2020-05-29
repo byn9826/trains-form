@@ -17,6 +17,8 @@ const VALUES = {
   radio_1: 0,
   date_picker: new Date(),
   switch: 0,
+  email: 'example@email.com',
+  quantity: 10,
 };
 
 const FIELDS = autoAppendTitleExample([
@@ -67,6 +69,16 @@ const FIELDS = autoAppendTitleExample([
   {
     type: FORM_CONSTANTS.DATE_TYPE,
     name: 'date_picker',
+  },
+  {
+    type: FORM_CONSTANTS.QUANTITY_TYPE,
+    name: 'quantity',
+    width: 50,
+  },
+  {
+    type: FORM_CONSTANTS.EMAIL_TYPE,
+    name: 'email',
+    width: 50,
   },
 ]);
 
