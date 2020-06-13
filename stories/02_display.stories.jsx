@@ -11,6 +11,7 @@ const WIDTH_VALUES = {
   password: '123456',
   quantity: 5,
   checkbox: [1, 2],
+  items: [],
   date: new Date(),
 };
 
@@ -103,7 +104,12 @@ const WIDTH_FIELDS = autoAppendTitleExample([
     type: FORM_CONSTANTS.EMAIL_TYPE,
     name: 'email',
     width: 30,
-  }
+  },
+  {
+    type: FORM_CONSTANTS.ITEMS_TYPE,
+    name: 'items',
+    width: 50,
+  },
 ]);
 
 const OPTIONS = {
@@ -129,6 +135,11 @@ const OPTIONS = {
     { label: 'Option E', value: 4 },
   ],
   switch: [
+    { label: 'Option A', value: 0 },
+    { label: 'Option B', value: 1 },
+    { label: 'Option C', value: 2 },
+  ],
+  items: [
     { label: 'Option A', value: 0 },
     { label: 'Option B', value: 1 },
     { label: 'Option C', value: 2 },
@@ -193,7 +204,12 @@ const PLACEHOLDER_FIELDS = autoAppendTitleExample([
     type: FORM_CONSTANTS.EMAIL_TYPE,
     name: 'email',
     placeholder: 'Enter your email here',
-  }
+  },
+  {
+    type: FORM_CONSTANTS.ITEMS_TYPE,
+    name: 'items',
+    placeholder: 'Creatable select field',
+  },
 ]);
 
 const fileName = '02_display';

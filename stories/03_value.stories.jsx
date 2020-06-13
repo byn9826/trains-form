@@ -79,7 +79,12 @@ const FIELDS = autoAppendTitleExample([
     name: 'email',
     default: 'default@email.com',
     width: 50,
-  }
+  },
+  {
+    type: FORM_CONSTANTS.ITEMS_TYPE,
+    name: 'items',
+    default: [0],
+  },
 ]);
 
 const OPTIONS = {
@@ -99,6 +104,11 @@ const OPTIONS = {
     { label: 'Option C', value: 2 },
   ],
   switch: [
+    { label: 'Option A', value: 0 },
+    { label: 'Option B', value: 1 },
+    { label: 'Option C', value: 2 },
+  ],
+  items: [
     { label: 'Option A', value: 0 },
     { label: 'Option B', value: 1 },
     { label: 'Option C', value: 2 },

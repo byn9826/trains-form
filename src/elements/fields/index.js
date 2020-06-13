@@ -10,6 +10,7 @@ import Password from './Password';
 import Radio from './Radio';
 import Switch from './Switch';
 import Toggle from './Toggle';
+import Items from './Items';
 
 export default {
   Calendar,
@@ -22,6 +23,7 @@ export default {
   Note,
   Password,
   Radio,
+  Items,
   Switch,
   Toggle,
 };

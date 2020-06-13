@@ -15,6 +15,7 @@ export const RADIO_TYPE = 'Radio';
 export const SWITCH_TYPE = 'Switch';
 export const SINGLE_SELECT_TYPE = 'SingleSelect';
 export const CHECKBOX_TYPE = 'Checkbox';
+export const ITEMS_TYPE = 'Items';
 export const DATE_TYPE = 'Date';
 export const TYPES = [
   MESSAGE_TYPE,
@@ -30,6 +31,7 @@ export const TYPES = [
   SINGLE_SELECT_TYPE,
   SWITCH_TYPE,
   CHECKBOX_TYPE,
+  ITEMS_TYPE,
   DATE_TYPE,
 ];
 

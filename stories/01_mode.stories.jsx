@@ -13,6 +13,7 @@ const VALUES = {
   toggle: true,
   note: 'a textarea field',
   checkbox_1: [1, 2],
+  items: [1],
   single_select: 1,
   switch: 2,
   radio_1: 0,
@@ -66,6 +67,10 @@ const FIELDS = autoAppendTitleExample([
     name: 'checkbox_1',
   },
   {
+    type: FORM_CONSTANTS.ITEMS_TYPE,
+    name: 'items',
+  },
+  {
     type: FORM_CONSTANTS.SINGLE_SELECT_TYPE,
     name: 'single_select',
   },
@@ -96,6 +101,11 @@ const OPTIONS = {
     { label: 'Option C', value: 2 },
   ],
   switch: [
+    { label: 'Option A', value: 0 },
+    { label: 'Option B', value: 1 },
+    { label: 'Option C', value: 2 },
+  ],
+  items: [
     { label: 'Option A', value: 0 },
     { label: 'Option B', value: 1 },
     { label: 'Option C', value: 2 },

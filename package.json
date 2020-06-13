@@ -1,6 +1,6 @@
 {
   "name": "trains-forms",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "description": "All in one React dynamic form builder, make form easier",
   "keywords": [
     "Dynamic Form",
@@ -30,7 +30,9 @@
     "url": "https://github.com/byn9826/trains-forms/issues"
   },
   "homepage": "https://byn9826.github.io/trains-forms",
-  "dependencies": {},
+  "dependencies": {
+    "react-select": "^3.1.0"
+  },
   "peerDependencies": {
     "react": ">=16.8",
     "react-dom": ">=16.8",

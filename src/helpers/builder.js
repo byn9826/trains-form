@@ -15,6 +15,7 @@ import {
   QUANTITY_TYPE,
   EMAIL_TYPE,
   EMAIL_REGX,
+  ITEMS_TYPE,
 } from './constants';
 import { fieldValidator } from './validation';
 
@@ -44,6 +45,7 @@ export const buildInitialValues = (values, fields) => {
         initValues[field.name] = isDefined(field.default)
           ? field.default : null;
         break;
+      case ITEMS_TYPE:
       case CHECKBOX_TYPE:
         initValues[field.name] = isDefined(field.default) && isArray(field.default)
           ? field.default : [];

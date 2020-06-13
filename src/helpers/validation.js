@@ -12,6 +12,7 @@ import {
   DATE_TYPE,
   SWITCH_TYPE,
   EMAIL_TYPE,
+  ITEMS_TYPE,
 } from './constants';
 import {
   isString,
@@ -37,7 +38,7 @@ export const isNumberType = (type) => (
   || type === QUANTITY_TYPE
 );
 
-export const isArrayType = (type) => type === CHECKBOX_TYPE;
+export const isArrayType = (type) => type === CHECKBOX_TYPE || type === ITEMS_TYPE;
 
 export const isBooleanType = (type) => type === TOGGLE_TYPE;
 

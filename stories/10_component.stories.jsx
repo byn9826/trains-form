@@ -21,6 +21,7 @@ storiesOf('Component', module)
       SingleSelect: null,
       Checkbox: [],
       Date: null,
+      Items: [],
     });
 
     const typesRender = () => FORM_CONSTANTS.TYPES.map((type) => {

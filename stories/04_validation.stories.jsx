@@ -99,6 +99,12 @@ const REQUIRED_FIELDS = autoAppendTitleExample([
     name: 'email',
     required: true,
   },
+  {
+    type: FORM_CONSTANTS.ITEMS_TYPE,
+    name: 'items',
+    required: true,
+    default: [],
+  },
 ]);
 
 const OPTIONS = {
@@ -120,6 +126,11 @@ const OPTIONS = {
     { label: 'Option C', value: 2 },
   ],
   switch: [
+    { label: 'Option A', value: 0 },
+    { label: 'Option B', value: 1 },
+    { label: 'Option C', value: 2 },
+  ],
+  items: [
     { label: 'Option A', value: 0 },
     { label: 'Option B', value: 1 },
     { label: 'Option C', value: 2 },
@@ -205,6 +216,13 @@ const MAX_MIN_FIELDS = autoAppendTitleExample([
     type: FORM_CONSTANTS.EMAIL_TYPE,
     name: 'email',
     max: 20,
+  },
+  {
+    type: FORM_CONSTANTS.ITEMS_TYPE,
+    name: 'items',
+    min: 2,
+    max: 2,
+    default: [1, 2],
   },
 ]);
 

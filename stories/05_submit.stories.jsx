@@ -88,6 +88,11 @@ export const FIELDS = autoAppendTitleExample([
     name: 'email',
     required: true,
   },
+  {
+    type: FORM_CONSTANTS.ITEMS_TYPE,
+    name: 'items',
+    required: true,
+  },
 ]);
 
 export const OPTIONS = {
