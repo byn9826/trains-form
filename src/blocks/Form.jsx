@@ -37,7 +37,7 @@ export default function Form({
           options={options[field.name]}
           onChange={onChange}
           space={configs.innerSpacing}
-          viewAsMessage={configs.viewAsMessage}
+          viewAsMessage={mode === VIEW_MODE && configs.viewAsMessage}
         />
       ))}
       {

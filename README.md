@@ -24,7 +24,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 6. Built-in date picker.
 7. Take advantage of standalone field components.
 ## How to use
-[Detailed demos & examples](https://byn9826.github.io/trains-forms)
+[Demo & Example](https://byn9826.github.io/trains-forms)
 ### Simple Example
 ```
 import useForm, { FORM_CONSTANTS };
