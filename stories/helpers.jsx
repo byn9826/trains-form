@@ -23,7 +23,7 @@ export function useThemeSwitcher({ fileName }) {
         padding: '5px 2%',
       }}
     >
-      <FormComponents.Radio
+      <FormComponents.Switch
         name="theme"
         value={theme}
         theme={theme}
